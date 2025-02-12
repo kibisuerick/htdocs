@@ -1,42 +1,62 @@
 <?php
 session_start();
 
-// Database connection
-$host = "localhost";
-$dbname = "centralised_property_reservation_platform";
-$username = "root"; // Default XAMPP username
-$password = "";
+require_once 'dbconnect.php'; // Ensure database connection is available
+require_once 'login_model.inc.php';
+require_once 'login_contr.inc.php';
 
-try {
-    require_once 'dbconnect.php';
-    require_once 'login_contr.inc.php';
-    require_once 'login_contr.inc.php';
-
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+// Function to check for empty input
+function is_input_empty(...$inputs) {
+    foreach ($inputs as $input) {
+        if (empty($input)) {
+            return true;
+        }
+    }
+    return false;
 }
+
+// Initialize errors array before any checks
+$errors = [];
+
+// Ensure form data is retrieved before being used
+$email = isset($_POST["email"]) ? trim($_POST["email"]) : "";
+$password = isset($_POST["password"]) ? trim($_POST["password"]) : "";
 
 // Process form submission and Error handlers
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = trim($_POST["email"]);
-    $password = trim($_POST["password"]);
-
-    // Check if user exists
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
-    $stmt->execute(['email' => $email]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($user && password_verify($password, $user["password"])) {
-        // ✅ Login successful, create session
-        $_SESSION["user_id"] = $user["id"];
-        $_SESSION["user_name"] = $user["name"];
-        
-        header("Location: dashboard.php"); // Redirect to dashboard
-        exit();
-    } else {
-        echo "<script>alert('Invalid email or password'); window.location.href='login.html';</script>";
+    // Check if fields are empty
+    if (is_input_empty($email, $password)) {
+        $errors["empty_input"] = "Fill in all fields";
     }
+
+    if (!empty($errors)) {
+        echo "<script>alert('{$errors["empty_input"]}'); window.location.href='login.html';</script>";
+        exit();
+    }
+
+    // Verify user credentials
+    $result = verify_user($email, $password, $pdo);
+
+    if (!$result || is_email_wrong($result)) {
+        $errors["login_incorrect"] = "Incorrect login info!";
+    }
+
+    if (!empty($errors)) {
+        echo "<script>alert('{$errors["login_incorrect"]}'); window.location.href='login.html';</script>";
+        exit();
+    }
+
+    require_once 'configsession.php';
+
+    $newsessionid = session_create_id();
+    $sessionid = $newsessionid . "_" . $result["id"];
+    session_id($sessionid);
+
+    $_SESSION["user_id"] = $result["id"];
+    $_SESSION["user_email"] = htmlspecialchars($result["email"]);
+    $_SESSION["last_regeneration"] = time();
+
+    header("Location: .../login.html?login=success");
+    exit();
 }
 ?>
