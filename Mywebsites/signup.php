@@ -20,7 +20,7 @@ try {
     die("❌ Database connection failed: " . $e->getMessage());
 }
 
-// Check if the request is a POST request (form submission)
+// Process form submission and Error handlers
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve and sanitize user input
     $name = trim($_POST['name']);
