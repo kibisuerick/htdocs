@@ -8,6 +8,10 @@ $username = "root"; // Default XAMPP username
 $password = "";
 
 try {
+    require_once 'dbconnect.php';
+    require_once 'login_contr.inc.php';
+    require_once 'login_contr.inc.php';
+
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
