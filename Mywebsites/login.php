@@ -1,7 +1,8 @@
 <?php
 require_once 'configsession.php';
 require_once 'login_view.inc.php';
-require_once 'signup_view.inc.php';
+require_once 'login_view.inc.php';
+//require_once 'signup_view.inc.php';
 
 ?>
 
