@@ -130,7 +130,7 @@ require_once 'signup_view.inc.php';
                                         <li class="sub__menu--items"><a href="project-details.html" class="sub__menu--link">Project Details</a></li>
                                         <li class="sub__menu--items"><a href="services-details.html" class="sub__menu--link">Services Details</a></li>
                                         <li class="sub__menu--items"><a href="login.php" class="sub__menu--link">Login</a></li>
-                                        <li class="sub__menu--items"><a href="sign-up.html" class="sub__menu--link">Sign up</a></li>
+                                        <li class="sub__menu--items"><a href="signup.html" class="sub__menu--link">Sign up</a></li>
                                         <li class="sub__menu--items"><a href="404.html" class="sub__menu--link">Error 404</a></li>
                                     </ul>
                                 </li>
@@ -210,7 +210,7 @@ require_once 'signup_view.inc.php';
                             <li class="offcanvas__sub_menu_li"><a href="project-details.html" class="offcanvas__sub_menu_item">Project Details</a></li>
                             <li class="offcanvas__sub_menu_li"><a href="services-details.html" class="offcanvas__sub_menu_item">Services Details</a></li>
                             <li class="offcanvas__sub_menu_li"><a href="login.php" class="offcanvas__sub_menu_item">Login</a></li>
-                            <li class="offcanvas__sub_menu_li"><a href="sign-up.html" class="offcanvas__sub_menu_item">Sign up</a></li>
+                            <li class="offcanvas__sub_menu_li"><a href="signup.html" class="offcanvas__sub_menu_item">Sign up</a></li>
                             <li class="offcanvas__sub_menu_li"><a href="404.html" class="offcanvas__sub_menu_item">Error 404</a></li>
                         </ul>
                     </li>
@@ -299,7 +299,7 @@ require_once 'signup_view.inc.php';
                 <div class="account__section--inner">
                     <div class="account__tab--btn">
                         <ul class="account__tab--btn__wrapper d-flex justify-content-center">
-                            <li class="account__tab--btn__items"><a class="account__tab--btn__field" href="sign-up.html">Sign Up</a></li>
+                            <li class="account__tab--btn__items"><a class="account__tab--btn__field" href="signup.html">Sign Up</a></li>
                             <li class="account__tab--btn__items"><span class="account__tab--btn__field active">Login</span></li>
                         </ul>
                     </div>
