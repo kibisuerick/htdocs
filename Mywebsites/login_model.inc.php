@@ -1,23 +1,22 @@
 <?php
+// login_model.inc.php
 declare(strict_types=1);
+require_once 'dbconnect.php';
 
-require_once 'dbconnect.php'; // Ensure database connection is available
-
-function verify_user(string $email, string $password, PDO $pdo): bool {
+function verify_user(string $email, string $password, PDO $pdo): mixed {
     try {
-        // Prepare the query to check if the user exists
-        $stmt = $pdo->prepare("SELECT password FROM signup WHERE email = :email");
+        // Select the full user record from the signup table
+        $stmt = $pdo->prepare("SELECT * FROM signup WHERE email = :email");
         $stmt->execute(['email' => $email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        // Ensure a password exists before verifying
+        
+        // Verify the password if a user record is found
         if ($user && !empty($user["password"]) && password_verify($password, $user["password"])) {
-            return true; // Password matches
+            return $user; // Return the user record
         }
     } catch (PDOException $e) {
-        error_log("Database error: " . $e->getMessage()); // Log errors instead of exposing them
+        error_log("Database error: " . $e->getMessage());
     }
-    
-    return false; // User does not exist or password incorrect
+    return false;
 }
 ?>
