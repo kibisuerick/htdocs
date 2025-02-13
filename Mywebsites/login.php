@@ -1,12 +1,16 @@
 <?php
 session_start();
+$_SESSION['email'] = "test@example.com"; // For testing
 
-// If the user is already logged in, redirect to the dashboard
 if (isset($_SESSION['email'])) {
-    header("Location: /Mywebsites/login.php");
+    echo "Session is set, redirecting...";
+    header("Location: admin/dashboard.php");
     exit;
+} else {
+    echo "Session not set.";
 }
 ?>
+
 
 <!doctype html>
 <html lang="en">

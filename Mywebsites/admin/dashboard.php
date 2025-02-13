@@ -1,15 +1,12 @@
 <?php
 session_start();
 
-// Ensure the user is logged in
 if (!isset($_SESSION['email'])) {
-    header("Location: ../login.php"); // Adjusted path to go up one level
-    exit();
+    echo "Session not set. Please log in.";
+    exit;
 }
-
-// Include database connection
-require_once __DIR__ . '/../db.php'; // Corrected path to db.php
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
