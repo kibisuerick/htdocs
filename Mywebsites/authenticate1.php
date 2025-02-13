@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'db.php'; // Include the PDO database connection
+require_once 'db1.php'; // Include the PDO database connection
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
     // Sanitize and trim the input data
@@ -18,15 +18,15 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         if (password_verify($password, $user['password'])) {
             // Successful login: set session variable and redirect
             $_SESSION['email'] = $email;
-            header("Location: dashboard.php");
+            header("Location: dashboard1.php");
             exit;
         }
     }
-    // If authentication fails, redirect back to login.php with an error flag
-    header("Location: login.php?error=1");
+    // If authentication fails, redirect back to login1.php with an error flag
+    header("Location: login1.php?error=1");
     exit;
 } else {
-    // If form data is missing, redirect back to login.php with an error flag
-    header("Location: login.php?error=1");
+    // If form data is missing, redirect back to login1.php with an error flag
+    header("Location: login1.php?error=1");
     exit;
 }
