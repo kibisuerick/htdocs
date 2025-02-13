@@ -315,12 +315,15 @@ if (isset($_SESSION['email'])) {
                         <form action="authenticate1.php" method="post">
                         <div class="account__form--input mb-30">
                                 <label class="account__form--input__label mb-12" for="email">Email:</label>
-                                <input type="email" name="email" id="email" required>
+                                <!--<input type="email" name="email" id="email" required>-->
+                                <input class="account__form--input__field" type="email" id="email" placeholder="Enter Email Adress" name="email">
                             
                                 <label class="account__form--input__label mb-12" for="password">Password:</label>
-                                <input type="password" name="password" id="password" required>
+                                <input class="account__form--input__field" placeholder="Enter password" type="password" name="password" id="password" required>
+                                <a class="account__form--forgot__password" href="#">Forgot Password?</a>
                             
-                                <input type="submit" value="Login">
+                                <!--<input type="submit" value="Login">-->
+                                <button class="account__form--btn solid__btn" type="submit" >Login Here</button>
                         </form>
                             <?php
                             // Display error message if login failed
