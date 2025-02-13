@@ -1,17 +1,16 @@
 <?php
 session_start();
-if (!isset($_SESSION['email'])) { // Fixed session variable
-    header("Location: login.php");
-    exit();
-}
-?>
 
+// Check if the user is logged in
+if (!isset($_SESSION['email'])) {
+    header("Location: login.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-  <title>CENTRALISED PROPERTY RESERVATION PLATFORM</title>
+<title>CENTRALISED PROPERTY RESERVATION PLATFORM</title>
   <meta name="description" content="Morden Bootstrap HTML5 Template">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
@@ -32,13 +31,14 @@ if (!isset($_SESSION['email'])) { // Fixed session variable
   <link rel="stylesheet" href="assets/css/dark.css">
   <link rel="stylesheet" href="assets/css/creat-listing.css">
 </head>
+
 <body>
 <div class="dashboard__page--wrapper">
         <!-- Start Offcanvas header menu -->
         <div class="offcanvas__header">
             <div class="offcanvas__inner">
                 <div class="offcanvas__logo">
-                    <a class="offcanvas__logo_link" href="dashboard.html">
+                    <a class="offcanvas__logo_link" href="dashboard.php">
                         <img class="light__logo" src="assets/img/logo/nav-log3.png" alt="Logo-img" width="158" height="36">
                         <img class="dark__logo" src="assets/img/logo/nav-log3.png" alt="Logo-img" width="158" height="36">
                     </a>
@@ -68,7 +68,7 @@ if (!isset($_SESSION['email'])) { // Fixed session variable
                         </li>
                         <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="my-properties.html">Properties</a></li>
                         <li class="offcanvas__menu_li">
-                            <a class="offcanvas__menu_item" href="dashboard.html">Menu</a>
+                            <a class="offcanvas__menu_item" href="dashboard.php">Menu</a>
                             <ul class="offcanvas__sub_menu">
                                 <!--<li class="offcanvas__sub_menu_li"><a href="dashboard.html" class="offcanvas__sub_menu_item">Dashboard</a></li>-->
                                 <li class="offcanvas__sub_menu_li"><a href="Create-listing.html" class="offcanvas__sub_menu_item">Create Listing</a></li>
@@ -171,7 +171,7 @@ if (!isset($_SESSION['email'])) { // Fixed session variable
         <!-- Dashboard sidebar -->
         <div class="dashboard__sidebar">
             <div class="main__logo logo-desktop-none">
-                <h1 class="main__logo--title"><a class="main__logo--link" href="dashboard.html">
+                <h1 class="main__logo--title"><a class="main__logo--link" href="dashboard.php">
                     <img class="main__logo--img desktop light__logo" src="assets/img/logo/nav-log3.png" alt="logo-img">
                     <img class="main__logo--img desktop dark__logo" src="assets/img/logo/nav-log3.png" alt="logo-img">
                     <img class="main__logo--img mobile" src="assets/img/logo/logo-mobile.png" alt="logo-img">
@@ -179,7 +179,7 @@ if (!isset($_SESSION['email'])) { // Fixed session variable
             </div>
             <div class="dashboard__sidebar--inner">
                 <ul class="sidebar__menu" id="accordionExample">
-                    <li class="sidebar__menu--items"><a class="sidebar__menu--link active" href="dashboard.html"><svg class="sidebar__menu--icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <li class="sidebar__menu--items"><a class="sidebar__menu--link active" href="dashboard.php"><svg class="sidebar__menu--icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0.300049 1.40005C0.300049 1.10831 0.415941 0.828521 0.622231 0.622231C0.828521 0.415941 1.10831 0.300049 1.40005 0.300049H14.6C14.8918 0.300049 15.1716 0.415941 15.3779 0.622231C15.5842 0.828521 15.7 1.10831 15.7 1.40005V3.60005C15.7 3.89179 15.5842 4.17158 15.3779 4.37787C15.1716 4.58416 14.8918 4.70005 14.6 4.70005H1.40005C1.10831 4.70005 0.828521 4.58416 0.622231 4.37787C0.415941 4.17158 0.300049 3.89179 0.300049 3.60005V1.40005ZM0.300049 8.00005C0.300049 7.70831 0.415941 7.42852 0.622231 7.22223C0.828521 7.01594 1.10831 6.90005 1.40005 6.90005H8.00005C8.29179 6.90005 8.57158 7.01594 8.77787 7.22223C8.98416 7.42852 9.10005 7.70831 9.10005 8.00005V14.6C9.10005 14.8918 8.98416 15.1716 8.77787 15.3779C8.57158 15.5842 8.29179 15.7 8.00005 15.7H1.40005C1.10831 15.7 0.828521 15.5842 0.622231 15.3779C0.415941 15.1716 0.300049 14.8918 0.300049 14.6V8.00005ZM12.4 6.90005C12.1083 6.90005 11.8285 7.01594 11.6222 7.22223C11.4159 7.42852 11.3 7.70831 11.3 8.00005V14.6C11.3 14.8918 11.4159 15.1716 11.6222 15.3779C11.8285 15.5842 12.1083 15.7 12.4 15.7H14.6C14.8918 15.7 15.1716 15.5842 15.3779 15.3779C15.5842 15.1716 15.7 14.8918 15.7 14.6V8.00005C15.7 7.70831 15.5842 7.42852 15.3779 7.22223C15.1716 7.01594 14.8918 6.90005 14.6 6.90005H12.4Z" fill="currentColor"/>
                         </svg>
                         <span class="sidebar__menu--text"> Menu</span>
@@ -191,7 +191,7 @@ if (!isset($_SESSION['email'])) { // Fixed session variable
                         <path d="M10 13.3334V6.66675" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>                        
                         <span class="sidebar__menu--text"> Create Listing</span>
-                    </a>
+                        </a>
                     </li>
                     <li class="sidebar__menu--items"><a class="sidebar__menu--link" href="chat.html"><svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14.1666 7.50008C14.1666 10.7251 11.3666 13.3334 7.91663 13.3334L7.14163 14.2667L6.6833 14.8168C6.29163 15.2834 5.54162 15.1834 5.28329 14.6251L4.16663 12.1667C2.64996 11.1001 1.66663 9.40842 1.66663 7.50008C1.66663 4.27508 4.46663 1.66675 7.91663 1.66675C10.4333 1.66675 12.6083 3.05842 13.5833 5.05842C13.9583 5.80009 14.1666 6.62508 14.1666 7.50008Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
@@ -200,7 +200,7 @@ if (!isset($_SESSION['email'])) { // Fixed session variable
                         </svg>                                                
                         
                         <span class="sidebar__menu--text"> Message</span>
-                    </a>
+                        </a>
                     </li>
                     <li class="sidebar__menu--items">
                         <label class="sidebar__menu--title">Manage Listings</label>
@@ -269,22 +269,20 @@ if (!isset($_SESSION['email'])) { // Fixed session variable
                         <path d="M17.1583 18.3333C17.1583 15.1083 13.95 12.5 10 12.5C6.05001 12.5 2.84167 15.1083 2.84167 18.3333" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>                                                                                                
                         <span class="sidebar__menu--text"> My Profile</span>  
-                    </a>
+                        </a>
                     </li>
                     <li class="sidebar__menu--items"><a class="sidebar__menu--link" href="settings.html"><svg class="sidebar__menu--icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg>                                                                                               
                         <span class="sidebar__menu--text"> Settings</span>  
-                    </a>
+                        </a>
                     </li>
-                    <li class="sidebar__menu--items"><a class="sidebar__menu--link logout color-accent-2" href="login1.php"><svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <li class="sidebar__menu--items"><a class="sidebar__menu--link logout color-accent-2" href="login.php"><svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M7.41663 6.29995C7.67496 3.29995 9.21663 2.07495 12.5916 2.07495H12.7C16.425 2.07495 17.9166 3.56662 17.9166 7.29162V12.725C17.9166 16.45 16.425 17.9416 12.7 17.9416H12.5916C9.24163 17.9416 7.69996 16.7333 7.42496 13.7833" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M12.5001 10H3.01672" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M4.87504 7.20825L2.08337 9.99992L4.87504 12.7916" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>                                                                                                                     
-                        
-                        <a href="logout1.php" class="sidebar__menu--text">Logout</a>
- 
+                        </svg>
+                        <a href="logout.php" class="sidebar__menu--text">Logout</a> 
                     </a>
-                    </ul>
+                </ul>
              </div>
         </div>
         <!-- Dashboard sidebar .\ -->
@@ -306,7 +304,7 @@ if (!isset($_SESSION['email'])) { // Fixed session variable
                             </a>
                         </div>
                         <div class="search__box">
-                            <form class="search__box--form laptop__hidden" action="#">
+                            <form class="search__box--form laptop__hidden" action="authenticate.php" method="post">
                                 <input class="search__box--input__field" placeholder="Search for ...." type="text">
                                 <span class="search__box--icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M4.79171 8.74992C6.97783 8.74992 8.75004 6.97771 8.75004 4.79159C8.75004 2.60546 6.97783 0.833252 4.79171 0.833252C2.60558 0.833252 0.833374 2.60546 0.833374 4.79159C0.833374 6.97771 2.60558 8.74992 4.79171 8.74992Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
@@ -378,8 +376,7 @@ if (!isset($_SESSION['email'])) { // Fixed session variable
                                             <svg class="menu__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 12 7.41">
                                                 <path  d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7"/>
                                             </svg>
-                                        </a>  
-                                        
+                                        </a>                                        
                                         <ul class="sub__menu">
                                             <!--<li class="sub__menu--items"><a href="dashboard.html" class="sub__menu--link">Dashboard</a></li>-->
                                             <li class="sub__menu--items"><a href="Create-listing.html" class="sub__menu--link">Create Listing</a></li>
@@ -402,8 +399,7 @@ if (!isset($_SESSION['email'])) { // Fixed session variable
                                             <svg class="menu__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 12 7.41">
                                                 <path  d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7"/>
                                             </svg>
-                                        </a>  
-                                        
+                                        </a>                                        
                                         <ul class="sub__menu">
                                             <li class="sub__menu--items"><a href="../about.html" class="sub__menu--link">About Us</a></li>
                                             <li class="sub__menu--items"><a href="../contact.html" class="sub__menu--link">Contact Us</a></li>
@@ -415,7 +411,7 @@ if (!isset($_SESSION['email'])) { // Fixed session variable
                                             <li class="sub__menu--items"><a href="../404.html" class="sub__menu--link">Error 404</a></li>
                                         </ul>
                                     </li>
-                                </ul>
+                                    </ul>
                             </nav>
                         </div>
                         <div class="header__nav-bar__wrapper d-flex align-items-center">
@@ -560,7 +556,7 @@ if (!isset($_SESSION['email'])) { // Fixed session variable
                                         <li class="user__profile--menu__items"><a class="user__profile--menu__link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>  Taskboard </a></li>
                                     </ul>
                                     <div class="dropdown__user--profile__footer">
-                                        <a class="user__profile--log-out__btn" href="logout1.php"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="log-out" class="lucide lucide-log-out inline-block size-4 ltr:mr-2 rtl:ml-2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" x2="9" y1="12" y2="12"></line></svg> Log Out</a>
+                                        <a class="user__profile--log-out__btn" href="logout.php"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="log-out" class="lucide lucide-log-out inline-block size-4 ltr:mr-2 rtl:ml-2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" x2="9" y1="12" y2="12"></line></svg> Log Out</a>
                                     </div>
                                 </div>
                             </div>
@@ -569,9 +565,10 @@ if (!isset($_SESSION['email'])) { // Fixed session variable
                 </div>
             </header>
             <!-- End header area -->
-            <main class="main__content_wrapper">
-                <!-- dashboard container -->
-                <div class="dashboard__container d-flex">
+
+        <main class="main__content_wrapper">
+            <!-- dashboard container -->
+            <div class="dashboard__container d-flex">
                     <div class="main__content--left">
                         <div class="main__content--left__inner">
                             <!-- Welcome section -->
@@ -922,8 +919,6 @@ if (!isset($_SESSION['email'])) { // Fixed session variable
                 <!-- End footer section -->
             </main>
         </div>
-
-        
     </div>
 
     <!-- Scroll top bar -->
@@ -957,5 +952,6 @@ if (!isset($_SESSION['email'])) { // Fixed session variable
      <!-- Customscript js -->
   <script src="assets/js/chart-activation.js"></script>
 
+  
 </body>
 </html>

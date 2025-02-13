@@ -2,7 +2,7 @@
 // db.php - Database connection using PDO
 
 $host     = 'localhost';
-$dbname   = 'centralised_property_reservation_platform'; // Updated database name
+$dbname   = 'centralised_property_reservation_platform'; // If possible, avoid spaces in the DB name.
 $username = 'root';
 $password = ''; // Default XAMPP password
 
@@ -16,4 +16,3 @@ try {
 } catch (PDOException $e) {
     die("Database connection failed: " . $e->getMessage());
 }
-?>

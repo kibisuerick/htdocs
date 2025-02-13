@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require_once 'db.php'; // Include the PDO database connection
 
@@ -14,21 +14,19 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
     // Check if a user was found and verify the password
     if ($user) {
-        // Ensure passwords are hashed in the database
+        // If passwords are stored hashed, use password_verify()
         if (password_verify($password, $user['password'])) {
             // Successful login: set session variable and redirect
-            $_SESSION['email'] = $user['email']; // Ensure consistency
+            $_SESSION['email'] = $email;
             header("Location: dashboard.php");
             exit;
-        } else {
-            header("Location: login.php?error=invalid_credentials"); // More specific error message
-            exit;
         }
-    } else {
-        header("Location: login.php?error=invalid_credentials");
-        exit;
     }
+    // If authentication fails, redirect back to login.php with an error flag
+    header("Location: login.php?error=1");
+    exit;
 } else {
-    header("Location: login.php?error=missing_data");
+    // If form data is missing, redirect back to login.php with an error flag
+    header("Location: login.php?error=1");
     exit;
 }
