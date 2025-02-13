@@ -74,7 +74,7 @@ require_once __DIR__ . '/../db.php'; // Corrected path to db.php
                         <li class="offcanvas__menu_li">
                             <a class="offcanvas__menu_item" href="dashboard.php">Menu</a>
                             <ul class="offcanvas__sub_menu">
-                                <!--<li class="offcanvas__sub_menu_li"><a href="dashboard.html" class="offcanvas__sub_menu_item">Dashboard</a></li>-->
+                                <!--<li class="offcanvas__sub_menu_li"><a href="dashboard.php" class="offcanvas__sub_menu_item">Dashboard</a></li>-->
                                 <li class="offcanvas__sub_menu_li"><a href="Create-listing.html" class="offcanvas__sub_menu_item">Create Listing</a></li>
                                 <li class="offcanvas__sub_menu_li"><a href="chat.html" class="offcanvas__sub_menu_item">Chats</a></li>
                                 <li class="offcanvas__sub_menu_li"><a href="my-favorites.html" class="offcanvas__sub_menu_item">My Favorites</a></li>
@@ -332,7 +332,7 @@ require_once __DIR__ . '/../db.php'; // Corrected path to db.php
                             </button>
                         </div>
                         <div class="main__logo logo-desktop-block">
-                           <a class="main__logo--link" href="dashboard.html">
+                           <a class="main__logo--link" href="dashboard.php">
                                 <img class="main__logo--img desktop light__logo" src="assets/img/logo/nav-log3.png" alt="logo-img">
                                 <img class="main__logo--img desktop dark__logo" src="assets/img/logo/nav-log3.png" alt="logo-img">
                                 <img class="main__logo--img mobile" src="assets/img/logo/logo-mobile.png" alt="logo-img">
@@ -378,13 +378,13 @@ require_once __DIR__ . '/../db.php'; // Corrected path to db.php
                                         <a class="main__menu--link" href="my-properties.html"> Properties </a>  
                                     </li>
                                     <li class="main__menu--items">
-                                        <a class="main__menu--link" href="dashboard.html"> Menu 
+                                        <a class="main__menu--link" href="dashboard.php"> Menu 
                                             <svg class="menu__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 12 7.41">
                                                 <path  d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7"/>
                                             </svg>
                                         </a>                                        
                                         <ul class="sub__menu">
-                                            <!--<li class="sub__menu--items"><a href="dashboard.html" class="sub__menu--link">Dashboard</a></li>-->
+                                            <!--<li class="sub__menu--items"><a href="dashboard.php" class="sub__menu--link">Dashboard</a></li>-->
                                             <li class="sub__menu--items"><a href="Create-listing.html" class="sub__menu--link">Create Listing</a></li>
                                             <li class="sub__menu--items"><a href="chat.html" class="sub__menu--link">Chats</a></li>
                                             <li class="sub__menu--items"><a href="my-favorites.html" class="sub__menu--link">My Favorites</a></li>
