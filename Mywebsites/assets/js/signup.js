@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (data.status === "success") {
                 messageBox.innerHTML = `<p style="color: green;">✅ ${data.message}</p>`;
                 setTimeout(() => {
-                    window.location.href = "signup.html"; // Redirect after success
+                    window.location.href = "signup.php"; // Redirect after success
                 }, 2000);
             } else {
                 messageBox.innerHTML = `<p style="color: red;">❌ ${data.message}</p>`;

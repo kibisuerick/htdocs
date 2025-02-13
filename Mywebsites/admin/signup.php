@@ -41,17 +41,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 'password' => $password
             ]);
 
-            // ✅ If signup is successful, alert the user and redirect to signup.html
-            echo "<script>alert('✅ Signup successful!'); window.location.replace('signup.html');</script>";
+            // ✅ If signup is successful, alert the user and redirect to signup.php
+            echo "<script>alert('✅ Signup successful!'); window.location.replace('signup.php');</script>";
             exit();
             
         } catch (PDOException $e) {
             // ❌ If database insertion fails, alert the user with the error message
-            echo "<script>alert('❌ Signup failed: " . addslashes($e->getMessage()) . "'); window.location.href='signup.html';</script>";
+            echo "<script>alert('❌ Signup failed: " . addslashes($e->getMessage()) . "'); window.location.href='signup.php';</script>";
         }
     } else {
         // ❌ If validation fails, alert the user to fill in all fields
-        echo "<script>alert('❌ Please fill all fields and accept Terms & Conditions.'); window.location.href='signup.html';</script>";
+        echo "<script>alert('❌ Please fill all fields and accept Terms & Conditions.'); window.location.href='signup.php';</script>";
     }
 }
 ?>

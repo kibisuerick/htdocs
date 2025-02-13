@@ -1,6 +1,6 @@
-HTTrack3.49-2+htsswf+htsjava launched on Sat, 28 Dec 2024 00:54:51 at risingtheme.com/html/demo-newvilla/newvilla/Home.html +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
-Home.html
-(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" risingtheme.com/html/demo-newvilla/newvilla/index.html -O1 "C:\Users\user\Desktop\Centralised property reservation platform" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+HTTrack3.49-2+htsswf+htsjava launched on Sat, 28 Dec 2024 00:54:51 at risingtheme.com/html/demo-newvilla/newvilla/Home.php +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+Home.php
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" risingtheme.com/html/demo-newvilla/newvilla/index.php -O1 "C:\Users\user\Desktop\Centralised property reservation platform" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
 
 
 
