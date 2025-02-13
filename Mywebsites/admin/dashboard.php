@@ -1,12 +1,16 @@
 <?php
 session_start();
 
-// Check if the user is logged in
+// Ensure the user is logged in
 if (!isset($_SESSION['email'])) {
-    header("Location: login.php");
-    exit;
+    header("Location: ../login.php"); // Adjusted path to go up one level
+    exit();
 }
+
+// Include database connection
+require_once __DIR__ . '/../db.php'; // Corrected path to db.php
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -280,7 +284,7 @@ if (!isset($_SESSION['email'])) {
                         <path d="M12.5001 10H3.01672" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M4.87504 7.20825L2.08337 9.99992L4.87504 12.7916" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        <a href="logout.php" class="sidebar__menu--text">Logout</a> 
+                        <a href="../logout.php" class="sidebar__menu--text">Logout</a> 
                     </a>
                 </ul>
              </div>

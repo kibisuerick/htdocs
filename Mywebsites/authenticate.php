@@ -18,7 +18,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         if (password_verify($password, $user['password'])) {
             // Successful login: set session variable and redirect
             $_SESSION['email'] = $email;
-            header("Location: dashboard.php");
+            header("Location: admin/dashboard.php");
             exit;
         }
     }
