@@ -323,28 +323,27 @@
                             <p class="account__desc">Hello!... Enter your details to make an account & become a member of our community.</p>
                         </div>
                         <div class="account__form">
-                            <!--<h2>Signup Form</h2>-->
-                            <form action="signup.connect.php" method="POST">                                
-                                <div class="account__form--input mb-30">
-                                    <label class="account__form--input__label mb-12" for="name">Your Name</label>
-                                    <input class="account__form--input__field" name="name" id="name" placeholder="Enter your name*" type="text" required>
-                                </div>
-                                <div class="account__form--input mb-30">
-                                    <label class="account__form--input__label mb-12" for="email">Email Address</label>
-                                    <input class="account__form--input__field" name="email" id="email" placeholder="Enter Email Address" type="email" required>
-                                </div>
-                                <div class="account__form--input mb-30">
-                                    <label class="account__form--input__label mb-12" for="password">New Password</label>
-                                    <input class="account__form--input__field" name="password" id="password" placeholder="Create password" type="password" required>
-                                </div>                        
-                                <!-- Terms & Conditions Checkbox -->                                
-                                <label>
-                                    <input type="checkbox" name="terms"> I agree to all Terms & Conditions
-                                </label>
-                                <button type="submit">Create An Account</button>
-                            </form>
-                        </div>                       
-                    </div>
+                        <form action="signup.connect.php" method="POST">                                
+                            <div class="account__form--input mb-30">
+                                <label class="account__form--input__label mb-12" for="name">Your Name</label>
+                                <input class="account__form--input__field" name="name" id="name" placeholder="Enter your name*" type="text" required>
+                            </div>
+                            <div class="account__form--input mb-30">
+                                <label class="account__form--input__label mb-12" for="email">Email Address</label>
+                                <input class="account__form--input__field" name="email" id="email" placeholder="Enter Email Address" type="email" required>
+                            </div>
+                            <div class="account__form--input mb-30 password-container">
+                                <label class="account__form--input__label mb-12" for="password">New Password</label>
+                                <span class="toggle-icon" onclick="togglePassword()">👁️</span>
+                                <input class="account__form--input__field" name="password" id="password" placeholder="Create password" type="password" required>
+                            </div>                        
+                            <!-- Terms & Conditions Checkbox -->                                
+                            <label>
+                                <input type="checkbox" name="terms"> I agree to all Terms & Conditions
+                            </label>
+                            <button type="submit">Create An Account</button>
+                        </form>
+                    </div>                    
                 </div>
             </div>
         </section>
@@ -623,6 +622,20 @@
   <!-- Customscript js -->
   <script src="assets/js/signup.js"></script>
   <script src="assets/js/script.js"></script>
+<script>
+  function togglePassword() {
+    var passwordField = document.getElementById("password");
+    var icon = document.querySelector(".toggle-icon");
+
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        icon.textContent = "🙈"; // Change to monkey icon when password is visible
+    } else {
+        passwordField.type = "password";
+        icon.textContent = "👁️"; // Change back to eye icon when password is hidden
+    }
+}
+</script>
 
    
 </body>
