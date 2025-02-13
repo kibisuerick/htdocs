@@ -1,15 +1,23 @@
 <?php
 session_start();
-$_SESSION['email'] = "test@example.com"; // For testing
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Sample user credentials (Replace with database check)
+    $valid_email = "test@example.com";
+    $valid_password = "123456"; // Change to hashed password in real use
 
-if (isset($_SESSION['email'])) {
-    echo "Session is set, redirecting...";
-    header("Location: admin/dashboard.php");
-    exit;
-} else {
-    echo "Session not set.";
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+    if ($email === $valid_email && $password === $valid_password) {
+        $_SESSION['email'] = $email;
+        header("Location: admin/dashboard.php");
+        exit;
+    } else {
+        $error = "Invalid email or password!";
+    }
 }
 ?>
+
 
 
 <!doctype html>
@@ -315,6 +323,7 @@ if (isset($_SESSION['email'])) {
                             <h2 class="account__title">Login Here!</h2>
                             <p class="account__desc">Hello!... Welcome back</p>
                         </div>
+                        <?php if (!empty($error)) echo "<p style='color:red;'>$error</p>"; ?>
                         <div class="account__form">
                         <form action="authenticate.php" method="post">
                         <div class="account__form--input mb-30">
