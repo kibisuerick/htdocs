@@ -319,38 +319,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </ul>
                     </div>
                     <div class="account__form--wrapper">
-                        <div class="account__header text-center mb-30">
-                            <h2 class="account__title">Login Here!</h2>
-                            <p class="account__desc">Hello!... Welcome back</p>
-                        </div>
-                        <?php if (!empty($error)) echo "<p style='color:red;'>$error</p>"; ?>
-                        <div class="account__form">
-                        <form action="authenticate.php" method="post">
-                        <div class="account__form--input mb-30">
-                                <label class="account__form--input__label mb-12" for="email">Email:</label>
-                                <!--<input type="email" name="email" id="email" required>-->
-                                <input class="account__form--input__field" type="email" id="email" placeholder="Enter Email Adress" name="email">
-                            
-                                <label class="account__form--input__label mb-12" for="password">Password:</label>
-                                <input class="account__form--input__field" placeholder="Enter password" type="password" name="password" id="password" required>
-                                <a class="account__form--forgot__password" href="#">Forgot Password?</a>
-                            
-                                <!--<input type="submit" value="Login">-->
-                                <button class="account__form--btn solid__btn" type="submit" >Login Here</button>
-                        </form>
-                            <?php
-                            // Display error message if login failed
-                            if (isset($_GET['error'])) {
-                                if ($_GET['error'] == 'invalid_credentials') {
-                                    echo '<p class="error">Invalid email or password.</p>';
-                                } elseif ($_GET['error'] == 'missing_data') {
-                                    echo '<p class="error">Please enter both email and password.</p>';
-                                }
-                            }
-                            ?>
-                        </div>
+                    <div class="account__header text-center mb-30">
+                        <h2 class="account__title">Login Here!</h2>
+                        <p class="account__desc">Hello!... Welcome back</p>
                     </div>
-                </div>
+                    <?php if (!empty($error)) echo "<p style='color:red;'>$error</p>"; ?>
+                    <div class="account__form">
+                        <form action="authenticate.php" method="post">
+                            <div class="account__form--input mb-30">
+                                <label class="account__form--input__label mb-12" for="email">Email:</label>
+                                <input class="account__form--input__field" type="email" id="email" placeholder="Enter Email Address" name="email" required>
+
+                                <label class="account__form--input__label mb-12" for="password">Password:</label>
+                                <div class="password-container">
+                                    <input class="account__form--input__field" placeholder="Enter password" type="password" name="password" id="password" required>
+                                    <span id="togglePassword" class="toggle-icon">👁️</span>
+                                </div>
+                                
+                                <a class="account__form--forgot__password" href="#">Forgot Password?</a>
+                                <button class="account__form--btn solid__btn" type="submit">Login Here</button>
+                            </div>
+                        </form>
+                        
+                        <?php
+                        // Display error message if login failed
+                        if (isset($_GET['error'])) {
+                            if ($_GET['error'] == 'invalid_credentials') {
+                                echo '<p class="error">Invalid email or password.</p>';
+                            } elseif ($_GET['error'] == 'missing_data') {
+                                echo '<p class="error">Please enter both email and password.</p>';
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>                
             </div>
         </section>
         <!-- Account Page section .\ -->
@@ -627,6 +629,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <!-- Customscript js -->
   <script src="assets/js/script.js"></script>
+
+<script>
+    // Show/Hide Password Toggle
+    document.getElementById("togglePassword").addEventListener("click", function () {
+        let passwordField = document.getElementById("password");
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            this.textContent = "🙈"; // Hide icon
+        } else {
+            passwordField.type = "password";
+            this.textContent = "👁️"; // Show icon
+        }
+    });
+</script>
 
 
   

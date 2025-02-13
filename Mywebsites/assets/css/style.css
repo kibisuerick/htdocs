@@ -12587,6 +12587,29 @@ input[type=range]::-moz-range-thumb {
 /*
     7. Account css
 */
+/* Password container styling */
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Move the toggle icon to the left */
+.toggle-icon {
+  position: absolute;
+  left: 10px; /* Moves icon to the left side */
+  cursor: pointer !important; /* Ensures pointer remains on hover */
+  user-select: none;
+  font-size: 18px; /* Adjust size if needed */
+  color: #666; /* Default color */
+  transition: color 0.3s ease;
+}
+
+/* Optional: Change color on hover */
+.toggle-icon:hover {
+  color: #000;
+}
+
 
 .account__section--inner {
   max-width: 100%;
