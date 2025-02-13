@@ -95,8 +95,8 @@ require_once __DIR__ . '/../db.php'; // Corrected path to db.php
                                 <li class="offcanvas__sub_menu_li"><a href="../project.html" class="offcanvas__sub_menu_item">Project</a></li>
                                 <li class="offcanvas__sub_menu_li"><a href="../project-details.html" class="offcanvas__sub_menu_item">Project Details</a></li>
                                 <li class="offcanvas__sub_menu_li"><a href="../services-details.html" class="offcanvas__sub_menu_item">Services Details</a></li>
-                                <li class="offcanvas__sub_menu_li"><a href="../login.php" class="offcanvas__sub_menu_item">Login</a></li>
-                                <li class="offcanvas__sub_menu_li"><a href="../signup.html" class="offcanvas__sub_menu_item">Sign up</a></li>
+                                <!--<li class="offcanvas__sub_menu_li"><a href="../login.php" class="offcanvas__sub_menu_item">Login</a></li>-->
+                                <!--<li class="offcanvas__sub_menu_li"><a href="../signup.html" class="offcanvas__sub_menu_item">Sign up</a></li>-->
                                 <li class="offcanvas__sub_menu_li"><a href="../404.html" class="offcanvas__sub_menu_item">Error 404</a></li>
                             </ul>
                         </li>
@@ -412,8 +412,8 @@ require_once __DIR__ . '/../db.php'; // Corrected path to db.php
                                             <li class="sub__menu--items"><a href="../project.html" class="sub__menu--link">Project</a></li>
                                             <li class="sub__menu--items"><a href="../project-details.html" class="sub__menu--link">Project Details</a></li>
                                             <li class="sub__menu--items"><a href="../services-details.html" class="sub__menu--link">Services Details</a></li>
-                                            <li class="sub__menu--items"><a href="../login.php" class="sub__menu--link">Login</a></li>
-                                            <li class="sub__menu--items"><a href="../signup.html" class="sub__menu--link">Sign up</a></li>
+                                            <!--<li class="sub__menu--items"><a href="../login.php" class="sub__menu--link">Login</a></li>-->
+                                            <!--<li class="sub__menu--items"><a href="../signup.html" class="sub__menu--link">Sign up</a></li>-->
                                             <li class="sub__menu--items"><a href="../404.html" class="sub__menu--link">Error 404</a></li>
                                         </ul>
                                     </li>
