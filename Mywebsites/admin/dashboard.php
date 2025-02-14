@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['email'])) {
-    echo "Session not set. Please log in.";
+    echo "You need to log in to start your session";
     exit;
 }
 ?>
