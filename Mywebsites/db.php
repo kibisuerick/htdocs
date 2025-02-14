@@ -16,3 +16,12 @@ try {
 } catch (PDOException $e) {
     die("Database connection failed: " . $e->getMessage());
 }
+
+// Function to get total income
+function getTotalIncome($pdo) {
+    $query = "SELECT SUM(amount) AS total_income FROM transactions WHERE transaction_type = 'income' AND status = 'completed'";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
+    $row = $stmt->fetch();
+    return $row['total_income'] ?? 0;
+}
