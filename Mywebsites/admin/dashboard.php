@@ -86,7 +86,7 @@ if (!isset($_SESSION['email'])) {
                                 <li class="offcanvas__sub_menu_li"><a href="settings.php" class="offcanvas__sub_menu_item">Setting</a></li>
                             </ul>
                         </li>
-                        <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="../blog.php">News</a></li>
+                        <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="../blog-details.php">News</a></li>
                         <li class="offcanvas__menu_li">
                             <a class="offcanvas__menu_item" href="#">Pages</a>
                             <ul class="offcanvas__sub_menu">
@@ -95,7 +95,7 @@ if (!isset($_SESSION['email'])) {
                                 <li class="offcanvas__sub_menu_li"><a href="../project.php" class="offcanvas__sub_menu_item">Project</a></li>
                                 <li class="offcanvas__sub_menu_li"><a href="../project-details.php" class="offcanvas__sub_menu_item">Project Details</a></li>
                                 <li class="offcanvas__sub_menu_li"><a href="../services-details.php" class="offcanvas__sub_menu_item">Services Details</a></li>
-                                <!--<li class="offcanvas__sub_menu_li"><a href="../login.php" class="offcanvas__sub_menu_item">Login</a></li>-->
+                                <li class="offcanvas__sub_menu_li"><a href="../login.php" class="offcanvas__sub_menu_item">Login</a></li>
                                 <!--<li class="offcanvas__sub_menu_li"><a href="../signup.php" class="offcanvas__sub_menu_item">Sign up</a></li>-->
                                 <li class="offcanvas__sub_menu_li"><a href="../404.php" class="offcanvas__sub_menu_item">Error 404</a></li>
                             </ul>
@@ -397,7 +397,7 @@ if (!isset($_SESSION['email'])) {
                                         </ul>
                                     </li>
                                     <li class="main__menu--items">
-                                        <a class="main__menu--link" href="../blog.php">News 
+                                        <a class="main__menu--link" href="../blog-details.php">News 
                                         </a>
                                     </li>
                                     <li class="main__menu--items">

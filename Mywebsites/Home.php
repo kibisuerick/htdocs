@@ -133,10 +133,10 @@
                                         <li class="sub__menu--items"><a href="admin/settings.php" class="sub__menu--link">Setting</a></li>
                                     </ul>-->
                                 </li>
-                                <li class="main__menu--items">
+                                <!--<li class="main__menu--items">
                                     <a class="main__menu--link" href="blog-details.php">News 
                                     </a>
-                                </li>
+                                </li>-->
                                 <li class="main__menu--items">
                                     <a class="main__menu--link" href="#"> Pages 
                                         <svg class="menu__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 12 7.41">
@@ -291,7 +291,7 @@
                             <li class="offcanvas__sub_menu_li"><a href="admin/settings.php" class="offcanvas__sub_menu_item">Setting</a></li>
                         </ul>
                     </li>
-                    <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="blog-details.php">News</a></li>
+                    <!--<li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="blog-details.php">News</a></li>-->
                      <!-- Pages menu item -->
                     <li class="offcanvas__menu_li">
                         <a class="offcanvas__menu_item" href="#">Pages</a>

@@ -103,7 +103,7 @@
                                 <li class="offcanvas__sub_menu_li"><a href="settings.php" class="offcanvas__sub_menu_item">Setting</a></li>
                             </ul>
                         </li>
-                        <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="../blog.php">News</a></li>
+                        <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="../blog-details.php">News</a></li>
                         <li class="offcanvas__menu_li">
                             <a class="offcanvas__menu_item" href="#">Pages</a>
                             <ul class="offcanvas__sub_menu">
@@ -415,7 +415,7 @@
                                         </ul>
                                     </li>-->
                                     <li class="main__menu--items">
-                                        <a class="main__menu--link" href="../blog.php">News 
+                                        <a class="main__menu--link" href="../blog-details.php">News 
                                         </a>
                                     </li>
                                     <li class="main__menu--items">
