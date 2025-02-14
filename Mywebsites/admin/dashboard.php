@@ -13,8 +13,23 @@ $totalWithdrawals = 0;
 $balance = 0;
 $incomeChangePercentage = 0;
 $lastBalanceUpdate = "No recent transactions"; // Default message
+$previousMonthIncome = 0;
+$lastIncomeTimestamp = "No transactions last month"; // Default message
+$totalViews = 0; // New variable for total views
 
 try {
+    // Track views (Only one per user session)
+    if (!isset($_SESSION['user_session_id'])) {
+        $_SESSION['user_session_id'] = session_id();
+
+        $stmt = $pdo->prepare("INSERT INTO views (session_id) VALUES (?)");
+        $stmt->execute([$_SESSION['user_session_id']]);
+    }
+
+    // Get total views count
+    $stmt = $pdo->query("SELECT COUNT(*) AS total_views FROM views");
+    $totalViews = $stmt->fetchColumn() ?? 0;
+
     // Get total income
     $stmt = $pdo->prepare("SELECT SUM(amount) AS total FROM transactions WHERE transaction_type = 'income' AND status = 'completed'");
     $stmt->execute();
@@ -74,28 +89,55 @@ try {
     $lastTransactionTime = $stmt->fetchColumn();
 
     if ($lastTransactionTime) {
-        $timeAgo = strtotime($lastTransactionTime);
-        $currentTime = time();
-        $timeDifference = $currentTime - $timeAgo;
+        $lastBalanceUpdate = timeAgo($lastTransactionTime);
+    }
 
-        if ($timeDifference < 60) {
-            $lastBalanceUpdate = "Just now";
-        } elseif ($timeDifference < 3600) {
-            $minutes = floor($timeDifference / 60);
-            $lastBalanceUpdate = "$minutes minute(s) ago";
-        } elseif ($timeDifference < 86400) {
-            $hours = floor($timeDifference / 3600);
-            $lastBalanceUpdate = "$hours hour(s) ago";
-        } else {
-            $days = floor($timeDifference / 86400);
-            $lastBalanceUpdate = "$days day(s) ago";
-        }
+    // **NEW FEATURE: Fetch total income for the previous month**
+    $stmt = $pdo->prepare("
+        SELECT SUM(amount) AS total 
+        FROM transactions 
+        WHERE transaction_type = 'income' 
+        AND status = 'completed' 
+        AND YEAR(created_at) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH) 
+        AND MONTH(created_at) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)
+    ");
+    $stmt->execute();
+    $previousMonthIncome = $stmt->fetchColumn() ?? 0;
+
+    // Fetch the latest transaction timestamp from last month
+    $stmt = $pdo->prepare("
+        SELECT created_at 
+        FROM transactions 
+        WHERE transaction_type = 'income' 
+        AND status = 'completed' 
+        AND YEAR(created_at) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH) 
+        AND MONTH(created_at) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH) 
+        ORDER BY created_at DESC 
+        LIMIT 1
+    ");
+    $stmt->execute();
+    $lastIncomeTime = $stmt->fetchColumn();
+
+    if ($lastIncomeTime) {
+        $lastIncomeTimestamp = timeAgo($lastIncomeTime);
     }
 
 } catch (PDOException $e) {
     error_log("Database error: " . $e->getMessage()); // Log error for debugging
 }
+
+// Function to convert timestamp to human-readable format
+function timeAgo($datetime) {
+    $time = strtotime($datetime);
+    $diff = time() - $time;
+
+    if ($diff < 60) return $diff . " seconds ago";
+    elseif ($diff < 3600) return round($diff / 60) . " minutes ago";
+    elseif ($diff < 86400) return round($diff / 3600) . " hours ago";
+    else return round($diff / 86400) . " days ago";
+}
 ?>
+
 
 
 
@@ -688,25 +730,22 @@ try {
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
                                             <div class="currency__card">
-                                                <h3 class="currency__card--title"><span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M5.18542 7.50511C5.18542 8.03457 5.59481 8.46032 6.09697 8.46032H7.12313C7.55979 8.46032 7.91459 8.08916 7.91459 7.6252C7.91459 7.12849 7.69626 6.94837 7.37422 6.83374L5.73126 6.26061C5.40922 6.14599 5.19089 5.97132 5.19089 5.46916C5.19089 5.01066 5.54567 4.63403 5.98234 4.63403H7.00851C7.51067 4.63403 7.92006 5.05978 7.92006 5.58924" stroke="#9E38FF" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    <path d="M6.55005 4.09375V9.00625" stroke="#9E38FF" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    <path d="M12.0083 6.54989C12.0083 9.56289 9.56301 12.0082 6.55001 12.0082C3.53701 12.0082 1.09167 9.56289 1.09167 6.54989C1.09167 3.53689 3.53701 1.09155 6.55001 1.09155" stroke="#9E38FF" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    <path d="M9.27917 1.63745V3.82078H11.4625" stroke="#9E38FF" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    <path d="M12.0083 1.09155L9.27917 3.82072" stroke="#9E38FF" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </svg>
-                                                </span>
-                                                    Total income</h3>
-                                                    <span class="currency__card--amount">Kes. <?php echo number_format($totalIncome, 2); ?></span>
-                                                <div class="currency__card--footer">
-                                                    <span class="currency__weekly">Last week</span>
-                                                    <!-- Display dynamically in your HTML -->
+                                                <h3 class="currency__card--title">
                                                     <span>
-                                                    <path d="M2.71978 6.88811L0.115159 4.36017C0.0408097 4.288 -1.83231e-07 4.19183 -1.78748e-07 4.08927C-1.7426e-07 3.98661 0.0408684 3.89049 0.115159 3.81833L0.351692 3.58881C0.425924 3.5167 0.525076 3.47698 0.630795 3.47698C0.736455 3.47698 0.838949 3.5167 0.913181 3.58881L2.43599 5.06357L2.43599 0.378168C2.43599 0.166917 2.60638 1.13929e-07 2.8241 1.23445e-07L3.15849 1.38062e-07C3.3762 1.47578e-07 3.56378 0.166917 3.56378 0.378168L3.56378 5.08031L5.09509 3.58886C5.16944 3.51676 5.26589 3.47704 5.37161 3.47704C5.47721 3.47704 5.57507 3.51676 5.64936 3.58886L5.88513 3.81838C5.95948 3.89054 6 3.98667 6 4.08933C6 4.19188 5.95896 4.28806 5.88461 4.36022L3.28004 6.88817C3.20546 6.9605 3.10589 7.00028 3.00006 7C2.89387 7.00023 2.79425 6.9605 2.71978 6.88811Z" fill="currentColor"/>
-                                                        <?php 
-                                                            echo ($incomeChangePercentage >= 0 ? "↑" : "↓") . " " . number_format(abs($incomeChangePercentage), 2) . '%'; 
-                                                        ?>
+                                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M5.18542 7.50511C5.18542 8.03457 5.59481 8.46032 6.09697 8.46032H7.12313C7.55979 8.46032 7.91459 8.08916 7.91459 7.6252C7.91459 7.12849 7.69626 6.94837 7.37422 6.83374L5.73126 6.26061C5.40922 6.14599 5.19089 5.97132 5.19089 5.46916C5.19089 5.01066 5.54567 4.63403 5.98234 4.63403H7.00851C7.51067 4.63403 7.92006 5.05978 7.92006 5.58924" stroke="#9E38FF" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            <path d="M6.55005 4.09375V9.00625" stroke="#9E38FF" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            <path d="M12.0083 6.54989C12.0083 9.56289 9.56301 12.0082 6.55001 12.0082C3.53701 12.0082 1.09167 9.56289 1.09167 6.54989C1.09167 3.53689 3.53701 1.09155 6.55001 1.09155" stroke="#9E38FF" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            <path d="M9.27917 1.63745V3.82078H11.4625" stroke="#9E38FF" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            <path d="M12.0083 1.09155L9.27917 3.82072" stroke="#9E38FF" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
                                                     </span>
+                                                    Total Income
+                                                </h3>
+                                                <span class="currency__card--amount">Kes. <?php echo number_format($previousMonthIncome, 2); ?></span>
+                                                <div class="currency__card--footer">
+                                                    <!--<span class="currency__weekly">Last Month</span>-->
+                                                    <small class="text-muted"><?php echo $lastIncomeTimestamp; ?></small>
                                                 </div>
                                             </div>
                                         </div>
@@ -728,18 +767,17 @@ try {
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="currency__card">
-                                                <h3 class="currency__card--title"><span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M8.95461 7.00001C8.95461 8.08104 8.08104 8.95461 7.00001 8.95461C5.91897 8.95461 5.04541 8.08104 5.04541 7.00001C5.04541 5.91897 5.91897 5.04541 7.00001 5.04541C8.08104 5.04541 8.95461 5.91897 8.95461 7.00001Z" stroke="#16A34A" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    <path d="M6.99998 11.5152C8.92728 11.5152 10.7235 10.3795 11.9738 8.41402C12.4652 7.64419 12.4652 6.35022 11.9738 5.5804C10.7235 3.61488 8.92728 2.47925 6.99998 2.47925C5.07268 2.47925 3.27641 3.61488 2.02613 5.5804C1.53475 6.35022 1.53475 7.64419 2.02613 8.41402C3.27641 10.3795 5.07268 11.5152 6.99998 11.5152Z" stroke="#16A34A" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </svg>                                                
-                                                </span> Total Views</h3>
-                                                <span class="currency__card--amount">57907</span>
+                                                <h3 class="currency__card--title">
+                                                    <span>
+                                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M8.95461 7.00001C8.95461 8.08104 8.08104 8.95461 7.00001 8.95461C5.91897 8.95461 5.04541 8.08104 5.04541 7.00001C5.04541 5.91897 5.91897 5.04541 7.00001 5.04541C8.08104 5.04541 8.95461 5.91897 8.95461 7.00001Z" stroke="#16A34A" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            <path d="M6.99998 11.5152C8.92728 11.5152 10.7235 10.3795 11.9738 8.41402C12.4652 7.64419 12.4652 6.35022 11.9738 5.5804C10.7235 3.61488 8.92728 2.47925 6.99998 2.47925C5.07268 2.47925 3.27641 3.61488 2.02613 5.5804C1.53475 6.35022 1.53475 7.64419 2.02613 8.41402C3.27641 10.3795 5.07268 11.5152 6.99998 11.5152Z" stroke="#16A34A" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>                                                
+                                                    </span> Total Views
+                                                </h3>
+                                                <span class="currency__card--amount"><?php echo number_format($totalViews); ?></span>
                                                 <div class="currency__card--footer">
-                                                    <span class="currency__weekly">Last week</span>
-                                                    <span class="currency__increase "><svg width="6" height="7" viewBox="0 0 6 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M2.71978 0.111888L0.115159 2.63983C0.0408097 2.712 -1.83231e-07 2.80817 -1.78748e-07 2.91073C-1.7426e-07 3.01339 0.0408684 3.10951 0.115159 3.18167L0.351692 3.41119C0.425924 3.4833 0.525076 3.52302 0.630795 3.52302C0.736455 3.52302 0.838949 3.4833 0.913181 3.41119L2.43599 1.93643L2.43599 6.62183C2.43599 6.83308 2.60638 7 2.8241 7L3.15849 7C3.3762 7 3.56378 6.83308 3.56378 6.62183L3.56378 1.91969L5.09509 3.41114C5.16944 3.48324 5.26589 3.52296 5.37161 3.52296C5.47721 3.52296 5.57507 3.48324 5.64936 3.41114L5.88513 3.18162C5.95948 3.10946 6 3.01333 6 2.91067C6 2.80812 5.95896 2.71194 5.88461 2.63978L3.28004 0.11183C3.20546 0.0394972 3.10589 -0.000281947 3.00006 2.72989e-06C2.89387 -0.000225194 2.79425 0.0394977 2.71978 0.111888Z" fill="currentColor"/>
-                                                        </svg>
-                                                        10%</span>
+                                                    <span class="currency__weekly">All-time views</span>
                                                 </div>
                                             </div>
                                         </div>
