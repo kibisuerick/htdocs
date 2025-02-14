@@ -1,11 +1,16 @@
 <?php
 session_start();
+require_once '../db.php'; // Ensure the correct path to db.php
 
 if (!isset($_SESSION['email'])) {
     echo "You need to log in to start your session";
     exit;
 }
+
+// Fetch Total Income
+$totalIncome = getTotalIncome($pdo);
 ?>
+
 
 
 <!DOCTYPE html>
@@ -605,7 +610,7 @@ if (!isset($_SESSION['email'])) {
                                                     </svg>
                                                 </span>
                                                     Total income</h3>
-                                                <span class="currency__card--amount">Kes.</span>
+                                                    <span class="currency__card--amount">Kes. <?php echo number_format($totalIncome, 2); ?></span>
                                                 <div class="currency__card--footer">
                                                     <span class="currency__weekly">Last week</span>
                                                     <span class="currency__increase "><svg width="6" height="7" viewBox="0 0 6 7" fill="none" xmlns="http://www.w3.org/2000/svg">
