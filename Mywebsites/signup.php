@@ -20,9 +20,12 @@
   <link rel="stylesheet" href="assets/css/plugins/glightbox.min.css">
   <link rel="stylesheet" href="aos.css">
 
-  <!-- Custom Style CSS -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Add FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+  <!--custom css-->
+  <link rel="stylesheet" href="assets/css/style.css">
+  
     <style>       
 
         button[type="submit"] {
@@ -316,10 +319,9 @@
                             <li class="account__tab--btn__items"><span class="account__tab--btn__field active">Sign Up</span></li>
                             <li class="account__tab--btn__items"><a class="account__tab--btn__field" href="login.php">Login</a></li>
                         </ul>
-                    </div>
-                    <!-- Add FontAwesome for icons -->
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
+                    </div>                    
+                    <div class="account__form--wrapper">
+                    <div class="account__header text-center mb-30">
                     <div class="account__form">
                         <form action="signup.connect.php" method="POST">                                
                             <div class="account__form--input mb-30">
@@ -332,13 +334,15 @@
                                 <input class="account__form--input__field" name="email" id="email" placeholder="Enter Email Address" type="email" required>
                             </div>
 
-                            <div class="account__form--input mb-30" style="display: flex; align-items: center;">
+                            <div class="account__form--input mb-30">
                                 <label class="account__form--input__label mb-12" for="password">New Password</label>
-                                <div style="display: flex; align-items: center; width: 100%;">
-                                    <input class="account__form--input__field" name="password" id="password" placeholder="Create password" type="password" style="flex: 1;" required>
-                                    <i class="fa-solid fa-eye" id="togglePassword" style="margin-left: 10px; cursor: pointer; color: black;"></i>
+                                <div style="position: relative; width: 100%;">
+                                    <input class="account__form--input__field" name="password" id="password" placeholder="Create password" 
+                                        type="password" style="width: 100%; padding-right: 40px; border: 1px solid #ccc; padding: 10px; border-radius: 5px;" required>
+                                    <i class="fa-solid fa-eye" id="togglePassword" 
+                                        style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: black; font-size: 18px;"></i>
                                 </div>
-                            </div>                        
+                            </div>
 
                             <label>
                                 <input type="checkbox" name="terms"> I agree to all Terms & Conditions

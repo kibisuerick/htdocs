@@ -19,7 +19,10 @@
   <link rel="stylesheet" href="assets/css/plugins/glightbox.min.css">
   <link rel="stylesheet" href="assets/css/plugins/aos.css">
 
-  <!-- Custom Style CSS -->
+  <!-- Add FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!--custom css-->
   <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
