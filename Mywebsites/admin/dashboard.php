@@ -7,9 +7,12 @@ if (!isset($_SESSION['email'])) {
     exit;
 }
 
-// Fetch total income from transactions table
+// Initialize variables
 $totalIncome = 0;
+$totalWithdrawals = 0;
+$balance = 0;
 $incomeChangePercentage = 0;
+$lastBalanceUpdate = "No recent transactions"; // Default message
 
 try {
     // Get total income
@@ -19,6 +22,17 @@ try {
     if ($result && $result['total'] !== null) {
         $totalIncome = $result['total'];
     }
+
+    // Get total withdrawals
+    $stmt = $pdo->prepare("SELECT SUM(amount) AS total FROM transactions WHERE transaction_type = 'withdrawal' AND status = 'completed'");
+    $stmt->execute();
+    $result = $stmt->fetch();
+    if ($result && $result['total'] !== null) {
+        $totalWithdrawals = $result['total'];
+    }
+
+    // Calculate balance
+    $balance = $totalIncome - $totalWithdrawals;
 
     // Get this week's income
     $stmt = $pdo->prepare("
@@ -49,10 +63,40 @@ try {
         $incomeChangePercentage = $thisWeekIncome > 0 ? 100 : 0; // If first-time income, set to 100%
     }
 
+    // Fetch the last balance update timestamp
+    $stmt = $pdo->prepare("
+        SELECT created_at FROM transactions 
+        WHERE status = 'completed' 
+        ORDER BY created_at DESC 
+        LIMIT 1
+    ");
+    $stmt->execute();
+    $lastTransactionTime = $stmt->fetchColumn();
+
+    if ($lastTransactionTime) {
+        $timeAgo = strtotime($lastTransactionTime);
+        $currentTime = time();
+        $timeDifference = $currentTime - $timeAgo;
+
+        if ($timeDifference < 60) {
+            $lastBalanceUpdate = "Just now";
+        } elseif ($timeDifference < 3600) {
+            $minutes = floor($timeDifference / 60);
+            $lastBalanceUpdate = "$minutes minute(s) ago";
+        } elseif ($timeDifference < 86400) {
+            $hours = floor($timeDifference / 3600);
+            $lastBalanceUpdate = "$hours hour(s) ago";
+        } else {
+            $days = floor($timeDifference / 86400);
+            $lastBalanceUpdate = "$days day(s) ago";
+        }
+    }
+
 } catch (PDOException $e) {
     error_log("Database error: " . $e->getMessage()); // Log error for debugging
 }
 ?>
+
 
 
 
@@ -675,11 +719,11 @@ try {
                                                     <path d="M3.8208 6.55005H7.64163" stroke="#1D74FF" stroke-linecap="round" stroke-linejoin="round"/>
                                                     </svg>                                                
                                                 </span> Balance</h3>
-                                                <span class="currency__card--amount">Kes.</span>
+                                                <span class="currency__card--amount">Kes. <strong><?php echo number_format((float)$balance, 2); ?></strong></span>
                                                 <div class="currency__card--footer">
-                                                    <span class="currency__weekly">Last week</span>
-                                                    <a class="currency__withdrawal" href="#">Withdrawal</a>
-                                                </div>
+                                                <span class="currency__weekly" id="balance-time">Last week</span>
+                                                <a class="currency__withdrawal" href="#">Withdrawal</a>
+                                            </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
@@ -1008,6 +1052,46 @@ try {
 
      <!-- Customscript js -->
   <script src="assets/js/chart-activation.js"></script>
+
+  <script>
+function updateLastTransactionTime() {
+    fetch('get_last_transaction_time.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.last_transaction) {
+                const lastTransactionTime = new Date(data.last_transaction);
+                const timeAgoText = timeAgo(lastTransactionTime);
+                document.getElementById('balance-time').innerText = timeAgoText;
+            } else {
+                document.getElementById('balance-time').innerText = "No transactions yet";
+            }
+        })
+        .catch(error => console.error('Error fetching transaction time:', error));
+}
+
+// Convert timestamp to "X minutes ago" format
+function timeAgo(date) {
+    const now = new Date();
+    const seconds = Math.floor((now - date) / 1000);
+
+    if (seconds < 60) return "Just now";
+    const minutes = Math.floor(seconds / 60);
+    if (minutes < 60) return minutes + " minutes ago";
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return hours + " hours ago";
+    const days = Math.floor(hours / 24);
+    if (days < 7) return days + " days ago";
+    
+    return date.toLocaleDateString(); // Show full date if older than a week
+}
+
+// Refresh time every 30 seconds
+setInterval(updateLastTransactionTime, 30000);
+
+// Run on page load
+document.addEventListener("DOMContentLoaded", updateLastTransactionTime);
+</script>
+
 
   
 </body>
