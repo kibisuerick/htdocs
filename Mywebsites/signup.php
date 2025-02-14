@@ -317,27 +317,29 @@
                             <li class="account__tab--btn__items"><a class="account__tab--btn__field" href="login.php">Login</a></li>
                         </ul>
                     </div>
-                    <div class="account__form--wrapper">
-                        <div class="account__header text-center mb-30">
-                            <h2 class="account__title">Sign Up Today!</h2>
-                            <p class="account__desc">Hello!... Enter your details to make an account & become a member of our community.</p>
-                        </div>
-                        <div class="account__form">
+                    <!-- Add FontAwesome for icons -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+                    <div class="account__form">
                         <form action="signup.connect.php" method="POST">                                
                             <div class="account__form--input mb-30">
                                 <label class="account__form--input__label mb-12" for="name">Your Name</label>
                                 <input class="account__form--input__field" name="name" id="name" placeholder="Enter your name*" type="text" required>
                             </div>
+
                             <div class="account__form--input mb-30">
                                 <label class="account__form--input__label mb-12" for="email">Email Address</label>
                                 <input class="account__form--input__field" name="email" id="email" placeholder="Enter Email Address" type="email" required>
                             </div>
-                            <div class="account__form--input mb-30 password-container">
+
+                            <div class="account__form--input mb-30" style="display: flex; align-items: center;">
                                 <label class="account__form--input__label mb-12" for="password">New Password</label>
-                                <span class="toggle-icon" onclick="togglePassword()">👁️</span>
-                                <input class="account__form--input__field" name="password" id="password" placeholder="Create password" type="password" required>
+                                <div style="display: flex; align-items: center; width: 100%;">
+                                    <input class="account__form--input__field" name="password" id="password" placeholder="Create password" type="password" style="flex: 1;" required>
+                                    <i class="fa-solid fa-eye" id="togglePassword" style="margin-left: 10px; cursor: pointer; color: black;"></i>
+                                </div>
                             </div>                        
-                            <!-- Terms & Conditions Checkbox -->                                
+
                             <label>
                                 <input type="checkbox" name="terms"> I agree to all Terms & Conditions
                             </label>
@@ -622,19 +624,20 @@
   <!-- Customscript js -->
   <script src="assets/js/signup.js"></script>
   <script src="assets/js/script.js"></script>
-<script>
-  function togglePassword() {
-    var passwordField = document.getElementById("password");
-    var icon = document.querySelector(".toggle-icon");
 
-    if (passwordField.type === "password") {
-        passwordField.type = "text";
-        icon.textContent = "🙈"; // Change to monkey icon when password is visible
-    } else {
-        passwordField.type = "password";
-        icon.textContent = "👁️"; // Change back to eye icon when password is hidden
-    }
-}
+  <script>
+    document.getElementById("togglePassword").addEventListener("click", function() {
+        let passwordField = document.getElementById("password");
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            this.classList.remove("fa-eye");
+            this.classList.add("fa-eye-slash");
+        } else {
+            passwordField.type = "password";
+            this.classList.remove("fa-eye-slash");
+            this.classList.add("fa-eye");
+        }
+    });
 </script>
 
    
