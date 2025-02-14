@@ -333,11 +333,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <label class="account__form--input__label mb-12" for="email">Email:</label>
                                 <input class="account__form--input__field" type="email" id="email" placeholder="Enter Email Address" name="email" required>
 
-                                <label class="account__form--input__label mb-12" for="password">Password:</label>
-                                <div class="password-container">
-                                    <input class="account__form--input__field" placeholder="Enter password" type="password" name="password" id="password" required>
-                                    <span id="togglePassword" class="toggle-icon">👁️</span>
+                                <div class="account__form--input mb-30">
+                                <label class="account__form--input__label mb-12" for="password">Password</label>
+                                <div style="position: relative; width: 100%;">
+                                    <input class="account__form--input__field" name="password" id="password" placeholder="Enter password" 
+                                        type="password" style="width: 100%; padding-right: 40px; border: 1px solid #ccc; padding: 10px; border-radius: 5px;" required>
+                                    <i class="fa-solid fa-eye" id="togglePassword" 
+                                        style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: black; font-size: 18px;"></i>
                                 </div>
+                            </div>
                                 
                                 <a class="account__form--forgot__password" href="#">Forgot Password?</a>
                                 <button class="account__form--btn solid__btn" type="submit">Login Here</button>
@@ -633,21 +637,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <!-- Customscript js -->
   <script src="assets/js/script.js"></script>
 
-<script>
-    // Show/Hide Password Toggle
-    document.getElementById("togglePassword").addEventListener("click", function () {
+  <script>
+    document.getElementById("togglePassword").addEventListener("click", function() {
         let passwordField = document.getElementById("password");
         if (passwordField.type === "password") {
             passwordField.type = "text";
-            this.textContent = "🙈"; // Hide icon
+            this.classList.remove("fa-eye");
+            this.classList.add("fa-eye-slash");
         } else {
             passwordField.type = "password";
-            this.textContent = "👁️"; // Show icon
+            this.classList.remove("fa-eye-slash");
+            this.classList.add("fa-eye");
         }
     });
 </script>
-
-
   
 </body>
 
