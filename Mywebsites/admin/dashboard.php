@@ -333,15 +333,14 @@ function timeAgo($datetime) {
         <div class="predictive__search--box">
             <div class="predictive__search--box__inner">
                 <h2 class="predictive__search--title">Search Properties</h2>
-                <form class="predictive__search--form" action="listing-list.php" method="GET">
-                    <div id="searchContainer"> <!-- Wrapper to position dropdown correctly -->
+                <form class="predictive__search--form" action="../listing-list.php" method="GET">
+                    <div id="searchContainer">
                         <label>
-                            <input id="searchInput" class="predictive__search--input" placeholder="Search Here" type="text" name="query" autocomplete="off">
+                            <input id="searchInput" class="predictive__search--input" placeholder="Search Here" type="text" name="location" autocomplete="off">
                         </label>
-                        <!-- Dropdown for suggestions -->
                         <div id="searchDropdown" class="search-dropdown"></div>
                     </div>
-                    <button class="predictive__search--button" aria-label="search button">
+                    <button class="predictive__search--button" type="submit" aria-label="search button">
                         <svg class="product__items--action__btn--svg" xmlns="http://www.w3.org/2000/svg" width="30.51" height="25.443" viewBox="0 0 512 512">
                             <path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/>
                             <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"/>

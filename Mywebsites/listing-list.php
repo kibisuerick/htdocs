@@ -1,8 +1,9 @@
 <?php
 require 'db.php'; // Ensure your database connection is included
 
-if (isset($_GET['query']) && !empty($_GET['query'])) {
-    $location = trim($_GET['query']); // Get the search query and remove spaces
+$location = isset($_GET['query']) ? trim($_GET['query']) : ''; // Get the search query
+
+if (!empty($location)) {
     $location = htmlspecialchars($location); // Prevent XSS attacks
 
     // Fetch properties from the 'properties' table based on location
@@ -19,12 +20,13 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
         }
         echo "</ul>";
     } else {
-        //echo "<p>No properties found in this location.</p>";
+        // echo "<p>No properties found in this location.</p>";
     }
 } else {
     //echo "<h1>No search query provided.</h1>";
 }
 ?>
+
 
 
 
