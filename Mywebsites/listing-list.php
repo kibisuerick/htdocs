@@ -19,10 +19,10 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
         }
         echo "</ul>";
     } else {
-        echo "<p>No properties found in this location.</p>";
+        //echo "<p>No properties found in this location.</p>";
     }
 } else {
-    echo "<h1>No search query provided.</h1>";
+    //echo "<h1>No search query provided.</h1>";
 }
 ?>
 
