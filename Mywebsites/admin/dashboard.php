@@ -289,7 +289,7 @@ function timeAgo($datetime) {
         </div>
         <!-- End Offcanvas header menu -->
 
-        <!-- Start serch box area -->
+        <!-- Start search box area -->
         <div class="predictive__search--box">
             <div class="predictive__search--box__inner">
                 <h2 class="predictive__search--title">Search Properties</h2>
