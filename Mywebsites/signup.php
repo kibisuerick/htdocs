@@ -1,3 +1,13 @@
+<?php
+session_start(); // Start the session
+
+// Generate a CSRF token if it doesn't exist
+session_start();
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -323,7 +333,9 @@
                     <div class="account__form--wrapper">
                     <div class="account__header text-center mb-30">
                     <div class="account__form">
-                        <form action="signup.connect.php" method="POST">                                
+                        <form action="signup.connect.php" method="POST">
+                            <!-- CSRF Token (Hidden Input) -->
+                            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                             <div class="account__form--input mb-30">
                                 <label class="account__form--input__label mb-12" for="name">Your Name</label>
                                 <input class="account__form--input__field" name="name" id="name" placeholder="Enter your name*" type="text" required>
