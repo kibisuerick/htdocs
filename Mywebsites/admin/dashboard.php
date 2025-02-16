@@ -3,8 +3,9 @@ session_start();
 require_once '../db.php'; // Ensure the correct path to db.php
 
 if (!isset($_SESSION['email'])) {
+    header("Location: login.php"); // Redirect to login page if not logged in
     echo "You need to log in to start your session";
-    exit;
+    exit();
 }
 
 // Initialize variables
