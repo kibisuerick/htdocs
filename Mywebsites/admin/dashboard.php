@@ -2,9 +2,12 @@
 session_start();
 require_once '../db.php'; // Ensure the correct path to db.php
 
+// Check if the user is logged in
 if (!isset($_SESSION['email'])) {
-    header("Location: login.php"); // Redirect to login page if not logged in
-    echo "You need to log in to start your session";
+    echo "<script>
+            alert('Kindly login or signup to access');
+            window.location.href = '../login.php';
+          </script>";
     exit();
 }
 
@@ -138,6 +141,8 @@ function timeAgo($datetime) {
     else return round($diff / 86400) . " days ago";
 }
 ?>
+
+
 
 
 

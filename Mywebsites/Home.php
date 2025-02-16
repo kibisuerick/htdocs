@@ -28,6 +28,7 @@
    <!-- AOS for animation effects -->
   <link rel="stylesheet" href="assets/css/plugins/aos.css">
 
+
   <!-- Add FontAwesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <!-- Custom styles for the web application -->
@@ -110,11 +111,11 @@
                                         <!--<li class="sub__menu--items"><a href="listing-details.php" class="sub__menu--link">Listing Details</a></li>-->
                                     </ul>
                                 </li>
-                                <li class="main__menu--items">
+                                <!--<li class="main__menu--items">
                                     <a class="main__menu--link" href="admin/my-properties.php"> Properties </a>  
-                                </li>
+                                </li>-->
                                 <li class="main__menu--items">
-                                    <a class="main__menu--link" href="Mywebsites/admin/dashboard.php"> Dashboard 
+                                    <a class="main__menu--link" href="admin/dashboard.php"> Dashboard 
                                         <!--<svg class="menu__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 12 7.41">
                                             <path  d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7"/>
                                         </svg>-->
@@ -277,9 +278,9 @@
                     <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="admin/my-properties.php">Properties</a></li>
                     <!-- Dashboard menu item -->
                     <li class="offcanvas__menu_li">
-                        <a class="offcanvas__menu_item" href="Mywebsites/admin/dashboard.php">Dashboard</a>
+                        <a class="offcanvas__menu_item" href="admin/dashboard.php">Dashboard</a>
                         <ul class="offcanvas__sub_menu">
-                            <li class="offcanvas__sub_menu_li"><a href="Mywebsites/admin/dashboard.php" class="offcanvas__sub_menu_item">Dashboard</a></li>
+                            <li class="offcanvas__sub_menu_li"><a href="admin/dashboard.php" class="offcanvas__sub_menu_item">Dashboard</a></li>
                             <li class="offcanvas__sub_menu_li"><a href="admin/Create-listing.php" class="offcanvas__sub_menu_item">Create Listing</a></li>
                             <li class="offcanvas__sub_menu_li"><a href="admin/chat.php" class="offcanvas__sub_menu_item">Chats</a></li>
                             <li class="offcanvas__sub_menu_li"><a href="admin/my-favorites.php" class="offcanvas__sub_menu_item">My Favorites</a></li>

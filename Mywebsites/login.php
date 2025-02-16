@@ -1,22 +1,44 @@
 <?php
 session_start();
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Sample user credentials (Replace with database check)
-    $valid_email = "test@example.com";
-    $valid_password = "123456"; // Change to hashed password in real use
+include("db.php"); // Ensure db.php is correctly included
 
+// Display error message if set
+if (isset($_SESSION['error_message'])) {
+    echo "<p style='color: red; font-weight: bold;'>" . $_SESSION['error_message'] . "</p>";
+    unset($_SESSION['error_message']); // Clear the message after displaying it
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
 
-    if ($email === $valid_email && $password === $valid_password) {
-        $_SESSION['email'] = $email;
-        header("Location: admin/dashboard.php");
-        exit;
+    // Query the database for the user
+    $query = "SELECT email, password FROM signup WHERE email = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($db_email, $hashed_password);
+        $stmt->fetch();
+
+        if (password_verify($password, $hashed_password)) { // Verify hashed password
+            $_SESSION['email'] = $db_email; // Store email in session
+            header("Location: admin/dashboard.php");
+            exit();
+        } else {
+            $error = "Invalid email or password!";
+        }
     } else {
         $error = "Invalid email or password!";
     }
+
+    $stmt->close();
 }
 ?>
+
+
 
 
 
