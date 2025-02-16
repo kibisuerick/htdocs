@@ -1,5 +1,4 @@
 <?php
-session_start(); // Start the session
 
 // Generate a CSRF token if it doesn't exist
 session_start();
