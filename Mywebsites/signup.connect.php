@@ -3,22 +3,8 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Database connection credentials
-$host = 'localhost';
-$dbname = 'centralised_property_reservation_platform';
-$username = 'root';
-$password = '';
-
-try {
-    // Create a new PDO instance for database connection
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-    
-    // Set PDO to throw exceptions on errors for debugging
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    // If database connection fails, stop execution and display an error message
-    die("❌ Database connection failed: " . $e->getMessage());
-}
+session_start(); // Start session to store user login state
+require_once 'db.php'; // Ensure correct path to db.php
 
 // Process form submission and Error handlers
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -31,27 +17,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate that all required fields are filled
     if (!empty($name) && !empty($email) && !empty($_POST['password']) && $terms) {
         try {
-            // Prepare an SQL statement to insert user data into the signup table
+            // Check if email already exists
+            $stmt = $pdo->prepare("SELECT id FROM signup WHERE email = ?");
+            $stmt->execute([$email]);
+            if ($stmt->fetch()) {
+                // JavaScript confirm() message with redirect on "OK" and return to signup on "Cancel"
+                echo "<script>
+                        if (confirm('Email already exists. Proceed to login?')) {
+                            window.location.href = '../login.php';
+                        } else {
+                            window.location.href = 'signup.php';
+                        }
+                      </script>";
+                exit();
+            }
+
+            // Insert new user
             $stmt = $pdo->prepare("INSERT INTO signup (name, email, password) VALUES (:name, :email, :password)");
-            
-            // Execute the SQL statement with provided user input
             $stmt->execute([
                 'name' => $name,
                 'email' => $email,
                 'password' => $password
             ]);
 
-            // ✅ If signup is successful, alert the user and redirect to signup.php
-            echo "<script>alert('✅ Signup successful!'); window.location.replace('signup.php');</script>";
+            // ✅ If signup is successful, automatically log in the user
+            $_SESSION['email'] = $email;
+
+            // ✅ Redirect the user to dashboard.php
+            echo "<script>
+                    alert('✅ Signup successful! Redirecting to your dashboard...');
+                    window.location.href = '../admin/dashboard.php';
+                  </script>";
             exit();
             
         } catch (PDOException $e) {
             // ❌ If database insertion fails, alert the user with the error message
-            echo "<script>alert('❌ Signup failed: " . addslashes($e->getMessage()) . "'); window.location.href='signup.php';</script>";
+            echo "<script>
+                    alert('❌ Signup failed: " . addslashes($e->getMessage()) . "');
+                    window.location.href = 'signup.php';
+                  </script>";
         }
     } else {
         // ❌ If validation fails, alert the user to fill in all fields
-        echo "<script>alert('❌ Please fill all fields and accept Terms & Conditions.'); window.location.href='signup.php';</script>";
+        echo "<script>
+                alert('❌ Please fill all fields and accept Terms & Conditions.');
+                window.location.href = 'signup.php';
+              </script>";
     }
 }
 ?>
