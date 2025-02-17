@@ -175,6 +175,9 @@ function timeAgo($datetime) {
   <link rel="stylesheet" href="assets/css/dark.css">
   <link rel="stylesheet" href="assets/css/creat-listing.css">
 
+  <!-- Other meta tags and styles -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <style>
 /* Style for search dropdown */
 .search-dropdown {
