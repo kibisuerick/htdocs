@@ -50,14 +50,14 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         exit();
     }
 
-    // Ensure the user is verified before allowing login
+    /* Ensure the user is verified before allowing login
     if ($user['verified'] == 0) {
         echo "<script>
                 alert('❌ Please verify your email before logging in.');
                 window.location.href = 'login.php';
               </script>";
         exit();
-    }
+    }*/
 
     // ✅ Check if the password is correct
     if (password_verify($password, $user['password'])) {
