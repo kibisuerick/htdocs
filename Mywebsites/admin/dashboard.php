@@ -126,6 +126,12 @@ try {
         $lastIncomeTimestamp = timeAgo($lastIncomeTime);
     }
 
+    // **NEWLY ADDED: Fetch sales report data**
+    $query = "SELECT salesperson_name, property_name, sales_type, price, sale_date FROM sales_report ORDER BY sale_date DESC";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
+    $sales = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 } catch (PDOException $e) {
     error_log("Database error: " . $e->getMessage()); // Log error for debugging
 }
@@ -141,10 +147,6 @@ function timeAgo($datetime) {
     else return round($diff / 86400) . " days ago";
 }
 ?>
-
-
-
-
 
 
 
@@ -890,133 +892,90 @@ function timeAgo($datetime) {
                                 <div class="sales__report--heading d-flex align-items-center justify-content-between mb-30">
                                     <h2 class="sales__report--heading__title">Sales Report</h2>
                                     <div class="sales__report--short-by select">
-                                        <select class="sales__report--short-by__select">
-                                            <option selected value="1">Sort By</option>
-                                            <option value="2">Today</option>
-                                            <option value="3">Yesterday</option>
-                                            <option value="4">Last 7 Days</option>
-                                            <option value="5">This Month</option>
-                                            <option value="6">Last Month</option>
+                                        <select id="filterSales" class="sales__report--short-by__select">
+                                            <option value="">Sort By</option>
+                                            <option value="today">Today</option>
+                                            <option value="yesterday">Yesterday</option>
+                                            <option value="last7">Last 7 Days</option>
+                                            <option value="this_month">This Month</option>
+                                            <option value="last_month">Last Month</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="sales__report--table table-responsive">
-                                    <table>
+                                <table class="table table-hover table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>Sales by</th>
-                                                <th>Property name</th>
+                                                <th>Property Name</th>
                                                 <th>Sales Type</th>
                                                 <th>Price</th>
-                                                <th>Status</th>
+                                                <th>Sale Date</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="sales__report--author d-flex align-items-center">
-                                                        <img class="sales__report--author__thumb" src="assets/img/dashboard/sales-report-thumb.png1" alt="img">
-                                                        <h3 class="sales__report--author__name">Elvis mugisira, Ngara</h3>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span class="sales__report--body__text">Uthiru apartments, Nairobi</span>
-                                                </td>
-                                                <td>
-                                                    <span class="sales__report--body__text">Sale</span>
-                                                </td>
-                                                <td>
-                                                    <span class="sales__report--body__text">55,000,000</span>
-                                                </td>
-                                                <td>
-                                                    <span class="sales__report--status paid">Paid</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="sales__report--author d-flex align-items-center">
-                                                        <img class="sales__report--author__thumb" src="assets/img/dashboard/sales-report-thumb2.png" alt="img">
-                                                        <h3 class="sales__report--author__name">James kibisu, Westlands</h3>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span class="sales__report--body__text">Rubis villa, Westlands</span>
-                                                </td>
-                                                <td>
-                                                    <span class="sales__report--body__text">Rent</span>
-                                                </td>
-                                                <td>
-                                                    <span class="sales__report--body__text">180,000</span>
-                                                </td>
-                                                <td>
-                                                    <span class="sales__report--status pending">Pending</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="sales__report--author d-flex align-items-center">
-                                                        <img class="sales__report--author__thumb" src="assets/img/dashboard/sales-report-thumb3.png" alt="img">
-                                                        <h3 class="sales__report--author__name"> John rube, Rongai</h3>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span class="sales__report--body__text">Langata villa, Langata</span>
-                                                </td>
-                                                <td>
-                                                    <span class="sales__report--body__text">Sale</span>
-                                                </td>
-                                                <td>
-                                                    <span class="sales__report--body__text">45,000,000</span>
-                                                </td>
-                                                <td>
-                                                    <span class="sales__report--status paid2">Paid</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="sales__report--author d-flex align-items-center">
-                                                        <img class="sales__report--author__thumb" src="assets/img/dashboard/sales-report-thumb4.png" alt="img">
-                                                        <h3 class="sales__report--author__name">Wangui Maina, Rongai</h3>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span class="sales__report--body__text">Tsavo suits, Ngong</span>
-                                                </td>
-                                                <td>
-                                                    <span class="sales__report--body__text">Rent</span>
-                                                </td>
-                                                <td>
-                                                    <span class="sales__report--body__text">18,000</span>
-                                                </td>
-                                                <td>
-                                                    <span class="sales__report--status paid3">Paid</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="sales__report--author d-flex align-items-center">
-                                                        <img class="sales__report--author__thumb" src="assets/img/dashboard/sales-report-thumb5.png" alt="img">
-                                                        <h3 class="sales__report--author__name">KIBISU ERICK, Rongai</h3>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span class="sales__report--body__text">MBCL Apartments, Rongai</span>
-                                                </td>
-                                                <td>
-                                                    <span class="sales__report--body__text">Sale</span>
-                                                </td>
-                                                <td>
-                                                    <span class="sales__report--body__text">20,000,000</span>
-                                                </td>
-                                                <td>
-                                                    <span class="sales__report--status pending2">Pending</span>
-                                                </td>
-                                            </tr>
+                                            <?php
+                                            $stmt = $pdo->query("SELECT id, salesperson_name, property_name, sales_type, price, sale_date, image_path FROM sales_report");
+                                            while ($sale = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                            ?>
+                                                <tr>
+                                                    <td>
+                                                        <div class="salesperson">
+                                                            <img src="<?= !empty($sale['image_path']) ? htmlspecialchars($sale['image_path']) : 'assets/img/dashboard/profile-author.png'; ?>" 
+                                                                alt="Salesperson Image" class="rounded-circle" width="40" height="40">
+                                                            <span><?= htmlspecialchars($sale['salesperson_name']); ?></span>
+
+                                                            <!-- Upload Form Inside Table Row -->
+                                                            <form action="upload.php" method="POST" enctype="multipart/form-data" style="display:inline;">
+                                                                <input type="hidden" name="salesperson_id" value="<?= $sale['id']; ?>">
+                                                                <input type="file" name="salesperson_image" accept="image/*" required>
+                                                                <button type="submit">Upload</button>
+                                                            </form>
+                                                        </div>
+                                                    </td>
+                                                    <td><?= htmlspecialchars($sale['property_name']); ?></td>
+                                                    <td><?= htmlspecialchars($sale['sales_type']); ?></td>
+                                                    <td><?= number_format($sale['price'], 2); ?></td>
+                                                    <td><?= date("d M Y", strtotime($sale['sale_date'])); ?></td>
+                                                </tr>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
+
+                                    <style>
+                                        .salesperson {
+                                            display: flex;
+                                            align-items: center;
+                                        }
+
+                                        .salesperson img {
+                                            margin-right: 8px; /* Add spacing between image and text */
+                                        }
+
+                                        .sort-button {
+                                            margin-bottom: 10px;
+                                            float: right;
+                                        }
+                                    </style>
                                 </div>
                             </div>
                             <!-- Sales Report section .\ -->
+
+                            <!-- Modal Popup -->
+                            <div id="uploadModal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%);
+                            background:white; padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.3);">
+                                <h3>Upload Salesperson Image</h3>
+                                
+                                <!-- Integrated Form -->
+                                <form id="uploadForm" action="upload.php" method="POST" enctype="multipart/form-data">
+                                    <input type="hidden" name="salesperson_id" id="salesperson_id">
+                                    <input type="file" id="imageInput" name="salesperson_image" accept="image/*" required>
+                                    <button type="submit">Upload Image</button>
+                                    <button type="button" onclick="closeModal()">Cancel</button>
+                                </form>
+                            </div>
+                            <!-- Modal Popup -->
+
                         </div>
                     </div>
                     <div class="main__content--right">
@@ -1187,6 +1146,63 @@ setInterval(updateLastTransactionTime, 30000);
 
 // Run on page load
 document.addEventListener("DOMContentLoaded", updateLastTransactionTime);
+
+// Filter sales data
+document.getElementById("filterSales").addEventListener("change", function () {
+    let filterValue = this.value;
+
+    // Fetch filtered data using AJAX
+    fetch("fetch_sales_report.php?filter=" + filterValue)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("salesTableBody").innerHTML = data;
+        })
+        .catch(error => console.error("Error fetching data:", error));
+});
+
+// Open modal for uploading image
+function openModal(salespersonId) {
+    document.getElementById('salesperson_id').value = salespersonId;
+    document.getElementById('uploadModal').style.display = 'block';
+}
+
+// Close modal
+function closeModal() {
+    document.getElementById('uploadModal').style.display = 'none';
+}
+
+// Handle image upload form submission
+document.getElementById("uploadForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Stop traditional form submission
+
+    let formData = new FormData();
+    let imageFile = document.getElementById("imageInput").files[0];
+
+    if (!imageFile) {
+        alert("Please select an image.");
+        return;
+    }
+
+    formData.append("image", imageFile);
+
+    fetch("upload.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "success") {
+            alert(data.message); // Show success message
+            window.location.href = "dashboard.php"; // Redirect after upload
+        } else {
+            alert("Upload failed: " + data.message);
+        }
+    })
+    .catch(error => console.error("Error:", error));
+});
+
+
+
 </script>
 
 
