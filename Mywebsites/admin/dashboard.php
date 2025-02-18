@@ -96,7 +96,7 @@ try {
         $lastBalanceUpdate = timeAgo($lastTransactionTime);
     }
 
-    // **NEW FEATURE: Fetch total income for the previous month**
+    // Fetch total income for the previous month
     $stmt = $pdo->prepare("
         SELECT SUM(amount) AS total 
         FROM transactions 
@@ -126,9 +126,36 @@ try {
         $lastIncomeTimestamp = timeAgo($lastIncomeTime);
     }
 
-    // **NEWLY ADDED: Fetch sales report data**
-    $query = "SELECT salesperson_name, property_name, sales_type, price, sale_date FROM sales_report ORDER BY sale_date DESC";
-    $stmt = $pdo->prepare($query);
+    // **NEWLY ADDED: Fetch sales report data with filtering and sorting**
+    $order_by = "sale_date"; // Default sorting column
+    $order_dir = "DESC"; // Default sorting order
+
+    if (isset($_GET['sort_by'])) {
+        switch ($_GET['sort_by']) {
+            case 'today':
+                $filter = "WHERE DATE(sale_date) = CURDATE()";
+                break;
+            case 'yesterday':
+                $filter = "WHERE DATE(sale_date) = CURDATE() - INTERVAL 1 DAY";
+                break;
+            case 'last_7_days':
+                $filter = "WHERE sale_date >= CURDATE() - INTERVAL 7 DAY";
+                break;
+            case 'this_month':
+                $filter = "WHERE MONTH(sale_date) = MONTH(CURDATE()) AND YEAR(sale_date) = YEAR(CURDATE())";
+                break;
+            case 'last_month':
+                $filter = "WHERE MONTH(sale_date) = MONTH(CURDATE() - INTERVAL 1 MONTH) AND YEAR(sale_date) = YEAR(CURDATE() - INTERVAL 1 MONTH)";
+                break;
+            default:
+                $filter = ""; // No filtering by default
+        }
+    } else {
+        $filter = ""; // No filtering by default
+    }
+
+    $sql = "SELECT * FROM sales_report $filter ORDER BY $order_by $order_dir";
+    $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $sales = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -896,14 +923,14 @@ function timeAgo($datetime) {
                                 <div class="sales__report--heading d-flex align-items-center justify-content-between mb-30">
                                     <h2 class="sales__report--heading__title">Sales Report</h2>
                                     <div class="sales__report--short-by select">
-                                        <select id="filterSales" class="sales__report--short-by__select">
-                                            <option value="">Sort By</option>
-                                            <option value="today">Today</option>
-                                            <option value="yesterday">Yesterday</option>
-                                            <option value="last7">Last 7 Days</option>
-                                            <option value="this_month">This Month</option>
-                                            <option value="last_month">Last Month</option>
-                                        </select>
+                                    <select id="sortBy" class="form-control">
+                                        <option value="">Sort By</option>
+                                        <option value="today">Today</option>
+                                        <option value="yesterday">Yesterday</option>
+                                        <option value="last_7_days">Last 7 Days</option>
+                                        <option value="this_month">This Month</option>
+                                        <option value="last_month">Last Month</option>
+                                    </select>
                                     </div>
                                 </div>
                                 <div class="sales__report--table table-responsive">
