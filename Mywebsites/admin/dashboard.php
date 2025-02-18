@@ -903,7 +903,7 @@ function timeAgo($datetime) {
                                     </div>
                                 </div>
                                 <div class="sales__report--table table-responsive">
-                                <table class="table table-hover table-bordered">
+                                    <table class="table table-hover table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>Sales by</th>
@@ -929,7 +929,7 @@ function timeAgo($datetime) {
                                                             <form action="upload.php" method="POST" enctype="multipart/form-data" style="display:inline;">
                                                                 <input type="hidden" name="salesperson_id" value="<?= $sale['id']; ?>">
                                                                 <input type="file" name="salesperson_image" accept="image/*" required>
-                                                                <button type="submit">Upload</button>
+                                                                <button class="upload-btn"><i class="fas fa-upload"></i></button>
                                                             </form>
                                                         </div>
                                                     </td>
@@ -956,6 +956,23 @@ function timeAgo($datetime) {
                                             margin-bottom: 10px;
                                             float: right;
                                         }
+
+                                        .sales-container {
+                                            display: grid;
+                                            grid-template-columns: 1fr 2fr 1fr; /* Adjust column sizes */
+                                            gap: 15px;
+                                        }
+
+                                        .upload-btn {
+                                            background-color: #28a745;
+                                            color: white;
+                                            border: none;
+                                            padding: 8px 12px;
+                                            border-radius: 5px;
+                                            cursor: pointer;
+                                        }
+
+
                                     </style>
                                 </div>
                             </div>
