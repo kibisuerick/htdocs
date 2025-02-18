@@ -180,6 +180,10 @@ function timeAgo($datetime) {
   <!-- Other meta tags and styles -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+  <!-- Bootstrap Bundle (JS + Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
   <style>
 /* Style for search dropdown */
 .search-dropdown {
@@ -903,8 +907,8 @@ function timeAgo($datetime) {
                                     </div>
                                 </div>
                                 <div class="sales__report--table table-responsive">
-                                    <table class="table table-hover table-bordered">
-                                        <thead>
+                                    <table class="table table-hover table-bordered align-middle">
+                                        <thead class="table-dark">
                                             <tr>
                                                 <th>Sales by</th>
                                                 <th>Property Name</th>
@@ -920,17 +924,12 @@ function timeAgo($datetime) {
                                             ?>
                                                 <tr>
                                                     <td>
-                                                        <div class="salesperson">
+                                                        <div class="d-flex align-items-center">
                                                             <img src="<?= !empty($sale['image_path']) ? htmlspecialchars($sale['image_path']) : 'assets/img/dashboard/profile-author.png'; ?>" 
-                                                                alt="Salesperson Image" class="rounded-circle" width="40" height="40">
-                                                            <span><?= htmlspecialchars($sale['salesperson_name']); ?></span>
-
-                                                            <!-- Upload Form Inside Table Row -->
-                                                            <form action="upload.php" method="POST" enctype="multipart/form-data" style="display:inline;">
-                                                                <input type="hidden" name="salesperson_id" value="<?= $sale['id']; ?>">
-                                                                <input type="file" name="salesperson_image" accept="image/*" required>
-                                                                <button class="upload-btn"><i class="fas fa-upload"></i></button>
-                                                            </form>
+                                                                alt="Salesperson Image" class="rounded-circle me-2" width="40" height="40">
+                                                            <span class="fw-bold" data-bs-toggle="tooltip" title="Salesperson: <?= htmlspecialchars($sale['salesperson_name']); ?>">
+                                                                <?= htmlspecialchars($sale['salesperson_name']); ?>
+                                                            </span>
                                                         </div>
                                                     </td>
                                                     <td><?= htmlspecialchars($sale['property_name']); ?></td>
@@ -941,38 +940,59 @@ function timeAgo($datetime) {
                                             <?php } ?>
                                         </tbody>
                                     </table>
-
+                                    <!-- Upload Modal -->
+                                    <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="uploadModalLabel">Upload Image for <span id="modalSalespersonName"></span></h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="upload.php" method="POST" enctype="multipart/form-data">
+                                                        <input type="hidden" name="salesperson_id" id="modalSalespersonId">
+                                                        <input type="file" name="salesperson_image" accept="image/*" class="form-control" required>
+                                                        <button type="submit" class="btn btn-success mt-2">Upload</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <style>
+                                        .sales-report-table td, .sales-report-table th {
+                                            padding: 12px;
+                                            vertical-align: middle;
+                                            text-align: left;
+                                        }
+
                                         .salesperson {
                                             display: flex;
                                             align-items: center;
+                                            gap: 10px;
                                         }
 
-                                        .salesperson img {
-                                            margin-right: 8px; /* Add spacing between image and text */
+                                        .profile-img {
+                                            border: 2px solid #ddd;
+                                            transition: transform 0.3s ease-in-out;
                                         }
 
-                                        .sort-button {
-                                            margin-bottom: 10px;
-                                            float: right;
-                                        }
-
-                                        .sales-container {
-                                            display: grid;
-                                            grid-template-columns: 1fr 2fr 1fr; /* Adjust column sizes */
-                                            gap: 15px;
+                                        .profile-img:hover {
+                                            transform: scale(1.1);
+                                            border-color: #28a745;
                                         }
 
                                         .upload-btn {
-                                            background-color: #28a745;
+                                            background-color: #007bff;
                                             color: white;
                                             border: none;
-                                            padding: 8px 12px;
+                                            padding: 8px 10px;
                                             border-radius: 5px;
                                             cursor: pointer;
                                         }
 
-
+                                        .upload-btn:hover {
+                                            background-color: #0056b3;
+                                        }
                                     </style>
                                 </div>
                             </div>
@@ -1126,23 +1146,45 @@ function timeAgo($datetime) {
   <script src="assets/js/search-autocomplete.js"></script>
 
 
-  <script>
+ <script>
+document.addEventListener("DOMContentLoaded", function () {
+    updateLastTransactionTime(); // Run on page load
+    setInterval(updateLastTransactionTime, 30000); // Refresh transaction time every 30 seconds
+
+    // Event listener for sales filter dropdown
+    document.getElementById("filterSales")?.addEventListener("change", function () {
+        fetchFilteredSales(this.value);
+    });
+
+    // Event listener for image upload form submission
+    document.getElementById("uploadForm")?.addEventListener("submit", handleImageUpload);
+
+    // Initialize Bootstrap tooltips
+    initializeTooltips();
+
+    // Handle modal show event
+    var uploadModal = document.getElementById("uploadModal");
+    if (uploadModal) {
+        uploadModal.addEventListener("show.bs.modal", function (event) {
+            populateModal(event);
+        });
+    }
+});
+
+// Function to update the last transaction time
 function updateLastTransactionTime() {
     fetch('get_last_transaction_time.php')
         .then(response => response.json())
         .then(data => {
-            if (data.last_transaction) {
-                const lastTransactionTime = new Date(data.last_transaction);
-                const timeAgoText = timeAgo(lastTransactionTime);
-                document.getElementById('balance-time').innerText = timeAgoText;
-            } else {
-                document.getElementById('balance-time').innerText = "No transactions yet";
+            const balanceTimeElement = document.getElementById('balance-time');
+            if (balanceTimeElement) {
+                balanceTimeElement.innerText = data.last_transaction ? timeAgo(new Date(data.last_transaction)) : "No transactions yet";
             }
         })
         .catch(error => console.error('Error fetching transaction time:', error));
 }
 
-// Convert timestamp to "X minutes ago" format
+// Function to convert timestamp to "X minutes ago" format
 function timeAgo(date) {
     const now = new Date();
     const seconds = Math.floor((now - date) / 1000);
@@ -1154,53 +1196,54 @@ function timeAgo(date) {
     if (hours < 24) return hours + " hours ago";
     const days = Math.floor(hours / 24);
     if (days < 7) return days + " days ago";
-    
+
     return date.toLocaleDateString(); // Show full date if older than a week
 }
 
-// Refresh time every 30 seconds
-setInterval(updateLastTransactionTime, 30000);
-
-// Run on page load
-document.addEventListener("DOMContentLoaded", updateLastTransactionTime);
-
-// Filter sales data
-document.getElementById("filterSales").addEventListener("change", function () {
-    let filterValue = this.value;
-
-    // Fetch filtered data using AJAX
-    fetch("fetch_sales_report.php?filter=" + filterValue)
+// Function to fetch filtered sales data
+function fetchFilteredSales(filterValue) {
+    fetch(`fetch_sales_report.php?filter=${filterValue}`)
         .then(response => response.text())
         .then(data => {
-            document.getElementById("salesTableBody").innerHTML = data;
+            const salesTableBody = document.getElementById("salesTableBody");
+            if (salesTableBody) {
+                salesTableBody.innerHTML = data;
+            }
         })
         .catch(error => console.error("Error fetching data:", error));
-});
+}
 
-// Open modal for uploading image
+// Function to open modal for image upload
 function openModal(salespersonId) {
-    document.getElementById('salesperson_id').value = salespersonId;
-    document.getElementById('uploadModal').style.display = 'block';
+    const salespersonInput = document.getElementById('salesperson_id');
+    const uploadModal = document.getElementById('uploadModal');
+
+    if (salespersonInput && uploadModal) {
+        salespersonInput.value = salespersonId;
+        uploadModal.style.display = 'block';
+    }
 }
 
-// Close modal
+// Function to close modal
 function closeModal() {
-    document.getElementById('uploadModal').style.display = 'none';
+    const uploadModal = document.getElementById('uploadModal');
+    if (uploadModal) {
+        uploadModal.style.display = 'none';
+    }
 }
 
-// Handle image upload form submission
-document.getElementById("uploadForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Stop traditional form submission
+// Function to handle image upload form submission
+function handleImageUpload(event) {
+    event.preventDefault(); // Prevent default form submission
 
-    let formData = new FormData();
-    let imageFile = document.getElementById("imageInput").files[0];
-
-    if (!imageFile) {
+    const formData = new FormData();
+    const imageInput = document.getElementById("imageInput");
+    if (!imageInput || !imageInput.files.length) {
         alert("Please select an image.");
         return;
     }
 
-    formData.append("image", imageFile);
+    formData.append("image", imageInput.files[0]);
 
     fetch("upload.php", {
         method: "POST",
@@ -1216,9 +1259,37 @@ document.getElementById("uploadForm").addEventListener("submit", function(event)
         }
     })
     .catch(error => console.error("Error:", error));
+}
+
+// Function to populate modal with salesperson data
+function populateModal(event) {
+    var button = event.relatedTarget; // Button that triggered the modal
+    if (!button) return;
+
+    var salespersonId = button.getAttribute("data-id");
+    var salespersonName = button.getAttribute("data-name");
+
+    var modalSalespersonId = document.getElementById("modalSalespersonId");
+    var modalSalespersonName = document.getElementById("modalSalespersonName");
+
+    if (modalSalespersonId) modalSalespersonId.value = salespersonId;
+    if (modalSalespersonName) modalSalespersonName.textContent = salespersonName;
+}
+
+// Function to initialize Bootstrap tooltips
+function initializeTooltips() {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
 });
-
-
 
 </script>
 
