@@ -27,6 +27,52 @@
   <link rel="stylesheet" href="assets/css/Create-listing.css">
   <link rel="stylesheet" href="assets/css/dark.css">
 
+  <style>/* General Styling */
+.add__property--box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+/* Form Inputs */
+.input-field {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.textarea {
+    height: 80px;
+    resize: none;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+}
+</style>
+
   <script>
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
     if (localStorage.getItem("theme-color") === "dark" || (!("theme-color" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
@@ -598,79 +644,66 @@
                     <div class="add__property__inner d-flex">
                         <div class="add__property--step left">
                             <div class="add__property--step__inner">
-                                <div class="add__property--box mb-30">
-                                    <h3 class="add__property--box__title mb-20">Create Listing</h3>
-                                    <form class="add__property--form" action="#">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="add__listing--input__box mb-20">
-                                                    <label class="add__listing--input__label" for="input1">Title</label>
-                                                    <input class="add__listing--input__field" id="input1" placeholder="Your Name" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="add__listing--textarea__box mb-15">
-                                                    <label class="add__listing--input__label" for="input2">Description</label>
-                                                    <textarea class="add__listing--textarea__field" id="input2" placeholder="Description"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="add__listing--input__box mb-20">
-                                                    <label class="add__listing--input__label">Type</label>
-                                                    <div class="select position-relative">
-                                                        <select class="add__listing--form__select">
-                                                            <option selected="" value="1">Apartments</option>
-                                                            <option value="2">Office</option>
-                                                            <option value="3">Excecutive studio</option>
-                                                            <option value="4">Apartment</option>
-                                                            <option value="5">House</option>
-                                                            <option value="6">Single Family</option>
-                                                            <option value="7">Land</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="add__listing--input__box mb-20">
-                                                    <label class="add__listing--input__label"> Status</label>
-                                                    <div class="select position-relative">
-                                                        <select class="add__listing--form__select">
-                                                            <option selected="" value="1">All Cities</option>
-                                                            <option value="2">Processing</option>
-                                                            <option value="3">Published</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="add__listing--input__box mb-20">
-                                                    <label class="add__listing--input__label" for="input3">Price</label>
-                                                    <input class="add__listing--input__field" id="input3" placeholder="Price" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="add__listing--input__box mb-20">
-                                                    <label class="add__listing--input__label" for="input4">Area</label>
-                                                    <input class="add__listing--input__field" id="input4" placeholder="Description" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="add__listing--input__box mb-20">
-                                                    <label class="add__listing--input__label"> Rooms</label>
-                                                    <div class="select position-relative">
-                                                        <select class="add__listing--form__select">
-                                                            <option selected="" value="1">Rooms</option>
-                                                            <option value="2">Rooms 1</option>
-                                                            <option value="3">Rooms 2</option>
-                                                            <option value="4">Rooms 3</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button class="solid__btn add__property--btn">Save</button>
-                                    </form>
-                                </div>
+                            <div class="add__property--box mb-30">
+    <h3 class="add__property--box__title mb-20">Create Listing</h3>
+    <form class="add__property--form" action="#">
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input id="title" class="input-field" placeholder="Enter property title" type="text">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" class="input-field textarea" placeholder="Describe the property"></textarea>
+            </div>
+        </div>
+        
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="type">Type</label>
+                <select id="type" class="input-field">
+                    <option value="1">Apartment</option>
+                    <option value="2">Office</option>
+                    <option value="3">Executive Studio</option>
+                    <option value="4">House</option>
+                    <option value="5">Single Family</option>
+                    <option value="6">Land</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status" class="input-field">
+                    <option value="1">Draft</option>
+                    <option value="2">Processing</option>
+                    <option value="3">Published</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="price">Price ($)</label>
+                <input id="price" class="input-field" placeholder="Enter price" type="number">
+            </div>
+            <div class="form-group">
+                <label for="area">Area (sq ft)</label>
+                <input id="area" class="input-field" placeholder="Enter area size" type="number">
+            </div>
+            <div class="form-group">
+                <label for="rooms">Rooms</label>
+                <select id="rooms" class="input-field">
+                    <option value="1">1 Room</option>
+                    <option value="2">2 Rooms</option>
+                    <option value="3">3 Rooms</option>
+                    <option value="4">4+ Rooms</option>
+                </select>
+            </div>
+        </div>
+        
+        <button class="btn-primary">Save Listing</button>
+    </form>
+</div>
+
                                 <div class="add__property--box">
                                     <h3 class="add__property--box__title mb-20">Location</h3>
                                     <form class="add__property--form" action="#">
