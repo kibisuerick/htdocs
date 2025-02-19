@@ -27,8 +27,10 @@
   <style>
 /* Existing Styles */
 /* General Page Styling */
+/* General Background */
 body {
     background-color: #f8f9fa;
+    padding-top: 0px; /* Ensures no extra spacing */
 }
 
 /* Container */
@@ -40,9 +42,11 @@ body {
 /* Header Section with Gradient */
 .header-section {
     background: linear-gradient(to right, #f8f9fa, #e3f2fd); /* Gradient background */
-    padding: 40px 20px; /* Increased padding */
+    padding: 40px 20px;
     text-align: center;
     border-radius: 10px;
+    margin-top: -20px; /* Pulls it up */
+    padding-top: 10px; /* Adjust if needed */
 }
 
 .header-section h1 {
@@ -55,24 +59,16 @@ body {
 .header-section p {
     font-size: 16px;
     color: #666;
-    font-style: italic; /* Slight italic for a subtle touch */
+    font-style: italic; /* Subtle touch */
 }
 
-/* Improved Form Box */
-.card {
-    border-radius: 10px;
-    background: white;
-    padding: 35px; /* Slightly more padding */
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.08); /* Softer shadow */
-}
-
-/* Page Header Section */
+/* Page Header */
 .page-header {
-    margin-bottom: 30px; /* Space below the header */
+    margin-bottom: 30px;
     padding: 20px 0;
-    text-align: center; /* Ensures center alignment */
-    background-color: #f8f9fa; /* Light background */
-    border-radius: 8px; /* Soft rounded corners */
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
 }
 
 .page-header h1 {
@@ -84,24 +80,22 @@ body {
 
 .subtitle {
     font-size: 16px;
-    color: #666; /* Subtle color for secondary text */
+    color: #666;
     font-weight: 500;
 }
 
-/* Reduce extra spacing from the top */
-.header-section {
-    margin-top: -20px; /* Pulls it up */
-    padding-top: 10px; /* Adjust if needed */
-}
-
-/* Reduce space below the navigation bar */
-body {
-    padding-top: 0px; /* Ensures no extra spacing */
-}
-
+/* Content Layout Adjustments */
 .container-fluid, .content-wrapper {
-    padding-top: 0px; /* Remove any extra padding */
-    margin-top: -20px; /* Adjust accordingly */
+    padding-top: 0px;
+    margin-top: -20px;
+}
+
+/* Improved Form Box */
+.card {
+    border-radius: 10px;
+    background: white;
+    padding: 35px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.08);
 }
 
 /* Form Header */
@@ -117,18 +111,40 @@ body {
     color: #333;
 }
 
+/* Form Section Improvements */
+.form-section {
+    margin-bottom: 30px; /* Adds space between sections */
+    padding: 20px;
+    background: #fff; /* Ensures clean separation */
+    border-radius: 8px; /* Soft rounded edges */
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05); /* Light shadow for separation */
+}
+
+/* Section Titles */
+.form-section h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
 /* Form Input & Select Styling */
 .form-control, .form-select {
     border-radius: 8px;
-    border: 1px solid #ddd; /* Softer border */
+    border: 1px solid #ddd;
     height: 45px;
-    padding: 12px; /* More padding for readability */
+    padding: 12px;
     transition: all 0.3s ease-in-out;
 }
 
 .form-control:focus, .form-select:focus {
     border-color: #28a745;
     box-shadow: 0 0 10px rgba(40, 167, 69, 0.2);
+}
+
+/* Ensure form fields have spacing */
+.form-group {
+    margin-bottom: 20px;
 }
 
 /* Textarea Styling */
@@ -151,6 +167,11 @@ textarea {
 .form-label {
     font-weight: 500;
     margin-bottom: 5px;
+}
+
+/* Adjust spacing for buttons */
+.btn-success {
+    margin-top: 20px;
 }
 
 /* Save Button Styling */
