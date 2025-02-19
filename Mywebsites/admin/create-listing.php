@@ -1320,7 +1320,7 @@
                                             </div>
                                         </div>
                                         <!-- Property ID -->
-                                        <div class="col-md-6">
+                                        <!--<div class="col-md-6">
                                             <div class="form-row">
                                                 <div class="form-group">
                                                     <label class="form-label">Property ID</label>
@@ -1328,7 +1328,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <div class="row mt-3">
                                         <div class="form-row">
                                             <div class="form-group">
