@@ -25,35 +25,72 @@
   <link rel="stylesheet" href="assets/css/dark.css">
 
   <style>
+/* Existing Styles */
     body {
-  background-color: #f8f9fa;
-}
+    background-color: #f8f9fa;
+    }
 
-.card {
-  border-radius: 12px;
-  background: white;
-}
+    .card {
+    border-radius: 12px;
+    background: white;
+    padding: 30px; /* Added padding */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Stronger shadow */
+    }
 
-.form-control, .form-select {
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  transition: all 0.3s ease;
-}
+    .container {
+    max-width: 900px;
+    margin: auto;
+    }
 
-.form-control:focus, .form-select:focus {
-  border-color: #28a745;
-  box-shadow: 0 0 8px rgba(40, 167, 69, 0.2);
-}
+    h2 {
+    font-size: 26px;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+    }
 
-.btn-success {
-  border-radius: 8px;
-  font-size: 18px;
-  padding: 10px 20px;
-}
+    .text-muted {
+    text-align: center;
+    font-size: 14px;
+    }
 
-textarea {
-  resize: none;
-}
+    .form-label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    }
+
+    .form-control, .form-select {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
+    height: 45px; /* Uniform height */
+    }
+
+    textarea {
+    resize: none;
+    min-height: 100px; /* Consistent height */
+    }
+
+    .form-control:focus, .form-select:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.2);
+    }
+
+    .btn-success {
+    border-radius: 8px;
+    font-size: 18px;
+    padding: 12px 25px; /* Adjusted padding */
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 20px auto;
+    }
+
+    @media (max-width: 768px) {
+    .form-control, .form-select {
+        font-size: 14px;
+    }
+    }
 
   </style>
 
@@ -1108,7 +1145,6 @@ textarea {
                         </form>
                     </div>
                 </div>
-
                 <!-- dashboard container .\ -->
 
                 <!-- Start footer section -->
