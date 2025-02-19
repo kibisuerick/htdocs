@@ -189,7 +189,7 @@
 
         /* Save Button Styling */
         .save-btn {
-            background: linear-gradient(135deg, #28a745, #218838);
+            background: linear-gradient(135deg, #A3CFBB, #009688);
             /* Green gradient */
             color: white;
             padding: 12px 30px;
@@ -209,7 +209,7 @@
 
         /* Hover Effect */
         .save-btn:hover {
-            background: linear-gradient(135deg, #218838, #1e7e34);
+            background: linear-gradient(135deg, #007BFF, #6C757D);
             transform: scale(1.05);
             box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.25);
         }
@@ -237,7 +237,7 @@
 
         /* Save as Draft Button */
         .save-draft-btn {
-            background: linear-gradient(135deg, #ffc107, #e0a800);
+            background: linear-gradient(135deg, #A3CFBB, #009688);
             /* Yellow gradient */
             color: white;
             padding: 12px 30px;
@@ -257,7 +257,7 @@
 
         /* Hover Effect */
         .save-draft-btn:hover {
-            background: linear-gradient(135deg, #e0a800, #d39e00);
+            background: linear-gradient(135deg, #007BFF, #6C757D);
             transform: scale(1.05);
             box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.25);
         }
