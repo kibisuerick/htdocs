@@ -1399,96 +1399,98 @@
                                 </form>
                             </div>
                         </div>
-                        <!-- Address & County -->
-                        <div class="container mt-4">
-                            <div class="form-section">
-                                <div class="card shadow-lg p-4">
+                    </div>
+
+                    <!-- Address & County -->
+                    <div class="container mt-4">
+                        <div class="form-section">
+                            <div class="card shadow-lg p-4">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <div class="form-header text-center">
+                                            <h2 class="add__property--heading__title">Location</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
                                     <div class="form-row">
                                         <div class="form-group">
-                                            <div class="form-header text-center">
-                                                <h2 class="add__property--heading__title">Location</h2>
+                                            <label for="address" class="form-label">Address</label>
+                                            <input type="text" id="address" class="form-control" placeholder="P.O BOX or street name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="Landmark" class="form-label">Landmark</label>
+                                            <input type="text" id="Landmark" class="form-control" placeholder="Landmark(optional)...">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="county" class="form-label">County</label>
+                                            <input type="text" id="county" class="form-control" placeholder="County">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <!-- Type & Region -->
+                                    <div class="col-md-4">
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="type" class="form-label">Type</label>
+                                                <select id="type" class="form-select">
+                                                    <option>Choose Type</option>
+                                                    <option>Apartments</option>
+                                                    <option>House</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-row">
                                             <div class="form-group">
-                                                <label for="address" class="form-label">Address</label>
-                                                <input type="text" id="address" class="form-control" placeholder="P.O BOX or street name">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-row">
-                                            <div class="form-group">
-                                                <label for="Landmark" class="form-label">Landmark</label>
-                                                <input type="text" id="Landmark" class="form-control" placeholder="Landmark(optional)...">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-row">
-                                            <div class="form-group">
-                                                <label for="county" class="form-label">County</label>
-                                                <input type="text" id="county" class="form-control" placeholder="County">
+                                                <label for="region" class="form-label">Region</label>
+                                                <select id="region" class="form-select">
+                                                    <option>Select Region</option>
+                                                    <option>Ongata-Rongai</option>
+                                                    <option>Nairobi</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row mt-3">
-                                        <!-- Type & Region -->
+                                        <!-- P.O. Box & Country -->
                                         <div class="col-md-4">
                                             <div class="form-row">
                                                 <div class="form-group">
-                                                    <label for="type" class="form-label">Type</label>
-                                                    <select id="type" class="form-select">
-                                                        <option>Choose Type</option>
-                                                        <option>Apartments</option>
-                                                        <option>House</option>
-                                                    </select>
+                                                    <label for="pobox" class="form-label">P.O. Box</label>
+                                                    <input type="text" id="pobox" class="form-control" placeholder="P.O. Box">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-row">
                                                 <div class="form-group">
-                                                    <label for="region" class="form-label">Region</label>
-                                                    <select id="region" class="form-select">
-                                                        <option>Select Region</option>
-                                                        <option>Ongata-Rongai</option>
-                                                        <option>Nairobi</option>
+                                                    <label for="country" class="form-label">Country</label>
+                                                    <select id="country" class="form-select">
+                                                        <option>Select Country</option>
+                                                        <option>Kenya</option>
+                                                        <option>Uganda</option>
                                                     </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-3">
-                                            <!-- P.O. Box & Country -->
-                                            <div class="col-md-4">
-                                                <div class="form-row">
-                                                    <div class="form-group">
-                                                        <label for="pobox" class="form-label">P.O. Box</label>
-                                                        <input type="text" id="pobox" class="form-control" placeholder="P.O. Box">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-row">
-                                                    <div class="form-group">
-                                                        <label for="country" class="form-label">Country</label>
-                                                        <select id="country" class="form-select">
-                                                            <option>Select Country</option>
-                                                            <option>Kenya</option>
-                                                            <option>Uganda</option>
-                                                        </select>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="button" class="save-draft-btn">Save as Draft</button>
                                 </div>
+                                <button type="button" class="save-draft-btn">Save as Draft</button>
                             </div>
                         </div>
                     </div>
+
                     <!-- Address & County -->
                     <div class="container mt-4">
                         <div class="form-section">
