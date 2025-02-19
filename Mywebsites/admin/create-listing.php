@@ -1498,7 +1498,7 @@
                                 <div class="form-row">
                                     <div class="form-group">
                                         <div class="form-header text-center">
-                                            <h3 class="section-title">Detailed Information</h3>
+                                            <h2 class="section-title">Detailed Information</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -1575,51 +1575,56 @@
                     <div class="container mt-4">
                         <div class="form-section">
                             <div class="card shadow-lg p-4">
-                                <h4 class="fw-bold">Amenities and Features</h4>
-                                <div class="row">
-                                    <!-- Column 1 -->
-                                    <div class="col-md-6">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="airConditioning">
-                                            <label class="form-check-label" for="airConditioning">Air Conditioning</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="swimmingPool">
-                                            <label class="form-check-label" for="swimmingPool">Swimming Pool</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="outdoorShower">
-                                            <label class="form-check-label" for="outdoorShower">Outdoor Shower</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="lawn">
-                                            <label class="form-check-label" for="lawn">Lawn</label>
+                                <!--<div class="form-row">-->
+                                    <div class="form-group">
+                                        <div class="form-header text-center">
+                                            <h2 class="fw-bold">Amenities and Features</h2>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <!-- Column 1 -->
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="airConditioning">
+                                                <label class="form-check-label" for="airConditioning">Air Conditioning</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="swimmingPool">
+                                                <label class="form-check-label" for="swimmingPool">Swimming Pool</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="outdoorShower">
+                                                <label class="form-check-label" for="outdoorShower">Outdoor Shower</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="lawn">
+                                                <label class="form-check-label" for="lawn">Lawn</label>
+                                            </div>
+                                        </div>
 
-                                    <!-- Column 2 -->
-                                    <div class="col-md-6">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="barbeque">
-                                            <label class="form-check-label" for="barbeque">Barbeque</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="washer">
-                                            <label class="form-check-label" for="washer">Washer</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="microwave">
-                                            <label class="form-check-label" for="microwave">Microwave</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="dryer">
-                                            <label class="form-check-label" for="dryer">Dryer</label>
+                                        <!-- Column 2 -->
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="barbeque">
+                                                <label class="form-check-label" for="barbeque">Barbeque</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="washer">
+                                                <label class="form-check-label" for="washer">Washer</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="microwave">
+                                                <label class="form-check-label" for="microwave">Microwave</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="dryer">
+                                                <label class="form-check-label" for="dryer">Dryer</label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </main>
                 <!-- dashboard container .\ -->
 
