@@ -153,20 +153,36 @@ textarea {
     margin-bottom: 5px;
 }
 
-/* Button Styling */
-.btn-success {
-    border-radius: 8px;
+/* Save Button Styling */
+.save-btn {
+    background: linear-gradient(135deg, #28a745, #218838); /* Green gradient */
+    color: white;
+    padding: 12px 30px;
     font-size: 18px;
-    padding: 12px 25px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
     display: block;
     width: 100%;
     max-width: 200px;
     margin: 20px auto;
-    transition: background 0.3s;
+    text-align: center;
 }
 
-.btn-success:hover {
-    background-color: #218838; /* Darker green on hover */
+/* Hover Effect */
+.save-btn:hover {
+    background: linear-gradient(135deg, #218838, #1e7e34);
+    transform: scale(1.05);
+    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Active (Click) Effect */
+.save-btn:active {
+    transform: scale(0.95);
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* Text Muted */
@@ -181,6 +197,7 @@ textarea {
         font-size: 14px;
     }
 }
+
   </style>
 
   <script>
@@ -1237,7 +1254,7 @@ textarea {
                                 </div>
                             </div>
                             <div class="text-center mt-4">
-                                <button type="submit" class="btn btn-success px-5">Save</button>
+                                <button class="save-btn">Save</button>
                             </div>
                         </form>
                     </div>
@@ -1245,8 +1262,8 @@ textarea {
                     <div class="card shadow-lg p-4">
     <!-- Address & County -->
     <div class="form-header text-center">
-    <h2 class="add__property--heading__title">Location</h2>
-</div>
+        <h2 class="add__property--heading__title">Location</h2>
+    </div>
     <div class="col-md-6">
         <label for="address" class="form-label">Address</label>
         <input type="text" id="address" class="form-control" placeholder="P.O BOX or street name">
