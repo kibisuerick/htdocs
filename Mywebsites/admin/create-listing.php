@@ -24,6 +24,39 @@
   <link rel="stylesheet" href="assets/css/Create-listing.css">
   <link rel="stylesheet" href="assets/css/dark.css">
 
+  <style>
+    body {
+  background-color: #f8f9fa;
+}
+
+.card {
+  border-radius: 12px;
+  background: white;
+}
+
+.form-control, .form-select {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 8px rgba(40, 167, 69, 0.2);
+}
+
+.btn-success {
+  border-radius: 8px;
+  font-size: 18px;
+  padding: 10px 20px;
+}
+
+textarea {
+  resize: none;
+}
+
+  </style>
+
   <script>
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
     if (localStorage.getItem("theme-color") === "dark" || (!("theme-color" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
@@ -588,7 +621,7 @@
             <!-- End header area -->
             <main class="main__content_wrapper">
                 <!-- dashboard container -->
-                <div class="dashboard__container add__property--container">
+                <!--<div class="container mt-4">
                     <div class="add__property--heading mb-30">
                         <h2 class="add__property--heading__title">Add New Property</h2>
                         <p class="add__property--desc">We are glad to see you again!</p>
@@ -1003,7 +1036,79 @@
                             </div>
                         </div>
                     </div>
+                </div>-->
+                <div class="container mt-4">
+                    <div class="card shadow-lg p-4">
+                        <h2 class="mb-3 text-center">Add New Property</h2>
+                        <p class="text-center text-muted">We are glad to see you again!</p>        
+                        <form>
+                            <div class="row">
+                                <!-- Title -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Title</label>
+                                    <input type="text" class="form-control" placeholder="Enter Property Title">
+                                </div>
+                                <!-- Property ID -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Property ID</label>
+                                    <input type="text" class="form-control" placeholder="Property ID">
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <!-- Description -->
+                                <div class="col-12">
+                                    <label class="form-label">Description</label>
+                                    <textarea class="form-control" rows="3" placeholder="Enter Property Description"></textarea>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <!-- Type -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Type</label>
+                                    <select class="form-select">
+                                        <option>Apartments</option>
+                                        <option>Houses</option>
+                                        <option>Commercial</option>
+                                    </select>
+                                </div>
+                                <!-- Status -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Status</label>
+                                    <select class="form-select">
+                                        <option>All Cities</option>
+                                        <option>For Sale</option>
+                                        <option>For Rent</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <!-- Price -->
+                                <div class="col-md-4">
+                                    <label class="form-label">Price</label>
+                                    <input type="text" class="form-control" placeholder="Enter Price">
+                                </div>
+                                <!-- Area -->
+                                <div class="col-md-4">
+                                    <label class="form-label">Area</label>
+                                    <input type="text" class="form-control" placeholder="Area in SqFt">
+                                </div>
+                                <!-- Rooms -->
+                                <div class="col-md-4">
+                                    <label class="form-label">Rooms</label>
+                                    <select class="form-select">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-success px-5">Save</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+
                 <!-- dashboard container .\ -->
 
                 <!-- Start footer section -->

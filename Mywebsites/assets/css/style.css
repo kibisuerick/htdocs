@@ -11692,6 +11692,7 @@ input[type=range]::-moz-range-thumb {
 /*
     8. Add listing css
 */
+
 @media only screen and (max-width: 767px) {
   .add__listing--header {
     margin-bottom: 3rem;
