@@ -267,6 +267,16 @@
             transform: scale(0.95);
             box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
         }
+
+        /* Side-by-Side Layout for Fields */
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
     </style>
 
     <script>
@@ -1300,63 +1310,87 @@
                                 </div>
                                 <form>
                                     <div class="row">
-                                        <!-- Title -->
-                                        <div class="col-md-6">
-                                            <label class="form-label">Title</label>
-                                            <input type="text" class="form-control" placeholder="Enter Property Title">
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <!-- Title -->
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Title</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Property Title">
+                                                </div>
+                                            </div>
                                         </div>
                                         <!-- Property ID -->
                                         <div class="col-md-6">
-                                            <label class="form-label">Property ID</label>
-                                            <input type="text" class="form-control" placeholder="Property ID">
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label class="form-label">Property ID</label>
+                                                    <input type="text" class="form-control" placeholder="Property ID">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row mt-3">
-                                        <!-- Description -->
-                                        <div class="col-12">
-                                            <label class="form-label">Description</label>
-                                            <textarea class="form-control" rows="3" placeholder="Enter Property Description"></textarea>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <!-- Description -->
+                                                <div class="col-12">
+                                                    <label class="form-label">Description</label>
+                                                    <textarea class="form-control" rows="3" placeholder="Enter Property Description"></textarea>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row mt-3">
-                                        <!-- Type -->
-                                        <div class="col-md-6">
-                                            <label class="form-label">Type</label>
-                                            <select class="form-select">
-                                                <option>Apartments</option>
-                                                <option>Houses</option>
-                                                <option>Commercial</option>
-                                            </select>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <!-- Type -->
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Type</label>
+                                                    <select class="form-select">
+                                                        <option>Apartments</option>
+                                                        <option>Houses</option>
+                                                        <option>Commercial</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                         <!-- Status -->
                                         <div class="col-md-6">
-                                            <label class="form-label">Status</label>
-                                            <select class="form-select">
-                                                <option>All Cities</option>
-                                                <option>For Sale</option>
-                                                <option>For Rent</option>
-                                            </select>
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label class="form-label">Status</label>
+                                                    <select class="form-select">
+                                                        <option>All Cities</option>
+                                                        <option>For Sale</option>
+                                                        <option>For Rent</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row mt-3">
-                                        <!-- Price -->
-                                        <div class="col-md-4">
-                                            <label class="form-label">Price</label>
-                                            <input type="text" class="form-control" placeholder="Enter Price">
-                                        </div>
-                                        <!-- Area -->
-                                        <div class="col-md-4">
-                                            <label class="form-label">Area</label>
-                                            <input type="text" class="form-control" placeholder="Area in SqFt">
-                                        </div>
-                                        <!-- Rooms -->
-                                        <div class="col-md-4">
-                                            <label class="form-label">Rooms</label>
-                                            <select class="form-select">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                            </select>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <!-- Price -->
+                                                <div class="col-md-4">
+                                                    <label class="form-label">Price</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Price">
+                                                </div>
+                                                <!-- Area -->
+                                                <div class="col-md-4">
+                                                    <label class="form-label">Area</label>
+                                                    <input type="text" class="form-control" placeholder="Area in SqFt">
+                                                </div>
+                                                <!-- Rooms -->
+                                                <div class="col-md-4">
+                                                    <label class="form-label">Rooms</label>
+                                                    <select class="form-select">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="text-center mt-4">
@@ -1368,48 +1402,84 @@
                         <!-- Address & County -->
                         <div class="form-section">
                             <div class="card shadow-lg p-4">
-                                <div class="form-header text-center">
-                                    <h2 class="add__property--heading__title">Location</h2>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <div class="form-header text-center">
+                                            <h2 class="add__property--heading__title">Location</h2>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="address" class="form-label">Address</label>
-                                    <input type="text" id="address" class="form-control" placeholder="P.O BOX or street name">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="address" class="form-label">Address</label>
+                                            <input type="text" id="address" class="form-control" placeholder="P.O BOX or street name">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="county" class="form-label">County</label>
-                                    <input type="text" id="county" class="form-control" placeholder="County">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="Landmark" class="form-label">Landmark</label>
+                                            <input type="text" id="Landmark" class="form-control" placeholder="Landmark(optional)...">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="county" class="form-label">County</label>
+                                            <input type="text" id="county" class="form-control" placeholder="County">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row mt-3">
                                     <!-- Type & Region -->
                                     <div class="col-md-4">
-                                        <label for="type" class="form-label">Type</label>
-                                        <select id="type" class="form-select">
-                                            <option>Choose Type</option>
-                                            <option>Apartments</option>
-                                            <option>House</option>
-                                        </select>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="type" class="form-label">Type</label>
+                                                <select id="type" class="form-select">
+                                                    <option>Choose Type</option>
+                                                    <option>Apartments</option>
+                                                    <option>House</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="region" class="form-label">Region</label>
-                                        <select id="region" class="form-select">
-                                            <option>Select Region</option>
-                                            <option>Ongata-Rongai</option>
-                                            <option>Nairobi</option>
-                                        </select>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="region" class="form-label">Region</label>
+                                                <select id="region" class="form-select">
+                                                    <option>Select Region</option>
+                                                    <option>Ongata-Rongai</option>
+                                                    <option>Nairobi</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row mt-3">
                                         <!-- P.O. Box & Country -->
                                         <div class="col-md-4">
-                                            <label for="pobox" class="form-label">P.O. Box</label>
-                                            <input type="text" id="pobox" class="form-control" placeholder="P.O. Box">
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label for="pobox" class="form-label">P.O. Box</label>
+                                                    <input type="text" id="pobox" class="form-control" placeholder="P.O. Box">
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <label for="country" class="form-label">Country</label>
-                                            <select id="country" class="form-select">
-                                                <option>Select Country</option>
-                                                <option>Kenya</option>
-                                                <option>Uganda</option>
-                                            </select>
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label for="country" class="form-label">Country</label>
+                                                    <select id="country" class="form-select">
+                                                        <option>Select Country</option>
+                                                        <option>Kenya</option>
+                                                        <option>Uganda</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
