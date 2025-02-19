@@ -1186,6 +1186,7 @@ textarea {
                     <p>We are glad to see you again!</p>
                 </div>              
                 <div class="container mt-4">
+                    <div class="form-section">
                     <div class="card shadow-lg p-4">
                         <!--<h2 class="mb-3 text-center">Add New Property</h2>
                         <p class="text-center text-muted">We are glad to see you again!</p>-->
@@ -1257,6 +1258,7 @@ textarea {
                                 <button class="save-btn">Save</button>
                             </div>
                         </form>
+                    </div>
                     </div>
                 
                     <div class="card shadow-lg p-4">
