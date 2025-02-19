@@ -295,13 +295,14 @@
                         <span class="sidebar__menu--text"> Settings</span>  
                     </a>
                     </li>
-                    <li class="sidebar__menu--items"><a class="sidebar__menu--link logout color-accent-2" href="../signup.php"><svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <li class="sidebar__menu--items"><a class="sidebar__menu--link logout color-accent-2" href="login.php"><svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M7.41663 6.29995C7.67496 3.29995 9.21663 2.07495 12.5916 2.07495H12.7C16.425 2.07495 17.9166 3.56662 17.9166 7.29162V12.725C17.9166 16.45 16.425 17.9416 12.7 17.9416H12.5916C9.24163 17.9416 7.69996 16.7333 7.42496 13.7833" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M12.5001 10H3.01672" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M4.87504 7.20825L2.08337 9.99992L4.87504 12.7916" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>                                                                                                                       
-                        
-                        <span class="sidebar__menu--text"> Logout</span> 
+                        </svg>
+                        <form action="../logout.php" class="sidebar__menu--text" method="post">
+                            <button type="submit" name="logout">Logout</button>
+                        </form>
                     </a>
                     </li>
                 </ul>

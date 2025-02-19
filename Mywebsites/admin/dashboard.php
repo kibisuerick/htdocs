@@ -207,7 +207,7 @@ function timeAgo($datetime) {
   <!-- Other meta tags and styles -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- Bootstrap Bundle (JS + Popper) -->
+  <!--< Bootstrap Bundle (JS + Popper) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
@@ -393,9 +393,6 @@ function timeAgo($datetime) {
         </div>
         <!-- End search box area -->
 
-
-        <!-- End serch box area -->
-
         <!-- Dashboard sidebar -->
         <div class="dashboard__sidebar">
             <div class="main__logo logo-desktop-none">
@@ -512,6 +509,7 @@ function timeAgo($datetime) {
                             <button type="submit" name="logout">Logout</button>
                         </form>
                     </a>
+                    </li>
                 </ul>
              </div>
         </div>
