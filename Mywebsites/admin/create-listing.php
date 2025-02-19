@@ -26,72 +26,161 @@
 
   <style>
 /* Existing Styles */
-    body {
+/* General Page Styling */
+body {
     background-color: #f8f9fa;
-    }
+}
 
-    .card {
-    border-radius: 12px;
-    background: white;
-    padding: 30px; /* Added padding */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Stronger shadow */
-    }
-
-    .container {
+/* Container */
+.container {
     max-width: 900px;
     margin: auto;
-    }
+}
 
-    h2 {
-    font-size: 26px;
-    font-weight: 600;
+/* Header Section with Gradient */
+.header-section {
+    background: linear-gradient(to right, #f8f9fa, #e3f2fd); /* Gradient background */
+    padding: 40px 20px; /* Increased padding */
     text-align: center;
+    border-radius: 10px;
+}
+
+.header-section h1 {
+    font-size: 30px;
+    font-weight: 700; /* Bolder text */
     color: #333;
-    }
+    margin-bottom: 5px;
+}
 
-    .text-muted {
-    text-align: center;
-    font-size: 14px;
-    }
+.header-section p {
+    font-size: 16px;
+    color: #666;
+    font-style: italic; /* Slight italic for a subtle touch */
+}
 
-    .form-label {
+/* Improved Form Box */
+.card {
+    border-radius: 10px;
+    background: white;
+    padding: 35px; /* Slightly more padding */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.08); /* Softer shadow */
+}
+
+/* Page Header Section */
+.page-header {
+    margin-bottom: 30px; /* Space below the header */
+    padding: 20px 0;
+    text-align: center; /* Ensures center alignment */
+    background-color: #f8f9fa; /* Light background */
+    border-radius: 8px; /* Soft rounded corners */
+}
+
+.page-header h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #666; /* Subtle color for secondary text */
+    font-weight: 500;
+}
+
+/* Reduce extra spacing from the top */
+.header-section {
+    margin-top: -20px; /* Pulls it up */
+    padding-top: 10px; /* Adjust if needed */
+}
+
+/* Reduce space below the navigation bar */
+body {
+    padding-top: 0px; /* Ensures no extra spacing */
+}
+
+.container-fluid, .content-wrapper {
+    padding-top: 0px; /* Remove any extra padding */
+    margin-top: -20px; /* Adjust accordingly */
+}
+
+/* Form Header */
+.form-header {
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+}
+
+.form-header h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Form Input & Select Styling */
+.form-control, .form-select {
+    border-radius: 8px;
+    border: 1px solid #ddd; /* Softer border */
+    height: 45px;
+    padding: 12px; /* More padding for readability */
+    transition: all 0.3s ease-in-out;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.2);
+}
+
+/* Textarea Styling */
+textarea {
+    resize: none;
+    min-height: 100px;
+}
+
+/* Location Section Layout */
+.row {
+    display: flex;
+    gap: 15px;
+}
+
+.col-md-6 {
+    flex: 1;
+}
+
+/* Label Styling */
+.form-label {
     font-weight: 500;
     margin-bottom: 5px;
-    }
+}
 
-    .form-control, .form-select {
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    transition: all 0.3s ease;
-    height: 45px; /* Uniform height */
-    }
-
-    textarea {
-    resize: none;
-    min-height: 100px; /* Consistent height */
-    }
-
-    .form-control:focus, .form-select:focus {
-    border-color: #28a745;
-    box-shadow: 0 0 8px rgba(40, 167, 69, 0.2);
-    }
-
-    .btn-success {
+/* Button Styling */
+.btn-success {
     border-radius: 8px;
     font-size: 18px;
-    padding: 12px 25px; /* Adjusted padding */
+    padding: 12px 25px;
     display: block;
     width: 100%;
     max-width: 200px;
     margin: 20px auto;
-    }
+    transition: background 0.3s;
+}
 
-    @media (max-width: 768px) {
+.btn-success:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Text Muted */
+.text-muted {
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
     .form-control, .form-select {
         font-size: 14px;
     }
-    }
-
+}
   </style>
 
   <script>
@@ -1074,10 +1163,18 @@
                         </div>
                     </div>
                 </div>-->
+                <main class="main__content_wrapper">
+                <div class="header-section">
+                    <h1>Add New Property</h1>
+                    <p>We are glad to see you again!</p>
+                </div>              
                 <div class="container mt-4">
                     <div class="card shadow-lg p-4">
-                        <h2 class="mb-3 text-center">Add New Property</h2>
-                        <p class="text-center text-muted">We are glad to see you again!</p>        
+                        <!--<h2 class="mb-3 text-center">Add New Property</h2>
+                        <p class="text-center text-muted">We are glad to see you again!</p>-->
+                        <div class="form-header text-center">
+                            <h2>Create Listing</h2>
+                        </div>      
                         <form>
                             <div class="row">
                                 <!-- Title -->
@@ -1144,7 +1241,61 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                
+                    <div class="card shadow-lg p-4">
+    <!-- Address & County -->
+    <div class="form-header text-center">
+    <h2 class="add__property--heading__title">Location</h2>
+</div>
+    <div class="col-md-6">
+        <label for="address" class="form-label">Address</label>
+        <input type="text" id="address" class="form-control" placeholder="P.O BOX or street name">
+    </div>
+    <div class="col-md-6">
+        <label for="county" class="form-label">County</label>
+        <input type="text" id="county" class="form-control" placeholder="County">
+    </div>
+
+
+<div class="row mt-3">
+    <!-- Type & Region -->
+    <div class="col-md-6">
+        <label for="type" class="form-label">Type</label>
+        <select id="type" class="form-select">
+            <option>Choose Type</option>
+            <option>Apartments</option>
+            <option>House</option>
+        </select>
+    </div>
+    <div class="col-md-6">
+        <label for="region" class="form-label">Region</label>
+        <select id="region" class="form-select">
+            <option>Select Region</option>
+            <option>Ongata-Rongai</option>
+            <option>Nairobi</option>
+        </select>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <!-- P.O. Box & Country -->
+    <div class="col-md-6">
+        <label for="pobox" class="form-label">P.O. Box</label>
+        <input type="text" id="pobox" class="form-control" placeholder="P.O. Box">
+    </div>
+    <div class="col-md-6">
+        <label for="country" class="form-label">Country</label>
+        <select id="country" class="form-select">
+            <option>Select Country</option>
+            <option>Kenya</option>
+            <option>Uganda</option>
+        </select>
+    </div>
+</div>
+</div>
+</div>
+                </main>
+
                 <!-- dashboard container .\ -->
 
                 <!-- Start footer section -->
