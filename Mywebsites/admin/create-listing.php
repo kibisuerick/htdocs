@@ -1472,8 +1472,7 @@ require '../db.php'; // Database connection
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <button type="button" class="save-draft-btn">Save as Draft</button>
+                                    </div>                                    
                                 </div>
                             </div>
 
