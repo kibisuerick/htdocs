@@ -882,812 +882,394 @@ require '../db.php'; // Database connection
                 </div>
             </header>
             <!-- End header area -->
+
             <main class="main__content_wrapper">
-                <!-- dashboard container -->
-                <!--<div class="container mt-4">
-                    <div class="add__property--heading mb-30">
-                        <h2 class="add__property--heading__title">Add New Property</h2>
-                        <p class="add__property--desc">We are glad to see you again!</p>
-                    </div>
-                    <div class="add__property__inner d-flex">
-                        <div class="add__property--step left">
-                            <div class="add__property--step__inner">
-                                <div class="add__property--box mb-30">
-                                    <h3 class="add__property--box__title mb-20">Create Listing</h3>
-                                    <form class="add__property--form" action="#">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="add__listing--input__box mb-20">
-                                                    <label class="add__listing--input__label" for="input1">Title</label>
-                                                    <input class="add__listing--input__field" id="input1" placeholder="Your Name" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="add__listing--textarea__box mb-15">
-                                                    <label class="add__listing--input__label" for="input2">Description</label>
-                                                    <textarea class="add__listing--textarea__field" id="input2" placeholder="Description"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="add__listing--input__box mb-20">
-                                                    <label class="add__listing--input__label">Type</label>
-                                                    <div class="select position-relative">
-                                                        <select class="add__listing--form__select">
-                                                            <option selected="" value="1">Apartments</option>
-                                                            <option value="2">Office</option>
-                                                            <option value="3">Excecutive studio</option>
-                                                            <option value="4">Apartment</option>
-                                                            <option value="5">House</option>
-                                                            <option value="6">Single Family</option>
-                                                            <option value="7">Land</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="add__listing--input__box mb-20">
-                                                    <label class="add__listing--input__label"> Status</label>
-                                                    <div class="select position-relative">
-                                                        <select class="add__listing--form__select">
-                                                            <option selected="" value="1">All Cities</option>
-                                                            <option value="2">Processing</option>
-                                                            <option value="3">Published</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="add__listing--input__box mb-20">
-                                                    <label class="add__listing--input__label" for="input3">Price</label>
-                                                    <input class="add__listing--input__field" id="input3" placeholder="Price" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="add__listing--input__box mb-20">
-                                                    <label class="add__listing--input__label" for="input4">Area</label>
-                                                    <input class="add__listing--input__field" id="input4" placeholder="Description" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="add__listing--input__box mb-20">
-                                                    <label class="add__listing--input__label"> Rooms</label>
-                                                    <div class="select position-relative">
-                                                        <select class="add__listing--form__select">
-                                                            <option selected="" value="1">Rooms</option>
-                                                            <option value="2">Rooms 1</option>
-                                                            <option value="3">Rooms 2</option>
-                                                            <option value="4">Rooms 3</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button class="solid__btn add__property--btn">Save</button>
-                                    </form>
+                <div class="header-section">
+                    <h1>Add New Property</h1>
+                    <p>We are glad to see you again!</p>
+                </div>
+                <div class="container mt-4">
+                    <form action="save_listing.php" method="POST" enctype="multipart/form-data">
+                        <div class="form-section">
+                            <div class="card shadow-lg p-4">
+                                <div class="form-header text-center">
+                                    <h2>Create Listing</h2>
                                 </div>
-                                <div class="add__property--box">
-                                    <h3 class="add__property--box__title mb-20">Location</h3>
-                                    <form class="add__property--form" action="#">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="add__listing--input__box mb-20">
-                                                    <label class="add__listing--input__label" for="input5">Address</label>
-                                                    <input class="add__listing--input__field" id="input5" placeholder="P.O BOX or street name" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="add__listing--textarea__box mb-15">
-                                                    <label class="add__listing--input__label" for="input6">County</label>
-                                                    <textarea class="add__listing--textarea__field" id="input6" placeholder="County"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="add__listing--input__box mb-20">
-                                                    <label class="add__listing--input__label">Type</label>
-                                                    <div class="select position-relative">
-                                                        <select class="add__listing--form__select">
-                                                            <option selected="" value="1">Apartments</option>
-                                                            <option value="2">Office</option>
-                                                            <option value="3">Studio-apartment</option>
-                                                            <option value="4">Single-room</option>
-                                                            <option value="5">One-bedroom</option>
-                                                            <option value="6">Two-bedroom</option>
-                                                            <option value="7">Three-bedroom</option>
-                                                            <option value="8">Airbnb</option>
-                                                            <option value="9">Mansion</option>
-                                                            <option value="10">land</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="add__listing--input__box mb-20">
-                                                    <label class="add__listing--input__label"> Region</label>
-                                                    <div class="select position-relative">
-                                                        <select class="add__listing--form__select">
-                                                            <option selected="" value="1"> Ongata-Rongai</option>
-                                                            <option value="2"> Ngong</option>
-                                                            <option value="3">Langata</option>
-                                                            <option value="4">South c</option>
-                                                            <option value="5">Highrise</option>
-                                                            <option value="6">westlands</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="add__listing--input__box mb-20">
-                                                    <label class="add__listing--input__label" for="neighborhood">Neighborhood</label>
-                                                    <input class="add__listing--input__field" id="neighborhood" placeholder="Neighborhood" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="add__listing--input__box mb-20">
-                                                    <label class="add__listing--input__label" for="input7">P.O. Box</label>
-                                                    <input class="add__listing--input__field" id="input7" placeholder="P.O box" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="add__listing--input__box mb-20">
-                                                    <label class="add__listing--input__label"> Country</label>
-                                                    <div class="select position-relative">
-                                                        <select class="add__listing--form__select">
-                                                            <option selected="" value="1">Kenya</option>
-                                                            <option value="2">Uganda</option>
-                                                            <option value="3">Tanzania</option>
-                                                            <option value="4">Ethiopia</option>
-                                                            <option value="5">Rwanda</option>
-                                                            <option value="6">DRC</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="add__listing--google__map mb-10">
-                                                    <iframe 
-                                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31909.071552308622!2d36.7285346917862!3d-1.396100456482076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f05cf50f94e8d%3A0x51c29656e6fd8ca9!2sOngata%20Rongai!5e0!3m2!1sen!2ske!4v1735408213516!5m2!1sen!2ske" 
-                                                        width="600" 
-                                                        height="450" 
-                                                        style="border:0;" 
-                                                        allowfullscreen="" 
-                                                        loading="lazy" 
-                                                        referrerpolicy="no-referrer-when-downgrade">
-                                                    </iframe>
-                                                </div>
-                                            </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <!-- Title -->
+                                        <div class="col-md-6">
+                                            <label class="form-label">Title</label>
+                                            <input type="text" class="form-control" placeholder="Enter Property Title">
                                         </div>
-                                        <button class="solid__btn add__property--btn">Save</button>
-                                    </form>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="add__property--step">
-                            <div class="add__property--box mb-30">
-                                <h3 class="add__property--box__title mb-20">Detailed Information</h3>
-                                <form class="add__property--form" action="#">
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="add__listing--input__box mb-20">
-                                                <label class="add__listing--input__label" for="property">Property ID</label>
-                                                <input class="add__listing--input__field" id="property" placeholder="Property ID" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="add__listing--input__box mb-20">
-                                                <label class="add__listing--input__label" for="size">Area Size</label>
-                                                <input class="add__listing--input__field" id="size" placeholder="Area Size" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="add__listing--input__box mb-20">
-                                                <label class="add__listing--input__label" for="prefix">Size Prefix</label>
-                                                <input class="add__listing--input__field" id="prefix" placeholder="Size Prefix" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="add__listing--input__box mb-20">
-                                                <label class="add__listing--input__label" for="area">Land Area</label>
-                                                <input class="add__listing--input__field" id="area" placeholder="Land Area" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="add__listing--input__box mb-20">
-                                                <label class="add__listing--input__label" for="landarea">Land Area Size Postfix</label>
-                                                <input class="add__listing--input__field" id="landarea" placeholder="Land Area Size Postfix" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="add__listing--input__box mb-20">
-                                                <label class="add__listing--input__label" for="bedrooms">Bedrooms</label>
-                                                <input class="add__listing--input__field" id="bedrooms" placeholder="Bedrooms" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="add__listing--input__box mb-20">
-                                                <label class="add__listing--input__label" for="bathrooms">Bathrooms</label>
-                                                <input class="add__listing--input__field" id="bathrooms" placeholder="Bathrooms" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="add__listing--input__box mb-20">
-                                                <label class="add__listing--input__label" for="garages">Garages</label>
-                                                <input class="add__listing--input__field" id="garages" placeholder="Garages" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="add__listing--input__box mb-20">
-                                                <label class="add__listing--input__label" for="garagessize">Garages Size</label>
-                                                <input class="add__listing--input__field" id="garagessize" placeholder="Garages Size" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="add__listing--input__box mb-20">
-                                                <label class="add__listing--input__label" for="built">Year Built</label>
-                                                <input class="add__listing--input__field" id="built" placeholder="Year Built" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="add__listing--input__box mb-20">
-                                                <label class="add__listing--input__label" for="video">Video URL</label>
-                                                <input class="add__listing--input__field" id="video" placeholder="Video URL" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="add__listing--input__box mb-20">
-                                                <label class="add__listing--input__label" for="virtual">360° Virtual Tour</label>
-                                                <input class="add__listing--input__field" id="virtual" placeholder="360° Virtual Tour" type="text">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="solid__btn add__property--btn">Save</button>
-                                </form>
-                                <h3 class="add__property--box__title pt-0">Amenities and Features</h3>
-                                <div class="advance__apeartment--inner d-flex justify-content-between">
-                                    <ul class="interior__amenities--check">
-                                        <li class="interior__amenities--check__list">
-                                            <label class="interior__amenities--check__label" for="check1">Air Conditioning</label>
-                                            <input class="interior__amenities--check__input" id="check1" type="checkbox">
-                                            <span class="interior__amenities--checkmark"></span>
-                                        </li>
-                                        <li class="interior__amenities--check__list">
-                                            <label class="interior__amenities--check__label" for="check2">Swimming Pool</label>
-                                            <input class="interior__amenities--check__input" id="check2" type="checkbox">
-                                            <span class="interior__amenities--checkmark"></span>
-                                        </li>
-                                        <li class="interior__amenities--check__list">
-                                            <label class="interior__amenities--check__label" for="check3">Outdoor Shower</label>
-                                            <input class="interior__amenities--check__input" id="check3" type="checkbox">
-                                            <span class="interior__amenities--checkmark"></span>
-                                        </li>
-                                        <li class="interior__amenities--check__list">
-                                            <label class="interior__amenities--check__label" for="check4">Lawn</label>
-                                            <input class="interior__amenities--check__input" id="check4" type="checkbox">
-                                            <span class="interior__amenities--checkmark"></span>
-                                        </li>
-                                    </ul>
-                                    <ul class="interior__amenities--check">
-                                        <li class="interior__amenities--check__list">
-                                            <label class="interior__amenities--check__label" for="check5">Barbeque</label>
-                                            <input class="interior__amenities--check__input" id="check5" type="checkbox">
-                                            <span class="interior__amenities--checkmark"></span>
-                                        </li>
-                                        <li class="interior__amenities--check__list">
-                                            <label class="interior__amenities--check__label" for="check6">Washer</label>
-                                            <input class="interior__amenities--check__input" id="check6" type="checkbox">
-                                            <span class="interior__amenities--checkmark"></span>
-                                        </li>
-                                        <li class="interior__amenities--check__list">
-                                            <label class="interior__amenities--check__label" for="check7">Microwave</label>
-                                            <input class="interior__amenities--check__input" id="check7" type="checkbox">
-                                            <span class="interior__amenities--checkmark"></span>
-                                        </li>
-                                        <li class="interior__amenities--check__list">
-                                            <label class="interior__amenities--check__label" for="check8">Dryer</label>
-                                            <input class="interior__amenities--check__input" id="check8" type="checkbox">
-                                            <span class="interior__amenities--checkmark"></span>
-                                        </li>
-                                    </ul>
-                                    <ul class="interior__amenities--check">
-                                        <li class="interior__amenities--check__list">
-                                            <label class="interior__amenities--check__label" for="check9">TV Cable</label>
-                                            <input class="interior__amenities--check__input" id="check9" type="checkbox">
-                                            <span class="interior__amenities--checkmark"></span>
-                                        </li>
-                                        <li class="interior__amenities--check__list">
-                                            <label class="interior__amenities--check__label" for="check10">Refrigerator</label>
-                                            <input class="interior__amenities--check__input" id="check10" type="checkbox">
-                                            <span class="interior__amenities--checkmark"></span>
-                                        </li>
-                                        <li class="interior__amenities--check__list">
-                                            <label class="interior__amenities--check__label" for="check11">Laundry</label>
-                                            <input class="interior__amenities--check__input" id="check11" type="checkbox">
-                                            <span class="interior__amenities--checkmark"></span>
-                                        </li>
-                                        <li class="interior__amenities--check__list">
-                                            <label class="interior__amenities--check__label" for="check12">Gym</label>
-                                            <input class="interior__amenities--check__input" id="check12" type="checkbox">
-                                            <span class="interior__amenities--checkmark"></span>
-                                        </li>
-                                    </ul>
-                                    <ul class="interior__amenities--check">
-                                        <li class="interior__amenities--check__list">
-                                            <label class="interior__amenities--check__label" for="check13">Front yard</label>
-                                            <input class="interior__amenities--check__input" id="check13" type="checkbox">
-                                            <span class="interior__amenities--checkmark"></span>
-                                        </li>
-                                        <li class="interior__amenities--check__list">
-                                            <label class="interior__amenities--check__label" for="check14">WiFi</label>
-                                            <input class="interior__amenities--check__input" id="check14" type="checkbox">
-                                            <span class="interior__amenities--checkmark"></span>
-                                        </li>
-                                        <li class="interior__amenities--check__list">
-                                            <label class="interior__amenities--check__label" for="check15">Sauna</label>
-                                            <input class="interior__amenities--check__input" id="check15" type="checkbox">
-                                            <span class="interior__amenities--checkmark"></span>
-                                        </li>
-                                        <li class="interior__amenities--check__list">
-                                            <label class="interior__amenities--check__label" for="check16">Wine cellar</label>
-                                            <input class="interior__amenities--check__input" id="check16" type="checkbox">
-                                            <span class="interior__amenities--checkmark"></span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="add__property--box mb-30">
-                                <h3 class="add__property--box__title mb-20">Property media</h3>
-                                <div class="property__media--wrapper d-flex justify-content-between">
-                                    <div class="browse__file--area position-relative">
-                                        <button class="browse__file--btn">Choose File</button>
-                                        <input class="browse__file--input__field" type="file">
-                                    </div>
-                                    <div class="browse__file--area position-relative">
-                                        <button class="browse__file--btn">Select Attachment</button>
-                                        <input class="browse__file--input__field" type="file">
-                                    </div>
-                                    <button class="solid__btn add__property--btn">Save</button>
-                                </div>
-                            </div>
-                            <div class="add__property--box">
-                                <h3 class="add__property--box__title mb-20">Floor Plans</h3>
-                                <form class="add__property--form" action="#">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="add__listing--input__box mb-20">
-                                                <label class="add__listing--input__label" for="plan1">Plan Description</label>
-                                                <input class="add__listing--input__field" id="plan1" placeholder="Property ID" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="add__listing--input__box mb-20">
-                                                <label class="add__listing--input__label" for="plan2">Plan Bedrooms</label>
-                                                <input class="add__listing--input__field" id="plan2" placeholder="Plan Bedrooms" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="add__listing--input__box mb-20">
-                                                <label class="add__listing--input__label" for="plan3">Plan Bathrooms</label>
-                                                <input class="add__listing--input__field" id="plan3" placeholder="Plan Bedrooms" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="add__listing--input__box mb-20">
-                                                <label class="add__listing--input__label" for="plan4">Plan Price</label>
-                                                <input class="add__listing--input__field" id="plan4" placeholder="Plan Price" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="add__listing--input__box mb-20">
-                                                <label class="add__listing--input__label" for="plan5">Size Prefix</label>
-                                                <input class="add__listing--input__field" id="plan5" placeholder="Size Prefix" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="add__listing--input__box mb-20">
-                                                <label class="add__listing--input__label" for="plan6">Plan Size</label>
-                                                <input class="add__listing--input__field" id="plan6" placeholder="Plan Size" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="add__listing--input__box mb-20">
-                                                <label class="add__listing--input__label" for="plan7">Plan Image</label>
-                                                <input class="add__listing--input__field" id="plan7" placeholder="Plan Image" type="text">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="solid__btn add__property--btn">Save</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
-                <main class="main__content_wrapper">
-                    <div class="header-section">
-                        <h1>Add New Property</h1>
-                        <p>We are glad to see you again!</p>
-                    </div>
-                    <div class="container mt-4">
-                        <form action="save_listing.php" method="POST" enctype="multipart/form-data">
-                            <div class="form-section">
-                                <div class="card shadow-lg p-4">
-                                    <div class="form-header text-center">
-                                        <h2>Create Listing</h2>
-                                    </div>
+                                <div class="row mt-3">
                                     <div class="form-row">
                                         <div class="form-group">
-                                            <!-- Title -->
+                                            <!-- Description -->
+                                            <div class="col-12">
+                                                <label class="form-label">Description</label>
+                                                <textarea class="form-control" rows="3" placeholder="Enter Property Description"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <!-- Type -->
                                             <div class="col-md-6">
-                                                <label class="form-label">Title</label>
-                                                <input type="text" class="form-control" placeholder="Enter Property Title">
+                                                <label class="form-label">Type</label>
+                                                <select class="form-select">
+                                                    <option>Apartments</option>
+                                                    <option>Houses</option>
+                                                    <option>Commercial</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-3">
+                                    <!-- Status -->
+                                    <div class="col-md-6">
                                         <div class="form-row">
                                             <div class="form-group">
-                                                <!-- Description -->
-                                                <div class="col-12">
-                                                    <label class="form-label">Description</label>
-                                                    <textarea class="form-control" rows="3" placeholder="Enter Property Description"></textarea>
-                                                </div>
+                                                <label class="form-label">Status</label>
+                                                <select class="form-select">
+                                                    <option>All Cities</option>
+                                                    <option>For Sale</option>
+                                                    <option>For Rent</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-3">
-                                        <div class="form-row">
-                                            <div class="form-group">
-                                                <!-- Type -->
-                                                <div class="col-md-6">
-                                                    <label class="form-label">Type</label>
-                                                    <select class="form-select">
-                                                        <option>Apartments</option>
-                                                        <option>Houses</option>
-                                                        <option>Commercial</option>
-                                                    </select>
-                                                </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <!-- Price -->
+                                            <div class="col-md-4">
+                                                <label class="form-label">Price</label>
+                                                <input type="text" class="form-control" placeholder="Enter Price">
                                             </div>
-                                        </div>
-                                        <!-- Status -->
-                                        <div class="col-md-6">
-                                            <div class="form-row">
-                                                <div class="form-group">
-                                                    <label class="form-label">Status</label>
-                                                    <select class="form-select">
-                                                        <option>All Cities</option>
-                                                        <option>For Sale</option>
-                                                        <option>For Rent</option>
-                                                    </select>
-                                                </div>
+                                            <!-- Area -->
+                                            <div class="col-md-4">
+                                                <label class="form-label">Area</label>
+                                                <input type="text" class="form-control" placeholder="Area in SqFt">
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="form-row">
-                                            <div class="form-group">
-                                                <!-- Price -->
-                                                <div class="col-md-4">
-                                                    <label class="form-label">Price</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Price">
-                                                </div>
-                                                <!-- Area -->
-                                                <div class="col-md-4">
-                                                    <label class="form-label">Area</label>
-                                                    <input type="text" class="form-control" placeholder="Area in SqFt">
-                                                </div>
-                                                <!-- Rooms -->
-                                                <div class="col-md-4">
-                                                    <label class="form-label">Rooms</label>
-                                                    <select class="form-select">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                    </select>
-                                                </div>
+                                            <!-- Rooms -->
+                                            <div class="col-md-4">
+                                                <label class="form-label">Rooms</label>
+                                                <select class="form-select">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
 
-                            <!-- Address & County -->
-                            <div class="form-section">
-                                <div class="card shadow-lg p-4">
+                        <!-- Address & County -->
+                        <div class="form-section">
+                            <div class="card shadow-lg p-4">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <div class="form-header text-center">
+                                            <h2 class="add__property--heading__title">Location</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
                                     <div class="form-row">
                                         <div class="form-group">
-                                            <div class="form-header text-center">
-                                                <h2 class="add__property--heading__title">Location</h2>
+                                            <label for="address" class="form-label">Address</label>
+                                            <input type="text" id="address" class="form-control" placeholder="P.O BOX or street name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="Landmark" class="form-label">Landmark</label>
+                                            <input type="text" id="Landmark" class="form-control" placeholder="Landmark(optional)...">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="county" class="form-label">County</label>
+                                            <input type="text" id="county" class="form-control" placeholder="County">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <!-- Type & Region -->
+                                    <div class="col-md-4">
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="type" class="form-label">Type</label>
+                                                <select id="type" class="form-select">
+                                                    <option>Choose Type</option>
+                                                    <option>Apartments</option>
+                                                    <option>House</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-row">
                                             <div class="form-group">
-                                                <label for="address" class="form-label">Address</label>
-                                                <input type="text" id="address" class="form-control" placeholder="P.O BOX or street name">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-row">
-                                            <div class="form-group">
-                                                <label for="Landmark" class="form-label">Landmark</label>
-                                                <input type="text" id="Landmark" class="form-control" placeholder="Landmark(optional)...">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-row">
-                                            <div class="form-group">
-                                                <label for="county" class="form-label">County</label>
-                                                <input type="text" id="county" class="form-control" placeholder="County">
+                                                <label for="region" class="form-label">Region</label>
+                                                <select id="region" class="form-select">
+                                                    <option>Select Region</option>
+                                                    <option>Ongata-Rongai</option>
+                                                    <option>Nairobi</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row mt-3">
-                                        <!-- Type & Region -->
+                                        <!-- P.O. Box & Country -->
                                         <div class="col-md-4">
                                             <div class="form-row">
                                                 <div class="form-group">
-                                                    <label for="type" class="form-label">Type</label>
-                                                    <select id="type" class="form-select">
-                                                        <option>Choose Type</option>
-                                                        <option>Apartments</option>
-                                                        <option>House</option>
-                                                    </select>
+                                                    <label for="pobox" class="form-label">P.O. Box</label>
+                                                    <input type="text" id="pobox" class="form-control" placeholder="P.O. Box">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-row">
                                                 <div class="form-group">
-                                                    <label for="region" class="form-label">Region</label>
-                                                    <select id="region" class="form-select">
-                                                        <option>Select Region</option>
-                                                        <option>Ongata-Rongai</option>
-                                                        <option>Nairobi</option>
+                                                    <label for="country" class="form-label">Country</label>
+                                                    <select id="country" class="form-select">
+                                                        <option>Select Country</option>
+                                                        <option>Kenya</option>
+                                                        <option>Uganda</option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row mt-3">
-                                            <!-- P.O. Box & Country -->
-                                            <div class="col-md-4">
-                                                <div class="form-row">
-                                                    <div class="form-group">
-                                                        <label for="pobox" class="form-label">P.O. Box</label>
-                                                        <input type="text" id="pobox" class="form-control" placeholder="P.O. Box">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-row">
-                                                    <div class="form-group">
-                                                        <label for="country" class="form-label">Country</label>
-                                                        <select id="country" class="form-select">
-                                                            <option>Select Country</option>
-                                                            <option>Kenya</option>
-                                                            <option>Uganda</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>                                    
+                                    </div>
                                 </div>
                             </div>
+                        </div>
 
 
-                            <!-- Address & County -->
-                            <div class="form-section">
-                                <div class="card shadow-lg p-4">
+                        <!-- Address & County -->
+                        <div class="form-section">
+                            <div class="card shadow-lg p-4">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <div class="form-header text-center">
+                                            <h2 class="section-title">Detailed Information</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="form-row">
                                         <div class="form-group">
-                                            <div class="form-header text-center">
-                                                <h2 class="section-title">Detailed Information</h2>
+                                            <div class="col-md-6">
+                                                <label for="property_id" class="form-label">Property ID</label>
+                                                <input type="text" id="property_id" class="form-control" placeholder="Enter Property ID">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="form-row">
-                                            <div class="form-group">
-                                                <div class="col-md-6">
-                                                    <label for="property_id" class="form-label">Property ID</label>
-                                                    <input type="text" id="property_id" class="form-control" placeholder="Enter Property ID">
-                                                </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <label for="area_size" class="form-label">Area Size</label>
+                                                <input type="text" id="area_size" class="form-control" placeholder="Enter Area Size">
                                             </div>
                                         </div>
-                                        <div class="form-row">
-                                            <div class="form-group">
-                                                <div class="col-md-6">
-                                                    <label for="area_size" class="form-label">Area Size</label>
-                                                    <input type="text" id="area_size" class="form-control" placeholder="Enter Area Size">
-                                                </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <label for="land_area" class="form-label">Land Area</label>
+                                                <input type="text" id="land_area" class="form-control" placeholder="Enter Land Area">
                                             </div>
                                         </div>
-                                        <div class="form-row">
-                                            <div class="form-group">
-                                                <div class="col-md-6">
-                                                    <label for="land_area" class="form-label">Land Area</label>
-                                                    <input type="text" id="land_area" class="form-control" placeholder="Enter Land Area">
-                                                </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <label for="land_postfix" class="form-label">Land Area Size Postfix</label>
+                                                <input type="text" id="land_postfix" class="form-control" placeholder="Enter Postfix">
                                             </div>
                                         </div>
-                                        <div class="form-row">
-                                            <div class="form-group">
-                                                <div class="col-md-6">
-                                                    <label for="land_postfix" class="form-label">Land Area Size Postfix</label>
-                                                    <input type="text" id="land_postfix" class="form-control" placeholder="Enter Postfix">
-                                                </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <label for="bathrooms" class="form-label">Bathrooms</label>
+                                                <input type="number" id="bathrooms" class="form-control" placeholder="Enter Number of Bathrooms">
                                             </div>
                                         </div>
-                                        <div class="form-row">
-                                            <div class="form-group">
-                                                <div class="col-md-6">
-                                                    <label for="bathrooms" class="form-label">Bathrooms</label>
-                                                    <input type="number" id="bathrooms" class="form-control" placeholder="Enter Number of Bathrooms">
-                                                </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <label for="garages" class="form-label">Garages</label>
+                                                <input type="number" id="garages" class="form-control" placeholder="Enter Number of Garages">
                                             </div>
                                         </div>
-                                        <div class="form-row">
-                                            <div class="form-group">
-                                                <div class="col-md-6">
-                                                    <label for="garages" class="form-label">Garages</label>
-                                                    <input type="number" id="garages" class="form-control" placeholder="Enter Number of Garages">
-                                                </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <label for="year_built" class="form-label">Year Built</label>
+                                                <input type="text" id="year_built" class="form-control" placeholder="Enter Year Built">
                                             </div>
                                         </div>
-                                        <div class="form-row">
-                                            <div class="form-group">
-                                                <div class="col-md-6">
-                                                    <label for="year_built" class="form-label">Year Built</label>
-                                                    <input type="text" id="year_built" class="form-control" placeholder="Enter Year Built">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group">
-                                                <div class="col-md-6">
-                                                    <label for="video_url" class="form-label">Video URL</label>
-                                                    <input type="url" id="video_url" class="form-control" placeholder="Enter Video URL">
-                                                </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <label for="video_url" class="form-label">Video URL</label>
+                                                <input type="url" id="video_url" class="form-control" placeholder="Enter Video URL">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
 
-                            <div class="form-section">
-                                <div class="card shadow-lg p-4">
-                                    <!--<div class="form-row">-->
-                                    <div class="form-group">
-                                        <div class="form-header text-center">
-                                            <h2 class="fw-bold">Amenities and Features</h2>
+                        <div class="form-section">
+                            <div class="card shadow-lg p-4">
+                                <!--<div class="form-row">-->
+                                <div class="form-group">
+                                    <div class="form-header text-center">
+                                        <h2 class="fw-bold">Amenities and Features</h2>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- Column 1 -->
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="airConditioning">
+                                            <label class="form-check-label" for="airConditioning">Air Conditioning</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="swimmingPool">
+                                            <label class="form-check-label" for="swimmingPool">Swimming Pool</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="outdoorShower">
+                                            <label class="form-check-label" for="outdoorShower">Outdoor Shower</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="lawn">
+                                            <label class="form-check-label" for="lawn">Lawn</label>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <!-- Column 1 -->
-                                        <div class="col-md-6">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="airConditioning">
-                                                <label class="form-check-label" for="airConditioning">Air Conditioning</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="swimmingPool">
-                                                <label class="form-check-label" for="swimmingPool">Swimming Pool</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="outdoorShower">
-                                                <label class="form-check-label" for="outdoorShower">Outdoor Shower</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="lawn">
-                                                <label class="form-check-label" for="lawn">Lawn</label>
-                                            </div>
+                                    <!-- Column 2 -->
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="barbeque">
+                                            <label class="form-check-label" for="barbeque">Barbeque</label>
                                         </div>
-                                        <!-- Column 2 -->
-                                        <div class="col-md-6">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="barbeque">
-                                                <label class="form-check-label" for="barbeque">Barbeque</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="washer">
-                                                <label class="form-check-label" for="washer">Washer</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="microwave">
-                                                <label class="form-check-label" for="microwave">Microwave</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="dryer">
-                                                <label class="form-check-label" for="dryer">Dryer</label>
-                                            </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="washer">
+                                            <label class="form-check-label" for="washer">Washer</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="microwave">
+                                            <label class="form-check-label" for="microwave">Microwave</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="dryer">
+                                            <label class="form-check-label" for="dryer">Dryer</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
 
-                            <div class="form-section">
-                                <div class="card shadow-lg p-4">
-                                    <div class="form-group">
-                                        <div class="form-header text-center">
-                                            <h2 class="fw-bold">Property Media</h2>
-                                        </div>
+                        <div class="form-section">
+                            <div class="card shadow-lg p-4">
+                                <div class="form-group">
+                                    <div class="form-header text-center">
+                                        <h2 class="fw-bold">Property Media</h2>
                                     </div>
-                                    <div class="row">
-                                        <!-- Property Images Upload -->
-                                        <div class="col-md-6">
-                                            <label class="form-label fw-medium">Upload Property Images</label>
-                                            <input type="file" class="form-control" multiple>
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <!-- Property Images Upload -->
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-medium">Upload Property Images</label>
+                                        <input type="file" class="form-control" multiple>
+                                    </div>
 
-                                        <!-- Property Video Upload -->
-                                        <div class="col-md-6">
-                                            <label class="form-label fw-medium">Upload Property Video</label>
-                                            <input type="file" class="form-control">
-                                        </div>
+                                    <!-- Property Video Upload -->
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-medium">Upload Property Video</label>
+                                        <input type="file" class="form-control">
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
 
-                            <div class="form-section">
-                                <div class="card shadow-lg p-4">
-                                    <div class="form-group">
-                                        <div class="form-header text-center">
-                                            <h2 class="fw-bold">Floor plans</h2>
-                                        </div>
+                        <div class="form-section">
+                            <div class="card shadow-lg p-4">
+                                <div class="form-group">
+                                    <div class="form-header text-center">
+                                        <h2 class="fw-bold">Floor plans</h2>
                                     </div>
-                                    <div class="row">
-                                        <!-- Plan Description -->
-                                        <div class="col-md-6">
-                                            <label class="form-label fw-medium">Plan Description</label>
-                                            <input type="text" class="form-control" placeholder="Enter plan description">
-                                        </div>
-                                        <!-- Number of Bedrooms -->
-                                        <div class="col-md-6">
-                                            <label class="form-label fw-medium">Plan Bedrooms</label>
-                                            <input type="number" class="form-control" placeholder="Enter number of bedrooms">
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <!-- Plan Description -->
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-medium">Plan Description</label>
+                                        <input type="text" class="form-control" placeholder="Enter plan description">
                                     </div>
-                                    <div class="row mt-3">
-                                        <!-- Plan Bathrooms -->
-                                        <div class="col-md-6">
-                                            <label class="form-label fw-medium">Plan Bathrooms</label>
-                                            <input type="number" class="form-control" placeholder="Enter number of bathrooms">
-                                        </div>
-                                        <!-- Plan Size -->
-                                        <div class="col-md-6">
-                                            <label class="form-label fw-medium">Plan Size (sqft)</label>
-                                            <input type="text" class="form-control" placeholder="Enter size in sqft">
-                                        </div>
+                                    <!-- Number of Bedrooms -->
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-medium">Plan Bedrooms</label>
+                                        <input type="number" class="form-control" placeholder="Enter number of bedrooms">
                                     </div>
-                                    <div class="row mt-3">
-                                        <!-- Plan Image Upload -->
-                                        <div class="col-md-12">
-                                            <label class="form-label fw-medium">Upload Floor Plan Image</label>
-                                            <input type="file" class="form-control">
-                                        </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <!-- Plan Bathrooms -->
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-medium">Plan Bathrooms</label>
+                                        <input type="number" class="form-control" placeholder="Enter number of bathrooms">
+                                    </div>
+                                    <!-- Plan Size -->
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-medium">Plan Size (sqft)</label>
+                                        <input type="text" class="form-control" placeholder="Enter size in sqft">
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <!-- Plan Image Upload -->
+                                    <div class="col-md-12">
+                                        <label class="form-label fw-medium">Upload Floor Plan Image</label>
+                                        <input type="file" class="form-control">
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
+                </div>
+            </main>
+            <!-- dashboard container .\ -->
+
+            <!-- Start footer section -->
+            <footer class="footer footer__section">
+                <div class="dashboard__footer--inner text-center">
+                    <p class="copyright__content mb-0">Copyright © 2025Powered By <span>Kibisu</span>. Designed by <a class="copyright__content--link" target="_blank" href="">kibisuerick</a> All Rights Reserved.</p>
+                </div>
+            </footer>
+            <!-- End footer section -->
+            </main>
         </div>
-        </main>
-        <!-- dashboard container .\ -->
-
-        <!-- Start footer section -->
-        <footer class="footer footer__section">
-            <div class="dashboard__footer--inner text-center">
-                <p class="copyright__content mb-0">Copyright © 2025Powered By <span>Kibisu</span>. Designed by <a class="copyright__content--link" target="_blank" href="">kibisuerick</a> All Rights Reserved.</p>
-            </div>
-        </footer>
-        <!-- End footer section -->
-        </main>
-    </div>
 
 
     </div>
