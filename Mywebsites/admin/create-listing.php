@@ -144,6 +144,15 @@ require '../db.php'; // Database connection
             color: #333;
         }
 
+        /* Improve input fields */
+        .form-control {
+            font-size: 13px;
+            /* Bigger text for placeholders */
+            padding: 12px;
+            /* Increase padding for better visibility */
+        }
+
+
         /* Form Input & Select Styling */
         .form-control,
         .form-select {
@@ -183,8 +192,13 @@ require '../db.php'; // Database connection
 
         /* Label Styling */
         .form-label {
-            font-weight: 500;
+            font-size: 16px;
+            /* Increase font size */
+            font-weight: bold;
             margin-bottom: 5px;
+            color: #333;
+            margin-bottom: 5px;
+            /* More spacing between label and input */
         }
 
         /* Adjust spacing for buttons */
@@ -281,6 +295,36 @@ require '../db.php'; // Database connection
 
         .form-row .form-group {
             flex: 1;
+        }
+
+        /* Improve placeholder visibility */
+        ::placeholder {
+            font-size: 14px;
+            color: #666;
+            /* Slightly darker for better readability */
+            opacity: 1;
+            /* Ensure it’s clearly visible */
+        }
+
+        /* Improve checkbox label font size and spacing */
+        .amenities-section label {
+            font-size: 16px;
+            /* Increase text size */
+            font-weight: 500;
+            /* Make text slightly bold */
+            color: #333;
+            /* Improve text color for visibility */
+            margin-right: 15px;
+            /* Add spacing between checkboxes */
+        }
+
+        /* Improve checkbox size */
+        .amenities-section input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            /* Space between checkbox and label */
+            cursor: pointer;
         }
     </style>
 
