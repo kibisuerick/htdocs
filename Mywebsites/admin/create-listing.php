@@ -28,6 +28,8 @@ require '../db.php'; // Database connection
     <link rel="stylesheet" href="assets/css/Create-listing.css">
     <link rel="stylesheet" href="assets/css/dark.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 
     <style>
         /* Existing Styles */
@@ -206,10 +208,10 @@ require '../db.php'; // Database connection
             margin-top: 20px;
         }
 
-        /* Save Button Styling */
+        /* Save Button Styling 
         .save-btn {
-            background: linear-gradient(135deg, #A3CFBB, #009688);
-            /* Green gradient */
+            background: linear-gradient(135deg, #A3CFBB, #009688);*/
+        /* Green gradient 
             color: white;
             padding: 12px 30px;
             font-size: 18px;
@@ -224,7 +226,7 @@ require '../db.php'; // Database connection
             max-width: 200px;
             margin: 20px auto;
             text-align: center;
-        }
+        }*/
 
         /* Hover Effect */
         .save-btn:hover {
@@ -325,6 +327,31 @@ require '../db.php'; // Database connection
             margin-right: 8px;
             /* Space between checkbox and label */
             cursor: pointer;
+        }
+
+        .btn-save {
+            background-color:rgb(53, 80, 59); /* Green */
+            font-size: 15px;
+            /* Increase text size */
+            padding: 14px 28px;
+            /* Increase button size */
+            font-weight: bold;
+            border-radius: 8px;
+            /* Smooth edges */
+        }
+
+        .auto-saving-indicator {
+            background-color: rgba(255, 193, 7);
+            /* Yellow background */
+            color: black;
+            /* High contrast text */
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            position: fixed;
+            bottom: 10px;
+            right: 20px;
+            z-index: 1000;
         }
     </style>
 
@@ -1305,13 +1332,13 @@ require '../db.php'; // Database connection
                             </div>
                         </div>
                         <!-- Save Button -->
-                        <div class="text-end">
-                            <button type="submit" class="btn btn-primary">Save Listing</button>
-                        </div>
+                        <button type="submit" class="btn btn-success btn-save">
+                            <i class="fas fa-save"></i> Save Listing
+                        </button>
                     </form>
                 </div>
                 <!-- Floating Save Progress Reminder -->
-                <div id="save-progress" class="position-fixed bottom-0 end-0 m-3 p-2 bg-warning rounded shadow">Auto-saving...</div>
+                <div id="save-progress" class="auto-saving-indicator">Auto-saving...</div>
             </main>
             <!-- dashboard container .\ -->
 
