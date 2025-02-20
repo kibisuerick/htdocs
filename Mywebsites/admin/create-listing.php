@@ -1256,6 +1256,10 @@ require '../db.php'; // Database connection
                                 </div>
                             </div>
                         </div>
+                        <!-- Save Button -->
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary">Save Listing</button>
+                        </div>
                     </form>
                 </div>
             </main>
