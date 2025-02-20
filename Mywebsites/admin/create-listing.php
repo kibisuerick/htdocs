@@ -955,7 +955,7 @@ require '../db.php'; // Database connection
                                             <!-- Description -->
                                             <div class="col-12">
                                                 <label class="form-label">Description</label>
-                                                <textarea class="form-control" rows="3" placeholder="Enter Property Description"></textarea>
+                                                <input type="text" class="form-control" placeholder="Enter Property Description">
                                             </div>
                                         </div>
                                     </div>
