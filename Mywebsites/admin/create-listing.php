@@ -1262,6 +1262,8 @@ require '../db.php'; // Database connection
                         </div>
                     </form>
                 </div>
+                <!-- Floating Save Progress Reminder -->
+                <div id="save-progress" class="position-fixed bottom-0 end-0 m-3 p-2 bg-warning rounded shadow">Auto-saving...</div>
             </main>
             <!-- dashboard container .\ -->
 
@@ -1274,8 +1276,6 @@ require '../db.php'; // Database connection
             <!-- End footer section -->
             </main>
         </div>
-
-
     </div>
 
     <!-- Scroll top bar -->
@@ -1302,8 +1302,14 @@ require '../db.php'; // Database connection
         if (localStorage.getItem("theme-color") === "light") {
             document.getElementById("light__to--dark")?.classList.remove("dark--version");
         }
-    </script>
 
+        document.addEventListener("DOMContentLoaded", function() {
+            setInterval(() => {
+                document.getElementById('save-progress').style.display = 'block';
+                setTimeout(() => document.getElementById('save-progress').style.display = 'none', 2000);
+            }, 15000);
+        });
+    </script>
 
 </body>
 
