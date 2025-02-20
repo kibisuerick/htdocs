@@ -890,6 +890,7 @@ require '../db.php'; // Database connection
                 </div>
                 <div class="container mt-4">
                     <form action="save_listing.php" method="POST" enctype="multipart/form-data">
+                        <!--create listing section-->
                         <div class="form-section">
                             <div class="card shadow-lg p-4">
                                 <div class="form-header text-center">
@@ -971,8 +972,7 @@ require '../db.php'; // Database connection
                             </div>
                         </div>
 
-
-                        <!-- Address & County -->
+                        <!-- Location section -->
                         <div class="form-section">
                             <div class="card shadow-lg p-4">
                                 <div class="form-row">
@@ -1060,7 +1060,7 @@ require '../db.php'; // Database connection
                         </div>
 
 
-                        <!-- Address & County -->
+                        <!-- Detailed information section -->
                         <div class="form-section">
                             <div class="card shadow-lg p-4">
                                 <div class="form-row">
@@ -1139,7 +1139,7 @@ require '../db.php'; // Database connection
                             </div>
                         </div>
 
-
+                        <!--Amenities and Features-->
                         <div class="form-section">
                             <div class="card shadow-lg p-4">
                                 <!--<div class="form-row">-->
@@ -1191,7 +1191,7 @@ require '../db.php'; // Database connection
                             </div>
                         </div>
 
-
+                        <!--Property media section-->
                         <div class="form-section">
                             <div class="card shadow-lg p-4">
                                 <div class="form-group">
@@ -1215,7 +1215,7 @@ require '../db.php'; // Database connection
                             </div>
                         </div>
 
-
+                        <!--Floor plans section-->
                         <div class="form-section">
                             <div class="card shadow-lg p-4">
                                 <div class="form-group">
