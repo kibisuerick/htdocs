@@ -77,7 +77,8 @@ require '../db.php'; // Database connection
 
         /* Page Header */
         .page-header {
-            margin-bottom: 30px;
+            margin-top: 20px; /* Adjust based on your navbar height */
+            margin-bottom: 20px;
             padding: 20px 0;
             text-align: center;
             background-color: #f8f9fa;
@@ -413,20 +414,20 @@ require '../db.php'; // Database connection
                             </ul>
                         </li>
 
-                        <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="my-properties.html">Properties</a></li>
+                        <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="my-properties.php">Properties</a></li>
                         <li class="offcanvas__menu_li">
                             <a class="offcanvas__menu_item" href="dashboard.php">Dashboard</a>
                             <ul class="offcanvas__sub_menu">
                                 <li class="offcanvas__sub_menu_li"><a href="dashboard.php" class="offcanvas__sub_menu_item">Dashboard</a></li>
-                                <li class="offcanvas__sub_menu_li"><a href="Create-listing.html" class="offcanvas__sub_menu_item">Create Listing</a></li>
-                                <li class="offcanvas__sub_menu_li"><a href="chat.html" class="offcanvas__sub_menu_item">Chats</a></li>
-                                <li class="offcanvas__sub_menu_li"><a href="my-favorites.html" class="offcanvas__sub_menu_item">My Favorites</a></li>
-                                <li class="offcanvas__sub_menu_li"><a href="my-properties.html" class="offcanvas__sub_menu_item">My Properties</a></li>
+                                <li class="offcanvas__sub_menu_li"><a href="Create-listing.php" class="offcanvas__sub_menu_item">Create Listing</a></li>
+                                <li class="offcanvas__sub_menu_li"><a href="Chat.php" class="offcanvas__sub_menu_item">Chats</a></li>
+                                <li class="offcanvas__sub_menu_li"><a href="my-favorites.php" class="offcanvas__sub_menu_item">My Favorites</a></li>
+                                <li class="offcanvas__sub_menu_li"><a href="my-properties.php" class="offcanvas__sub_menu_item">My Properties</a></li>
                                 <!--<li class="offcanvas__sub_menu_li"><a href="my-package.html" class="offcanvas__sub_menu_item">My Package</a></li>-->
-                                <li class="offcanvas__sub_menu_li"><a href="profile.html" class="offcanvas__sub_menu_item">My Profile</a></li>
-                                <li class="offcanvas__sub_menu_li"><a href="reviews.html" class="offcanvas__sub_menu_item">Reviews</a></li>
-                                <li class="offcanvas__sub_menu_li"><a href="saved-search.html" class="offcanvas__sub_menu_item">Saved Search</a></li>
-                                <li class="offcanvas__sub_menu_li"><a href="settings.html" class="offcanvas__sub_menu_item">Setting</a></li>
+                                <li class="offcanvas__sub_menu_li"><a href="profile.php" class="offcanvas__sub_menu_item">My Profile</a></li>
+                                <li class="offcanvas__sub_menu_li"><a href="reviews.php" class="offcanvas__sub_menu_item">Reviews</a></li>
+                                <li class="offcanvas__sub_menu_li"><a href="saved-search.php" class="offcanvas__sub_menu_item">Saved Search</a></li>
+                                <li class="offcanvas__sub_menu_li"><a href="settings.php" class="offcanvas__sub_menu_item">Setting</a></li>
                             </ul>
                         </li>
                         <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="../blog.html">News</a></li>
@@ -537,7 +538,7 @@ require '../db.php'; // Database connection
                             <span class="sidebar__menu--text"> Dashboard</span>
                         </a>
                     </li>
-                    <li class="sidebar__menu--items"><a class="sidebar__menu--link active" href="Create-listing.html"><svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <li class="sidebar__menu--items"><a class="sidebar__menu--link active" href="Create-listing.php"><svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M9.99996 18.3334C14.5833 18.3334 18.3333 14.5834 18.3333 10.0001C18.3333 5.41675 14.5833 1.66675 9.99996 1.66675C5.41663 1.66675 1.66663 5.41675 1.66663 10.0001C1.66663 14.5834 5.41663 18.3334 9.99996 18.3334Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M6.66663 10H13.3333" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M10 13.3334V6.66675" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
@@ -545,7 +546,7 @@ require '../db.php'; // Database connection
                             <span class="sidebar__menu--text"> Create Listing</span>
                         </a>
                     </li>
-                    <li class="sidebar__menu--items"><a class="sidebar__menu--link" href="chat.html"><svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <li class="sidebar__menu--items"><a class="sidebar__menu--link" href="Chat.php"><svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M14.1666 7.50008C14.1666 10.7251 11.3666 13.3334 7.91663 13.3334L7.14163 14.2667L6.6833 14.8168C6.29163 15.2834 5.54162 15.1834 5.28329 14.6251L4.16663 12.1667C2.64996 11.1001 1.66663 9.40842 1.66663 7.50008C1.66663 4.27508 4.46663 1.66675 7.91663 1.66675C10.4333 1.66675 12.6083 3.05842 13.5833 5.05842C13.9583 5.80009 14.1666 6.62508 14.1666 7.50008Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M18.3334 10.7167C18.3334 12.625 17.3501 14.3167 15.8334 15.3834L14.7167 17.8417C14.4584 18.4 13.7084 18.5084 13.3167 18.0334L12.0834 16.55C10.0667 16.55 8.26672 15.6583 7.14172 14.2667L7.91672 13.3333C11.3667 13.3333 14.1667 10.725 14.1667 7.50001C14.1667 6.62501 13.9584 5.80002 13.5834 5.05835C16.3084 5.68335 18.3334 7.98333 18.3334 10.7167Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M5.83337 7.5H10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
@@ -568,12 +569,12 @@ require '../db.php'; // Database connection
                             </svg>
                         </a>
                         <ul class="sidebar__dropdown--menu accordion-collapse collapse show" id="collapseOne">
-                            <li class="sidebar__dropdown--menu__items"><a class="sidebar__dropdown--menu__link" href="my-properties.html">General Elements</a></li>
-                            <li class="sidebar__dropdown--menu__items"><a class="sidebar__dropdown--menu__link" href="my-properties.html">Advanced Elements</a></li>
-                            <li class="sidebar__dropdown--menu__items"><a class="sidebar__dropdown--menu__link" href="my-properties.html">Editors</a></li>
+                            <li class="sidebar__dropdown--menu__items"><a class="sidebar__dropdown--menu__link" href="my-properties.php">General Elements</a></li>
+                            <li class="sidebar__dropdown--menu__items"><a class="sidebar__dropdown--menu__link" href="my-properties.php">Advanced Elements</a></li>
+                            <li class="sidebar__dropdown--menu__items"><a class="sidebar__dropdown--menu__link" href="my-properties.php">Editors</a></li>
                         </ul>
                     </li>
-                    <li class="sidebar__menu--items"><a class="sidebar__menu--link" href="my-favorites.html"><svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <li class="sidebar__menu--items"><a class="sidebar__menu--link" href="my-favorites.php"><svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M18.3334 14.3332C18.3334 15.0832 18.125 15.7916 17.75 16.3916C17.0584 17.5499 15.7917 18.3332 14.3334 18.3332C12.875 18.3332 11.6 17.5499 10.9167 16.3916C10.55 15.7916 10.3334 15.0832 10.3334 14.3332C10.3334 12.1249 12.125 10.3333 14.3334 10.3333C16.5417 10.3333 18.3334 12.1249 18.3334 14.3332Z" stroke="currentColor" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M12.775 14.3332L13.7584 15.3165L15.8917 13.3499" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M18.3333 7.24161C18.3333 8.88327 17.9083 10.3332 17.2416 11.5916C16.5083 10.8166 15.475 10.3333 14.3333 10.3333C12.125 10.3333 10.3333 12.1249 10.3333 14.3333C10.3333 15.3583 10.725 16.2916 11.3583 17C11.05 17.1416 10.7666 17.2583 10.5166 17.3416C10.2333 17.4416 9.76663 17.4416 9.48329 17.3416C7.06663 16.5166 1.66663 13.0749 1.66663 7.24161C1.66663 4.66661 3.74163 2.58325 6.29996 2.58325C7.80829 2.58325 9.15829 3.31662 9.99996 4.44162C10.8416 3.31662 12.1916 2.58325 13.7 2.58325C16.2583 2.58325 18.3333 4.66661 18.3333 7.24161Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
@@ -581,7 +582,7 @@ require '../db.php'; // Database connection
                             <span class="sidebar__menu--text">My Favorites</span>
                         </a>
                     </li>
-                    <li class="sidebar__menu--items"><a class="sidebar__menu--link" href="saved-search.html"><svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <li class="sidebar__menu--items"><a class="sidebar__menu--link" href="saved-search.php"><svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M11.6666 4.16675H16.6666" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M11.6666 6.66675H14.1666" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M17.5 9.58341C17.5 13.9584 13.9583 17.5001 9.58329 17.5001C5.20829 17.5001 1.66663 13.9584 1.66663 9.58341C1.66663 5.20841 5.20829 1.66675 9.58329 1.66675" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
@@ -601,8 +602,8 @@ require '../db.php'; // Database connection
                                 <path d="M5.99999 3.02344L1.87499 7.14844L0.696655 5.9701L5.99999 0.666771L11.3033 5.9701L10.125 7.14844L5.99999 3.02344Z" fill="currentColor" />
                             </svg></a>
                         <ul class="sidebar__dropdown--menu accordion-collapse collapse show" id="collapsetwo">
-                            <li class="sidebar__dropdown--menu__items"><a class="sidebar__dropdown--menu__link" href="reviews.html">General Elements</a></li>
-                            <li class="sidebar__dropdown--menu__items"><a class="sidebar__dropdown--menu__link" href="reviews.html">Advanced Elements</a></li>
+                            <li class="sidebar__dropdown--menu__items"><a class="sidebar__dropdown--menu__link" href="reviews.php">General Elements</a></li>
+                            <li class="sidebar__dropdown--menu__items"><a class="sidebar__dropdown--menu__link" href="reviews.php">Advanced Elements</a></li>
                         </ul>
                     </li>
                     <li class="sidebar__menu--items">
@@ -616,14 +617,14 @@ require '../db.php'; // Database connection
                         <span class="sidebar__menu--text">My Package</span>                                                                       
                         </a>
                     </li>-->
-                    <li class="sidebar__menu--items"><a class="sidebar__menu--link" href="profile.html"><svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <li class="sidebar__menu--items"><a class="sidebar__menu--link" href="profile.php"><svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M10 10.0001C12.3012 10.0001 14.1667 8.1346 14.1667 5.83342C14.1667 3.53223 12.3012 1.66675 10 1.66675C7.69885 1.66675 5.83337 3.53223 5.83337 5.83342C5.83337 8.1346 7.69885 10.0001 10 10.0001Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M17.1583 18.3333C17.1583 15.1083 13.95 12.5 10 12.5C6.05001 12.5 2.84167 15.1083 2.84167 18.3333" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                             <span class="sidebar__menu--text"> My Profile</span>
                         </a>
                     </li>
-                    <li class="sidebar__menu--items"><a class="sidebar__menu--link" href="settings.html"><svg class="sidebar__menu--icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <li class="sidebar__menu--items"><a class="sidebar__menu--link" href="settings.php"><svg class="sidebar__menu--icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
                                 <circle cx="12" cy="12" r="3"></circle>
                             </svg>
@@ -729,7 +730,7 @@ require '../db.php'; // Database connection
                                         </ul>
                                     </li>
                                     <li class="main__menu--items">
-                                        <a class="main__menu--link" href="my-properties.html"> Properties </a>
+                                        <a class="main__menu--link" href="my-properties.php"> Properties </a>
                                     </li>
                                     <!--<li class="main__menu--items">
                                         <a class="main__menu--link" href="dashboard.php"> Dashboard 
@@ -740,15 +741,15 @@ require '../db.php'; // Database connection
                                         
                                         <ul class="sub__menu">
                                             <li class="sub__menu--items"><a href="dashboard.php" class="sub__menu--link">Dashboard</a></li>
-                                            <li class="sub__menu--items"><a href="Create-listing.html" class="sub__menu--link">Create Listing</a></li>
-                                            <li class="sub__menu--items"><a href="chat.html" class="sub__menu--link">Chats</a></li>
-                                            <li class="sub__menu--items"><a href="my-favorites.html" class="sub__menu--link">My Favorites</a></li>
-                                            <li class="sub__menu--items"><a href="my-properties.html" class="sub__menu--link">My Properties</a></li>
+                                            <li class="sub__menu--items"><a href="Create-listing.php" class="sub__menu--link">Create Listing</a></li>
+                                            <li class="sub__menu--items"><a href="Chat.php" class="sub__menu--link">Chats</a></li>
+                                            <li class="sub__menu--items"><a href="my-favorites.php" class="sub__menu--link">My Favorites</a></li>
+                                            <li class="sub__menu--items"><a href="my-properties.php" class="sub__menu--link">My Properties</a></li>
                                             <li class="sub__menu--items"><a href="my-package.html" class="sub__menu--link">My Package</a></li>
-                                            <li class="sub__menu--items"><a href="profile.html" class="sub__menu--link">My Profile</a></li>
-                                            <li class="sub__menu--items"><a href="reviews.html" class="sub__menu--link">Reviews</a></li>
-                                            <li class="sub__menu--items"><a href="saved-search.html" class="sub__menu--link">Saved Search</a></li>
-                                            <li class="sub__menu--items"><a href="settings.html" class="sub__menu--link">Setting</a></li>
+                                            <li class="sub__menu--items"><a href="profile.php" class="sub__menu--link">My Profile</a></li>
+                                            <li class="sub__menu--items"><a href="reviews.php" class="sub__menu--link">Reviews</a></li>
+                                            <li class="sub__menu--items"><a href="saved-search.php" class="sub__menu--link">Saved Search</a></li>
+                                            <li class="sub__menu--items"><a href="settings.php" class="sub__menu--link">Setting</a></li>
                                         </ul>
                                     </li>-->
                                     <li class="main__menu--items">
@@ -880,7 +881,7 @@ require '../db.php'; // Database connection
                                     </div>
                                 </li>
                                 <li class="nav-bar__menu--items">
-                                    <a class="nav-bar__menu--icon" href="chat.html"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <a class="nav-bar__menu--icon" href="Chat.php"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M14.1667 7.50008C14.1667 10.7251 11.3667 13.3334 7.91675 13.3334L7.14175 14.2667L6.68342 14.8168C6.29175 15.2834 5.54174 15.1834 5.28341 14.6251L4.16675 12.1667C2.65008 11.1001 1.66675 9.40842 1.66675 7.50008C1.66675 4.27508 4.46675 1.66675 7.91675 1.66675C10.4334 1.66675 12.6084 3.05842 13.5834 5.05842C13.9584 5.80009 14.1667 6.62508 14.1667 7.50008Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
                                             <path d="M18.3333 10.7167C18.3333 12.625 17.3499 14.3167 15.8333 15.3834L14.7166 17.8417C14.4583 18.4 13.7083 18.5084 13.3166 18.0334L12.0833 16.55C10.0666 16.55 8.2666 15.6583 7.1416 14.2667L7.9166 13.3333C11.3666 13.3333 14.1666 10.725 14.1666 7.50001C14.1666 6.62501 13.9583 5.80002 13.5833 5.05835C16.3083 5.68335 18.3333 7.98333 18.3333 10.7167Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
                                             <path d="M5.83325 7.5H9.99992" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
@@ -910,17 +911,17 @@ require '../db.php'; // Database connection
                                 </a>
                                 <div class="dropdown__user--profile">
                                     <ul class="user__profile--menu">
-                                        <li class="user__profile--menu__items"><a class="user__profile--menu__link" href="profile.html"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="user-2" class="lucide lucide-user-2 inline-block size-4 ltr:mr-2 rtl:ml-2">
+                                        <li class="user__profile--menu__items"><a class="user__profile--menu__link" href="profile.php"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="user-2" class="lucide lucide-user-2 inline-block size-4 ltr:mr-2 rtl:ml-2">
                                                     <circle cx="12" cy="8" r="5"></circle>
                                                     <path d="M20 21a8 8 0 0 0-16 0"></path>
                                                 </svg> My Profile</a></li>
 
-                                        <li class="user__profile--menu__items"><a class="user__profile--menu__link position-relative" href="chat.html"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="mail" class="lucide lucide-mail inline-block size-4 ltr:mr-2 rtl:ml-2">
+                                        <li class="user__profile--menu__items"><a class="user__profile--menu__link position-relative" href="Chat.php"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="mail" class="lucide lucide-mail inline-block size-4 ltr:mr-2 rtl:ml-2">
                                                     <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                                                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                                                 </svg> Inbox <span class="profile__messages--count">12</span> </a></li>
 
-                                        <li class="user__profile--menu__items"><a class="user__profile--menu__link" href="settings.html"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings">
+                                        <li class="user__profile--menu__items"><a class="user__profile--menu__link" href="settings.php"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings">
                                                     <circle cx="12" cy="12" r="3"></circle>
                                                     <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
                                                 </svg> Account Settings </a></li>
@@ -955,7 +956,7 @@ require '../db.php'; // Database connection
             <!-- End header area -->
 
             <main class="main__content_wrapper">
-                <div class="header-section">
+                <div class="header-section"  style="margin-top: 80px">
                     <h1>Add New Property</h1>
                     <p>We are glad to see you again!</p>
                 </div>
