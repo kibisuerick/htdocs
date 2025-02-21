@@ -961,7 +961,7 @@ require '../db.php'; // Database connection
                     <p>We are glad to see you again!</p>
                 </div>
                 <div class="container mt-4">
-                    <form action="save_listing.php" method="POST" enctype="multipart/form-data">
+                    <form action="process-listing.php" method="POST" enctype="multipart/form-data">
                         <!--create listing section-->
                         <div class="form-section">
                             <div class="card shadow-lg p-4">
