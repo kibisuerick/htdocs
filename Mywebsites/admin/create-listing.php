@@ -956,7 +956,7 @@ require '../db.php'; // Database connection
             <!-- End header area -->
 
             <main class="main__content_wrapper">
-                <div class="header-section"  style="margin-top: 80px">
+                <div class="header-section"  style="margin-top: 30px">
                     <h1>Add New Property</h1>
                     <p>We are glad to see you again!</p>
                 </div>
