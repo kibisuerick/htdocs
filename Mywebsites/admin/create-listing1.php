@@ -1,10 +1,5 @@
 <?php
 require '../db.php'; // Database connection
-
-if (isset($_GET['success'])) {
-    echo '<div class="alert alert-success">Listing saved successfully!</div>';
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -16,59 +11,41 @@ if (isset($_GET['success'])) {
     <title>Create Listing</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css"> <!-- Custom styling -->
+    <!-- Include Dropzone CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css">
-
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: auto;
-        }
-
-        .dropzone {
-            border: 2px dashed #007bff;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .dz-message {
-            color: #007bff;
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
-    </style>
 </head>
 
 <body>
     <div class="container mt-4">
         <h2>Create Listing</h2>
         <form action="../admin/save-listings.php" method="POST" enctype="multipart/form-data">
+
+            <!-- Location Section -->
             <fieldset class="border p-3 mb-4">
                 <legend class="w-auto">Location</legend>
                 <div class="row">
                     <div class="col-md-6">
                         <label>City</label>
-                        <input type="text" name="city" class="form-control" required>
+                        <input type="text" name="city" class="form-control" required="">
                     </div>
                     <div class="col-md-6">
                         <label>State</label>
-                        <input type="text" name="state" class="form-control" required>
+                        <input type="text" name="state" class="form-control" required="">
                     </div>
                 </div>
             </fieldset>
+            <!-- title section -->
+            <fieldset class="border p-3 mb-4">
+                <legend class="w-auto">Title</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>title</label>
+                        <input type="text" name="title" class="form-control" required="">
+                    </div>                    
+                </div>
+            </fieldset>
 
+            <!-- Detailed Information Section -->
             <fieldset class="border p-3 mb-4">
                 <legend class="w-auto">Detailed Information</legend>
                 <div class="row">
@@ -86,6 +63,7 @@ if (isset($_GET['success'])) {
                 </div>
             </fieldset>
 
+            <!-- Amenities and Features -->
             <fieldset class="border p-3 mb-4">
                 <legend class="w-auto">Amenities and Features</legend>
                 <div class="form-check">
@@ -98,16 +76,98 @@ if (isset($_GET['success'])) {
                 </div>
             </fieldset>
 
+            <!-- Property Media -->
             <fieldset class="border p-3 mb-4">
                 <legend class="w-auto">Property Media</legend>
-                <input type="file" name="image" class="form-control" required>
+                <!-- Dropzone File Upload -->
+                <div class="dropzone" id="propertyImageUpload">
+                    <div class="dz-message">
+                        Drag & Drop files here or click to upload
+                    </div>
+                </div>
+                <input type="hidden" name="property_images" id="propertyImages">
             </fieldset>
 
+            <!-- Floor Plans -->
+            <fieldset class="border p-3 mb-4">
+                <legend class="w-auto">Floor Plans</legend>
+                <!-- Dropzone File Upload -->
+                <div class="dropzone" id="floorPlansUpload">
+                    <div class="dz-message">
+                        Drag & Drop files here or click to upload
+                    </div>
+                </div>
+                <input type="hidden" name="floor_plan_images" id="floorPlanImages">
+            </fieldset>
+
+            <!-- Save Button -->
             <div class="text-end">
                 <button type="submit" class="btn btn-primary">Save Listing</button>
             </div>
         </form>
     </div>
+
+    <!-- Floating Save Progress Reminder -->
+    <div id="save-progress" class="position-fixed bottom-0 end-0 m-3 p-2 bg-warning rounded shadow" style="display: none;">
+        Auto-saving...
+    </div>
+
+    <!-- Include Dropzone.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let formChanged = false;
+
+            document.querySelector("form").addEventListener("input", function() {
+                formChanged = true;
+            });
+
+            setInterval(() => {
+                if (formChanged) {
+                    document.getElementById('save-progress').style.display = 'block';
+                    setTimeout(() => document.getElementById('save-progress').style.display = 'none', 2000);
+                    formChanged = false;
+                }
+            }, 15000);
+        });
+
+        // Initialize Dropzone for Property Media
+        Dropzone.options.propertyImageUpload = {
+            url: "upload.php",
+            paramName: "image",
+            maxFilesize: 5, // 5MB limit
+            acceptedFiles: "image/*",
+            addRemoveLinks: true,
+            dictRemoveFile: "Remove",
+            init: function() {
+                let uploadedFiles = [];
+
+                this.on("success", function(file, response) {
+                    uploadedFiles.push(response.filePath); // Store file paths
+                    console.log("File uploaded:", response);
+                });
+            }
+        };
+
+        // Initialize Dropzone for Floor Plans
+        Dropzone.options.floorPlansUpload = {
+            url: "upload.php",
+            paramName: "image",
+            maxFilesize: 5, // 5MB limit
+            acceptedFiles: "image/*",
+            addRemoveLinks: true,
+            dictRemoveFile: "Remove",
+            init: function() {
+                let uploadedFiles = [];
+
+                this.on("success", function(file, response) {
+                    uploadedFiles.push(response.filePath); // Store file paths
+                    console.log("File uploaded:", response);
+                });
+            }
+        };
+    </script>
 </body>
 
 </html>
