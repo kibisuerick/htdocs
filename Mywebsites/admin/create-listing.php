@@ -1279,20 +1279,27 @@ require '../db.php'; // Database connection
                             </div>
                         </div>
                         <div class="row">
-                            <!-- Property Images Upload -->
-                            <div class="col-md-6">
-                                <label class="form-label fw-medium">Upload Property Images</label>
-                                <input type="file" class="form-control" multiple>
+
+                            <!-- Dropzone File Upload -->
+                            <div class="dropzone" id="propertyImageUpload">
+                                <div class="dz-message">
+                                    Drag & Drop files here or click to upload
+                                </div>
                             </div>
+                            <input type="hidden" name="property_images" id="propertyImages">
+
 
                             <!-- Property Video Upload -->
-                            <div class="col-md-6">
-                                <label class="form-label fw-medium">Upload Property Video</label>
-                                <input type="file" class="form-control">
+                            <div class="dropzone" id="propertyVideoUpload">
+                                <div class="dz-message">
+                                    Drag & Drop files here or click to upload
+                                </div>
                             </div>
+                            <input type="hidden" name="property_Video" id="propertyVideo">
                         </div>
                     </div>
                 </div>
+
 
                 <!--Floor plans section-->
                 <div class="form-section">
@@ -1342,23 +1349,23 @@ require '../db.php'; // Database connection
                     <i class="fas fa-save"></i> Save Listing
                 </button>
                 </form>
-        </div>
-        <!-- Floating Save Progress Reminder -->
-        <div id="save-progress" class="position-fixed bottom-0 end-0 m-3 p-2 bg-warning rounded shadow" style="display: none;">
-            Auto-saving...
-        </div>
-        </main>
-        <!-- dashboard container .\ -->
 
-        <!-- Start footer section -->
-        <footer class="footer footer__section">
-            <div class="dashboard__footer--inner text-center">
-                <p class="copyright__content mb-0">Copyright © 2025Powered By <span>Kibisu</span>. Designed by <a class="copyright__content--link" target="_blank" href="">kibisuerick</a> All Rights Reserved.</p>
-            </div>
-        </footer>
-        <!-- End footer section -->
-        </main>
-    </div>
+                <!-- Floating Save Progress Reminder -->
+                <div id="save-progress" class="position-fixed bottom-0 end-0 m-3 p-2 bg-warning rounded shadow" style="display: none;">
+                    Auto-saving...
+                </div>
+            </main>
+            <!-- dashboard container .\ -->
+
+            <!-- Start footer section -->
+            <footer class="footer footer__section">
+                <div class="dashboard__footer--inner text-center">
+                    <p class="copyright__content mb-0">Copyright © 2025Powered By <span>Kibisu</span>. Designed by <a class="copyright__content--link" target="_blank" href="">kibisuerick</a> All Rights Reserved.</p>
+                </div>
+            </footer>
+            <!-- End footer section -->
+            </main>
+        </div>
     </div>
 
     <!-- Scroll top bar -->
@@ -1446,6 +1453,40 @@ require '../db.php'; // Database connection
                 this.on("success", function(file, response) {
                     uploadedFiles.push(response.filePath); // Store file paths
                     console.log("File uploaded:", response);
+                });
+            }
+        };
+
+        // Initialize Dropzone for Property Video Uploads
+        Dropzone.options.propertyVideoUpload = {
+            url: "upload.php", // URL for file upload
+            paramName: "video", // Parameter name for the video file
+            maxFilesize: 50, // 50MB limit (adjust as needed)
+            acceptedFiles: "video/*", // Allow only video files
+            addRemoveLinks: true, // Add remove links for uploaded files
+            dictRemoveFile: "Remove", // Text for the remove link
+            init: function() {
+                let uploadedFiles = []; // Array to store uploaded file paths
+
+                this.on("success", function(file, response) {
+                    // Store the uploaded file path
+                    uploadedFiles.push(response.filePath);
+
+                    // Update the hidden input field with the file paths
+                    document.getElementById("propertyVideo").value = uploadedFiles.join(",");
+
+                    console.log("Video uploaded:", response);
+                });
+
+                this.on("removedfile", function(file) {
+                    // Remove the file path from the array when a file is removed
+                    const filePath = file.xhr.response.filePath;
+                    uploadedFiles = uploadedFiles.filter(path => path !== filePath);
+
+                    // Update the hidden input field with the remaining file paths
+                    document.getElementById("propertyVideo").value = uploadedFiles.join(",");
+
+                    console.log("Video removed:", filePath);
                 });
             }
         };
