@@ -16,7 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $rooms = filter_input(INPUT_POST, 'rooms', FILTER_VALIDATE_INT);
     $address = filter_input(INPUT_POST, 'address', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $landmark = filter_input(INPUT_POST, 'landmark', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $area = filter_input(INPUT_POST, 'area', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+    $video_url = filter_input(INPUT_POST, 'video_url', FILTER_SANITIZE_URL);
     $created_at = date('Y-m-d H:i:s');
+
+    // Handle multiple amenities as comma-separated values
+    $amenities = isset($_POST['amenities']) ? implode(',', $_POST['amenities']) : '';
 
     // Image Upload Handling
     $imagePaths = ""; // Stores paths of uploaded images
@@ -46,18 +51,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-        // Merge new images with existing ones
-        if (!empty($imagePaths)) {
-            $existingImages = explode(",", $imagePaths);
-            $imagePaths = implode(",", array_merge($existingImages, $uploadedImages));
-        } else {
-            $imagePaths = implode(",", $uploadedImages);
+        $imagePaths = implode(",", $uploadedImages);
+    }
+
+    // Floor Plan Upload Handling
+    $floorPlanPaths = "";
+    if (!empty($_FILES['floor_plans']['name'][0])) {
+        $uploadDir = '../admin/uploads/floor_plans/';
+        $uploadedFloorPlans = [];
+
+        foreach ($_FILES['floor_plans']['name'] as $key => $floorPlanName) {
+            $fileName = time() . '_' . basename($floorPlanName);
+            $uploadFilePath = $uploadDir . $fileName;
+
+            if (move_uploaded_file($_FILES['floor_plans']['tmp_name'][$key], $uploadFilePath)) {
+                $uploadedFloorPlans[] = $fileName;
+            }
         }
+
+        $floorPlanPaths = implode(",", $uploadedFloorPlans);
     }
 
     // Insert into database
-    $sql = "INSERT INTO properties (title, description, price, type, status, image, created_at, rooms, address, landmark, county, region, po_box, country, year_built) 
-            VALUES (:title, :description, :price, :type, :status, :image, :created_at, :rooms, :address, :landmark, :county, :region, :po_box, :country, :year_built)";
+    $sql = "INSERT INTO properties (title, description, price, type, status, image, created_at, rooms, address, landmark, county, region, po_box, country, year_built, area, amenities, video_url, floor_plans) 
+            VALUES (:title, :description, :price, :type, :status, :image, :created_at, :rooms, :address, :landmark, :county, :region, :po_box, :country, :year_built, :area, :amenities, :video_url, :floor_plans)";
 
     try {
         $stmt = $pdo->prepare($sql);
@@ -77,6 +94,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':po_box' => $po_box,
             ':country' => $country,
             ':year_built' => $year_built,
+            ':area' => $area,
+            ':amenities' => $amenities,
+            ':video_url' => $video_url,
+            ':floor_plans' => $floorPlanPaths, // Stores multiple floor plans as comma-separated values
         ]);
 
         // Redirect with success message
