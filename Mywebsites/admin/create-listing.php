@@ -1375,7 +1375,7 @@ require '../db.php'; // Database connection
                             <!-- Dropzone File Upload -->
                             <div class="dropzone" id="floorPlansUpload">
                                 <div class="dz-message">
-                                    Drag & Drop files here or click to upload
+                                    Drag & Drop image files here or click to upload
                                 </div>
                             </div>
                             <input type="hidden" name="floor_plan_images" id="floorPlanImages">

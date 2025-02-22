@@ -5,18 +5,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validate and sanitize input data
     $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $location = filter_input(INPUT_POST, 'location', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $price = filter_input(INPUT_POST, 'price', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
     $type = filter_input(INPUT_POST, 'type', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $status = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $city = filter_input(INPUT_POST, 'city', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $state = filter_input(INPUT_POST, 'state', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $property_type = filter_input(INPUT_POST, 'property_type', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-    $bedrooms = filter_input(INPUT_POST, 'bedrooms', FILTER_VALIDATE_INT);
-    $bedrooms = $bedrooms !== false ? $bedrooms : 0; // Default to 0 if invalid
-
-    $amenities = isset($_POST['amenities']) ? implode(", ", $_POST['amenities']) : "";
+    $county = filter_input(INPUT_POST, 'county', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $region = filter_input(INPUT_POST, 'region', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $po_box = filter_input(INPUT_POST, 'po_box', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $country = filter_input(INPUT_POST, 'country', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $year_built = filter_input(INPUT_POST, 'year_built', FILTER_VALIDATE_INT);
+    $rooms = filter_input(INPUT_POST, 'rooms', FILTER_VALIDATE_INT);
+    $address = filter_input(INPUT_POST, 'address', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $landmark = filter_input(INPUT_POST, 'landmark', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $created_at = date('Y-m-d H:i:s');
 
     // Image Upload Handling
@@ -57,25 +56,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Insert into database
-    $sql = "INSERT INTO properties (title, description, location, price, type, status, city, state, property_type, bedrooms, amenities, image, created_at) 
-            VALUES (:title, :description, :location, :price, :type, :status, :city, :state, :property_type, :bedrooms, :amenities, :image, :created_at)";
+    $sql = "INSERT INTO properties (title, description, price, type, status, image, created_at, rooms, address, landmark, county, region, po_box, country, year_built) 
+            VALUES (:title, :description, :price, :type, :status, :image, :created_at, :rooms, :address, :landmark, :county, :region, :po_box, :country, :year_built)";
 
     try {
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             ':title' => $title,
             ':description' => $description,
-            ':location' => $location,
             ':price' => $price,
             ':type' => $type,
             ':status' => $status,
-            ':city' => $city,
-            ':state' => $state,
-            ':property_type' => $property_type,
-            ':bedrooms' => $bedrooms,
-            ':amenities' => $amenities,
             ':image' => $imagePaths, // Stores multiple images as comma-separated values
             ':created_at' => $created_at,
+            ':rooms' => $rooms,
+            ':address' => $address,
+            ':landmark' => $landmark,
+            ':county' => $county,
+            ':region' => $region,
+            ':po_box' => $po_box,
+            ':country' => $country,
+            ':year_built' => $year_built,
         ]);
 
         // Redirect with success message
