@@ -80,14 +80,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
 
         // Redirect with success message
-        header("Location: create-listing1.php?success=1");
+        header("Location: create-listing.php?success=1");
         exit();
     } catch (PDOException $e) {
         die("Database error: " . $e->getMessage());
     }
 } else {
     // Redirect if the form is not submitted
-    header("Location: create-listing1.php");
+    header("Location: create-listing.php");
     exit();
 }
 ?>
