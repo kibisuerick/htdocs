@@ -357,6 +357,42 @@ require '../db.php'; // Database connection
             right: 20px;
             z-index: 1000;
         }
+
+        /* Dropzone Styling */
+        .dropzone {
+            border: 2px dashed #4CAF50;
+            /* Green dashed border */
+            background-color: #f9f9f9;
+            /* Light background */
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            min-height: 150px;
+        }
+
+        .dropzone:hover {
+            background-color: #e8f5e9;
+            /* Light green on hover */
+            border-color: #388E3C;
+        }
+
+        .dz-message {
+            font-size: 16px;
+            color: #555;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .dz-message i {
+            font-size: 50px;
+            color: #4CAF50;
+            /* Green icon */
+            margin-bottom: 10px;
+        }
     </style>
 
     <script>
@@ -1279,7 +1315,7 @@ require '../db.php'; // Database connection
                             </div>
                         </div>
                         <div class="row">
-                        <legend class="w-auto">Image(s)</legend>
+                            <legend class="w-auto">Image(s)</legend>
                             <!-- Dropzone File Upload -->
                             <div class="dropzone" id="propertyImageUpload">
                                 <div class="dz-message">
