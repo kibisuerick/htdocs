@@ -29,7 +29,8 @@ require '../db.php'; // Database connection
     <link rel="stylesheet" href="assets/css/dark.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <!-- Include Dropzone CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css">
 
     <style>
         /* Existing Styles */
@@ -77,7 +78,8 @@ require '../db.php'; // Database connection
 
         /* Page Header */
         .page-header {
-            margin-top: 20px; /* Adjust based on your navbar height */
+            margin-top: 20px;
+            /* Adjust based on your navbar height */
             margin-bottom: 20px;
             padding: 20px 0;
             text-align: center;
@@ -331,7 +333,8 @@ require '../db.php'; // Database connection
         }
 
         .btn-save {
-            background-color:rgb(53, 80, 59); /* Green */
+            background-color: rgb(53, 80, 59);
+            /* Green */
             font-size: 15px;
             /* Increase text size */
             padding: 14px 28px;
@@ -956,12 +959,12 @@ require '../db.php'; // Database connection
             <!-- End header area -->
 
             <main class="main__content_wrapper">
-                <div class="header-section"  style="margin-top: 30px">
+                <div class="header-section" style="margin-top: 30px">
                     <h1>Add New Property</h1>
                     <p>We are glad to see you again!</p>
                 </div>
                 <div class="container mt-4">
-                    <form action="process-listing.php" method="POST" enctype="multipart/form-data">
+                    <form action="save-listings.php" method="POST" enctype="multipart/form-data">
                         <!--create listing section-->
                         <div class="form-section">
                             <div class="card shadow-lg p-4">
@@ -1080,7 +1083,7 @@ require '../db.php'; // Database connection
                                 </div>
                                 <div class="row mt-3">
                                     <!-- Type & Region -->
-                                    <div class="col-md-4">
+                                    <!--<div class="col-md-4">
                                         <div class="form-row">
                                             <div class="form-group">
                                                 <label for="type" class="form-label">Type</label>
@@ -1091,7 +1094,7 @@ require '../db.php'; // Database connection
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <div class="col-md-4">
                                         <div class="form-row">
                                             <div class="form-group">
@@ -1142,7 +1145,7 @@ require '../db.php'; // Database connection
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <!--<div class="row">
                                     <div class="form-row">
                                         <div class="form-group">
                                             <div class="col-md-6">
@@ -1158,8 +1161,8 @@ require '../db.php'; // Database connection
                                                 <input type="text" id="area_size" class="form-control" placeholder="Enter Area Size">
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-row">
+                                    </div>-->
+                                <!--<div class="form-row">
                                         <div class="form-group">
                                             <div class="col-md-6">
                                                 <label for="land_area" class="form-label">Land Area</label>
@@ -1182,176 +1185,180 @@ require '../db.php'; // Database connection
                                                 <input type="number" id="bathrooms" class="form-control" placeholder="Enter Number of Bathrooms">
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-row">
+                                    </div>-->
+                                <!--<div class="form-row">
                                         <div class="form-group">
                                             <div class="col-md-6">
                                                 <label for="garages" class="form-label">Garages</label>
                                                 <input type="number" id="garages" class="form-control" placeholder="Enter Number of Garages">
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group">
-                                            <div class="col-md-6">
-                                                <label for="year_built" class="form-label">Year Built</label>
-                                                <input type="text" id="year_built" class="form-control" placeholder="Enter Year Built">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group">
-                                            <div class="col-md-6">
-                                                <label for="video_url" class="form-label">Video URL</label>
-                                                <input type="url" id="video_url" class="form-control" placeholder="Enter Video URL">
-                                            </div>
+                                    </div>-->
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <div class="col-md-6">
+                                            <label for="year_built" class="form-label">Year Built</label>
+                                            <input type="text" id="year_built" class="form-control" placeholder="Enter Year Built">
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <!--Amenities and Features-->
-                        <div class="form-section">
-                            <div class="card shadow-lg p-4">
-                                <!--<div class="form-row">-->
-                                <div class="form-group">
-                                    <div class="form-header text-center">
-                                        <h2 class="fw-bold">Amenities and Features</h2>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <!-- Column 1 -->
-                                    <div class="col-md-6">
-                                        <div class="amenities-section">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="airConditioning">
-                                                <label class="form-check-label" for="airConditioning">Air Conditioning</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="swimmingPool">
-                                                <label class="form-check-label" for="swimmingPool">Swimming Pool</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="outdoorShower">
-                                                <label class="form-check-label" for="outdoorShower">Outdoor Shower</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="lawn">
-                                                <label class="form-check-label" for="lawn">Lawn</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Column 2 -->
-                                    <div class="col-md-6">
-                                        <div class="amenities-section">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="barbeque">
-                                                <label class="form-check-label" for="barbeque">Barbeque</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="washer">
-                                                <label class="form-check-label" for="washer">Washer</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="microwave">
-                                                <label class="form-check-label" for="microwave">Microwave</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="dryer">
-                                                <label class="form-check-label" for="dryer">Dryer</label>
-                                            </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <div class="col-md-6">
+                                            <label for="video_url" class="form-label">Video URL</label>
+                                            <input type="url" id="video_url" class="form-control" placeholder="Enter Video URL">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <!--Property media section-->
-                        <div class="form-section">
-                            <div class="card shadow-lg p-4">
-                                <div class="form-group">
-                                    <div class="form-header text-center">
-                                        <h2 class="fw-bold">Property Media</h2>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <!-- Property Images Upload -->
-                                    <div class="col-md-6">
-                                        <label class="form-label fw-medium">Upload Property Images</label>
-                                        <input type="file" class="form-control" multiple>
-                                    </div>
-
-                                    <!-- Property Video Upload -->
-                                    <div class="col-md-6">
-                                        <label class="form-label fw-medium">Upload Property Video</label>
-                                        <input type="file" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--Floor plans section-->
-                        <div class="form-section">
-                            <div class="card shadow-lg p-4">
-                                <div class="form-group">
-                                    <div class="form-header text-center">
-                                        <h2 class="fw-bold">Floor plans</h2>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <!-- Plan Description -->
-                                    <div class="col-md-6">
-                                        <label class="form-label fw-medium">Plan Description</label>
-                                        <input type="text" class="form-control" placeholder="Enter plan description">
-                                    </div>
-                                    <!-- Number of Bedrooms -->
-                                    <div class="col-md-6">
-                                        <label class="form-label fw-medium">Plan Bedrooms</label>
-                                        <input type="number" class="form-control" placeholder="Enter number of bedrooms">
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <!-- Plan Bathrooms -->
-                                    <div class="col-md-6">
-                                        <label class="form-label fw-medium">Plan Bathrooms</label>
-                                        <input type="number" class="form-control" placeholder="Enter number of bathrooms">
-                                    </div>
-                                    <!-- Plan Size -->
-                                    <div class="col-md-6">
-                                        <label class="form-label fw-medium">Plan Size (sqft)</label>
-                                        <input type="text" class="form-control" placeholder="Enter size in sqft">
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <!-- Plan Image Upload -->
-                                    <div class="col-md-12">
-                                        <label class="form-label fw-medium">Upload Floor Plan Image</label>
-                                        <input type="file" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Save Button -->
-                        <button type="submit" class="btn btn-success btn-save">
-                            <i class="fas fa-save"></i> Save Listing
-                        </button>
-                    </form>
                 </div>
-                <!-- Floating Save Progress Reminder -->
-                <div id="save-progress" class="auto-saving-indicator">Auto-saving...</div>
-            </main>
-            <!-- dashboard container .\ -->
 
-            <!-- Start footer section -->
-            <footer class="footer footer__section">
-                <div class="dashboard__footer--inner text-center">
-                    <p class="copyright__content mb-0">Copyright © 2025Powered By <span>Kibisu</span>. Designed by <a class="copyright__content--link" target="_blank" href="">kibisuerick</a> All Rights Reserved.</p>
+                <!--Amenities and Features-->
+                <div class="form-section">
+                    <div class="card shadow-lg p-4">
+                        <!--<div class="form-row">-->
+                        <div class="form-group">
+                            <div class="form-header text-center">
+                                <h2 class="fw-bold">Amenities and Features</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Column 1 -->
+                            <div class="col-md-6">
+                                <div class="amenities-section">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="airConditioning">
+                                        <label class="form-check-label" for="airConditioning">Air Conditioning</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="swimmingPool">
+                                        <label class="form-check-label" for="swimmingPool">Swimming Pool</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="outdoorShower">
+                                        <label class="form-check-label" for="outdoorShower">Outdoor Shower</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="lawn">
+                                        <label class="form-check-label" for="lawn">Lawn</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Column 2 -->
+                            <div class="col-md-6">
+                                <div class="amenities-section">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="barbeque">
+                                        <label class="form-check-label" for="barbeque">Barbeque</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="washer">
+                                        <label class="form-check-label" for="washer">Washer</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="microwave">
+                                        <label class="form-check-label" for="microwave">Microwave</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="dryer">
+                                        <label class="form-check-label" for="dryer">Dryer</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </footer>
-            <!-- End footer section -->
-            </main>
+
+                <!--Property media section-->
+                <div class="form-section">
+                    <div class="card shadow-lg p-4">
+                        <div class="form-group">
+                            <div class="form-header text-center">
+                                <h2 class="fw-bold">Property Media</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Property Images Upload -->
+                            <div class="col-md-6">
+                                <label class="form-label fw-medium">Upload Property Images</label>
+                                <input type="file" class="form-control" multiple>
+                            </div>
+
+                            <!-- Property Video Upload -->
+                            <div class="col-md-6">
+                                <label class="form-label fw-medium">Upload Property Video</label>
+                                <input type="file" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Floor plans section-->
+                <div class="form-section">
+                    <div class="card shadow-lg p-4">
+                        <div class="form-group">
+                            <div class="form-header text-center">
+                                <h2 class="fw-bold">Floor plans</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Plan Description -->
+                            <div class="col-md-6">
+                                <label class="form-label fw-medium">Plan Description</label>
+                                <input type="text" class="form-control" placeholder="Enter plan description">
+                            </div>
+                            <!-- Number of Bedrooms -->
+                            <div class="col-md-6">
+                                <label class="form-label fw-medium">Plan Bedrooms</label>
+                                <input type="number" class="form-control" placeholder="Enter number of bedrooms">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <!-- Plan Bathrooms -->
+                            <div class="col-md-6">
+                                <label class="form-label fw-medium">Plan Bathrooms</label>
+                                <input type="number" class="form-control" placeholder="Enter number of bathrooms">
+                            </div>
+                            <!-- Plan Size -->
+                            <div class="col-md-6">
+                                <label class="form-label fw-medium">Plan Size (sqft)</label>
+                                <input type="text" class="form-control" placeholder="Enter size in sqft">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <!-- Dropzone File Upload -->
+                            <div class="dropzone" id="floorPlansUpload">
+                                <div class="dz-message">
+                                    Drag & Drop files here or click to upload
+                                </div>
+                            </div>
+                            <input type="hidden" name="floor_plan_images" id="floorPlanImages">
+                        </div>
+                    </div>
+                </div>
+                <!-- Save Button -->
+                <button type="submit" class="btn btn-success btn-save">
+                    <i class="fas fa-save"></i> Save Listing
+                </button>
+                </form>
         </div>
+        <!-- Floating Save Progress Reminder -->
+        <div id="save-progress" class="position-fixed bottom-0 end-0 m-3 p-2 bg-warning rounded shadow" style="display: none;">
+            Auto-saving...
+        </div>
+        </main>
+        <!-- dashboard container .\ -->
+
+        <!-- Start footer section -->
+        <footer class="footer footer__section">
+            <div class="dashboard__footer--inner text-center">
+                <p class="copyright__content mb-0">Copyright © 2025Powered By <span>Kibisu</span>. Designed by <a class="copyright__content--link" target="_blank" href="">kibisuerick</a> All Rights Reserved.</p>
+            </div>
+        </footer>
+        <!-- End footer section -->
+        </main>
+    </div>
     </div>
 
     <!-- Scroll top bar -->
@@ -1369,6 +1376,9 @@ require '../db.php'; // Database connection
     <!-- Customscript js -->
     <script src="assets/js/script.js"></script>
 
+    <!-- Include Dropzone.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script>
+
     <!-- Dark to light js -->
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
@@ -1385,6 +1395,60 @@ require '../db.php'; // Database connection
                 setTimeout(() => document.getElementById('save-progress').style.display = 'none', 2000);
             }, 15000);
         });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let formChanged = false;
+
+            document.querySelector("form").addEventListener("input", function() {
+                formChanged = true;
+            });
+
+            setInterval(() => {
+                if (formChanged) {
+                    document.getElementById('save-progress').style.display = 'block';
+                    setTimeout(() => document.getElementById('save-progress').style.display = 'none', 2000);
+                    formChanged = false;
+                }
+            }, 15000);
+        });
+
+        // Initialize Dropzone for Property Media
+        Dropzone.options.propertyImageUpload = {
+            url: "upload.php",
+            paramName: "image",
+            maxFilesize: 5, // 5MB limit
+            acceptedFiles: "image/*",
+            addRemoveLinks: true,
+            dictRemoveFile: "Remove",
+            init: function() {
+                let uploadedFiles = [];
+
+                this.on("success", function(file, response) {
+                    uploadedFiles.push(response.filePath); // Store file paths
+                    console.log("File uploaded:", response);
+                });
+            }
+        };
+
+        // Initialize Dropzone for Floor Plans
+        Dropzone.options.floorPlansUpload = {
+            url: "upload.php",
+            paramName: "image",
+            maxFilesize: 5, // 5MB limit
+            acceptedFiles: "image/*",
+            addRemoveLinks: true,
+            dictRemoveFile: "Remove",
+            init: function() {
+                let uploadedFiles = [];
+
+                this.on("success", function(file, response) {
+                    uploadedFiles.push(response.filePath); // Store file paths
+                    console.log("File uploaded:", response);
+                });
+            }
+        };
     </script>
 
 </body>

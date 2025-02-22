@@ -2,10 +2,6 @@
 // Include the database connection file
 include '../db.php'; // Ensure this file correctly connects to your database
 
-// Enable error reporting for debugging
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     echo "Debug 1: Form received.<br>";
