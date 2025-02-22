@@ -1032,9 +1032,8 @@ require '../db.php'; // Database connection
                                         <div class="form-group">
                                             <!-- Type -->
                                             <div class="col-md-6">
-                                                <label class="form-label">Type</label>
-                                                <input type="text" name= "type" class="form-control">
-                                                <select class="form-select">
+                                                <label class="form-label">Type</label>                                                
+                                                <select type="text" name= "type" class="form-select">
                                                     <option>Apartments</option>
                                                     <option>Houses</option>
                                                     <option>Commercial</option>
@@ -1046,9 +1045,8 @@ require '../db.php'; // Database connection
                                     <div class="col-md-6">
                                         <div class="form-row">
                                             <div class="form-group">
-                                                <label class="form-label">Status</label>
-                                                <input type="text" name= "status" class="form-control">
-                                                <select class="form-select">
+                                                <label class="form-label">Status</label>                                                
+                                                <select type="text" name= "status"class="form-select">
                                                     <option>All Cities</option>
                                                     <option>For Sale</option>
                                                     <option>For Rent</option>
@@ -1072,9 +1070,8 @@ require '../db.php'; // Database connection
                                             </div>
                                             <!-- Rooms -->
                                             <div class="col-md-4">
-                                                <label class="form-label">Rooms</label>
-                                                <input type="text" name= "rooms" class="form-control">
-                                                <select class="form-select">
+                                                <label  class="form-label">Rooms</label>                                                
+                                                <select name= "rooms" class="form-select">
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
@@ -1137,9 +1134,8 @@ require '../db.php'; // Database connection
                                     <div class="col-md-4">
                                         <div class="form-row">
                                             <div class="form-group">
-                                                <label for="region" class="form-label">Region</label>
-                                                <input type="text" name= "region" class="form-control">
-                                                <select id="region" class="form-select">
+                                                <label for="region" class="form-label">Region</label>                                                
+                                                <select  type="text" name= "region" id="region" class="form-select">
                                                     <option>Select Region</option>
                                                     <option>Ongata-Rongai</option>
                                                     <option>Nairobi</option>
@@ -1160,9 +1156,8 @@ require '../db.php'; // Database connection
                                         <div class="col-md-4">
                                             <div class="form-row">
                                                 <div class="form-group">
-                                                    <label for="country" class="form-label">Country</label>
-                                                    <input type="text" name= "country" class="form-control">
-                                                    <select id="country" class="form-select">
+                                                    <label for="country" class="form-label">Country</label>                                                    
+                                                    <select type="text" name= "country" id="country" class="form-select">
                                                         <option>Select Country</option>
                                                         <option>Kenya</option>
                                                         <option>Uganda</option>
