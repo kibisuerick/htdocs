@@ -88,6 +88,18 @@ require '../db.php'; // Database connection
                 <input type="hidden" name="property_images" id="propertyImages">
             </fieldset>
 
+            <!-- Video Upload Section -->
+            <fieldset class="border p-3 mb-4">
+                <legend class="w-auto">Videos</legend>
+                <!-- Dropzone File Upload for Videos -->
+                <div class="dropzone" id="videoUpload">
+                    <div class="dz-message">
+                        Drag & Drop video files here or click to upload
+                    </div>
+                </div>
+                <input type="hidden" name="videos" id="videos">
+            </fieldset>
+
             <!-- Floor Plans -->
             <fieldset class="border p-3 mb-4">
                 <legend class="w-auto">Floor Plans</legend>
@@ -146,6 +158,38 @@ require '../db.php'; // Database connection
                 this.on("success", function(file, response) {
                     uploadedFiles.push(response.filePath); // Store file paths
                     console.log("File uploaded:", response);
+                });
+            }
+        };
+
+        // Initialize Dropzone for Video Upload
+        Dropzone.options.videoUpload = {
+            url: "upload.php",
+            paramName: "video",
+            maxFilesize: 50, // 50MB limit for videos
+            acceptedFiles: "video/*",
+            addRemoveLinks: true,
+            dictRemoveFile: "Remove",
+            init: function() {
+                let uploadedVideos = [];
+
+                this.on("success", function(file, response) {
+                    uploadedVideos.push(response.filePath); // Store video paths
+                    console.log("Video uploaded:", response);
+                });
+
+                this.on("removedfile", function(file) {
+                    // Handle video deletion
+                    fetch("delete.php", {
+                        method: "POST",
+                        body: JSON.stringify({ filePath: file.name }),
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    }).then(response => response.json())
+                      .then(data => {
+                          console.log("Video deleted:", data);
+                      });
                 });
             }
         };

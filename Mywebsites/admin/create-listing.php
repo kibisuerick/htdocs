@@ -1279,23 +1279,25 @@ require '../db.php'; // Database connection
                             </div>
                         </div>
                         <div class="row">
-
+                        <legend class="w-auto">Image(s)</legend>
                             <!-- Dropzone File Upload -->
                             <div class="dropzone" id="propertyImageUpload">
                                 <div class="dz-message">
-                                    Drag & Drop files here or click to upload
+                                    Drag & Drop image files here or click to upload
                                 </div>
                             </div>
                             <input type="hidden" name="property_images" id="propertyImages">
 
 
                             <!-- Property Video Upload -->
-                            <div class="dropzone" id="propertyVideoUpload">
+                            <legend class="w-auto">Video(s)</legend>
+                            <!-- Dropzone File Upload for Videos -->
+                            <div class="dropzone" id="videoUpload">
                                 <div class="dz-message">
-                                    Drag & Drop files here or click to upload
+                                    Drag & Drop video files here or click to upload
                                 </div>
                             </div>
-                            <input type="hidden" name="property_Video" id="propertyVideo">
+                            <input type="hidden" name="videos" id="videos">
                         </div>
                     </div>
                 </div>
@@ -1457,36 +1459,36 @@ require '../db.php'; // Database connection
             }
         };
 
-        // Initialize Dropzone for Property Video Uploads
-        Dropzone.options.propertyVideoUpload = {
-            url: "upload.php", // URL for file upload
-            paramName: "video", // Parameter name for the video file
-            maxFilesize: 50, // 50MB limit (adjust as needed)
-            acceptedFiles: "video/*", // Allow only video files
-            addRemoveLinks: true, // Add remove links for uploaded files
-            dictRemoveFile: "Remove", // Text for the remove link
+        // Initialize Dropzone for Video Upload
+        Dropzone.options.videoUpload = {
+            url: "upload.php",
+            paramName: "video",
+            maxFilesize: 50, // 50MB limit for videos
+            acceptedFiles: "video/*",
+            addRemoveLinks: true,
+            dictRemoveFile: "Remove",
             init: function() {
-                let uploadedFiles = []; // Array to store uploaded file paths
+                let uploadedVideos = [];
 
                 this.on("success", function(file, response) {
-                    // Store the uploaded file path
-                    uploadedFiles.push(response.filePath);
-
-                    // Update the hidden input field with the file paths
-                    document.getElementById("propertyVideo").value = uploadedFiles.join(",");
-
+                    uploadedVideos.push(response.filePath); // Store video paths
                     console.log("Video uploaded:", response);
                 });
 
                 this.on("removedfile", function(file) {
-                    // Remove the file path from the array when a file is removed
-                    const filePath = file.xhr.response.filePath;
-                    uploadedFiles = uploadedFiles.filter(path => path !== filePath);
-
-                    // Update the hidden input field with the remaining file paths
-                    document.getElementById("propertyVideo").value = uploadedFiles.join(",");
-
-                    console.log("Video removed:", filePath);
+                    // Handle video deletion
+                    fetch("delete.php", {
+                            method: "POST",
+                            body: JSON.stringify({
+                                filePath: file.name
+                            }),
+                            headers: {
+                                "Content-Type": "application/json"
+                            }
+                        }).then(response => response.json())
+                        .then(data => {
+                            console.log("Video deleted:", data);
+                        });
                 });
             }
         };
