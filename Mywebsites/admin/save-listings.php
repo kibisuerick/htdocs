@@ -98,6 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':amenities' => $amenities,
             ':video_url' => $video_url,
             ':floor_plans' => $floorPlanPaths, // Stores multiple floor plans as comma-separated values
+            ':property_name' => $property_name, // New field
         ]);
 
         // Redirect with success message
