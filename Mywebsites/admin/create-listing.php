@@ -980,7 +980,7 @@ require '../db.php'; // Database connection
                                                 </svg> Taskboard </a></li>
                                     </ul>
                                     <div class="dropdown__user--profile__footer">
-                                        <a class="user__profile--log-out__btn" href="../sign-up.html"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="log-out" class="lucide lucide-log-out inline-block size-4 ltr:mr-2 rtl:ml-2">
+                                        <a class="user__profile--log-out__btn" href="../logout.php"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="log-out" class="lucide lucide-log-out inline-block size-4 ltr:mr-2 rtl:ml-2">
                                                 <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                                                 <polyline points="16 17 21 12 16 7"></polyline>
                                                 <line x1="21" x2="9" y1="12" y2="12"></line>
@@ -1012,7 +1012,7 @@ require '../db.php'; // Database connection
                                         <!-- Title -->
                                         <div class="col-md-6">
                                             <label class="form-label">Title</label>
-                                            <input type="text" class="form-control" name= "title" placeholder="Enter Property Title">
+                                            <input type="text" class="form-control" name="title" placeholder="Enter Property Title">
                                         </div>
                                     </div>
                                 </div>
@@ -1022,7 +1022,7 @@ require '../db.php'; // Database connection
                                             <!-- Description -->
                                             <div class="col-12">
                                                 <label class="form-label">Description</label>
-                                                <input type="text" name= "description" class="form-control" placeholder="Enter Property Description">
+                                                <input type="text" name="description" class="form-control" placeholder="Enter Property Description">
                                             </div>
                                         </div>
                                     </div>
@@ -1032,8 +1032,8 @@ require '../db.php'; // Database connection
                                         <div class="form-group">
                                             <!-- Type -->
                                             <div class="col-md-6">
-                                                <label class="form-label">Type</label>                                                
-                                                <select type="text" name= "type" class="form-select">
+                                                <label class="form-label">Type</label>
+                                                <select type="text" name="type" class="form-select">
                                                     <option>Apartments</option>
                                                     <option>Houses</option>
                                                     <option>Commercial</option>
@@ -1045,8 +1045,8 @@ require '../db.php'; // Database connection
                                     <div class="col-md-6">
                                         <div class="form-row">
                                             <div class="form-group">
-                                                <label class="form-label">Status</label>                                                
-                                                <select type="text" name= "status"class="form-select">
+                                                <label class="form-label">Status</label>
+                                                <select type="text" name="status" class="form-select">
                                                     <option>All Cities</option>
                                                     <option>For Sale</option>
                                                     <option>For Rent</option>
@@ -1061,17 +1061,17 @@ require '../db.php'; // Database connection
                                             <!-- Price -->
                                             <div class="col-md-4">
                                                 <label class="form-label">Price</label>
-                                                <input type="text" name= "price"class="form-control" placeholder="Enter Price">
+                                                <input type="text" name="price" class="form-control" placeholder="Enter Price">
                                             </div>
                                             <!-- Area -->
                                             <div class="col-md-4">
                                                 <label class="form-label">Area</label>
-                                                <input type="text" name= "area"class="form-control" placeholder="Area in SqFt">
+                                                <input type="text" name="area" class="form-control" placeholder="Area in SqFt">
                                             </div>
                                             <!-- Rooms -->
                                             <div class="col-md-4">
-                                                <label  class="form-label">Rooms</label>                                                
-                                                <select name= "rooms" class="form-select">
+                                                <label class="form-label">Rooms</label>
+                                                <select name="rooms" class="form-select">
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
@@ -1097,7 +1097,7 @@ require '../db.php'; // Database connection
                                     <div class="form-row">
                                         <div class="form-group">
                                             <label for="address" class="form-label">Address</label>
-                                            <input type="text" name= "address" id="address" class="form-control" placeholder="P.O BOX or street name">
+                                            <input type="text" name="address" id="address" class="form-control" placeholder="P.O BOX or street name">
                                         </div>
                                     </div>
                                 </div>
@@ -1105,7 +1105,7 @@ require '../db.php'; // Database connection
                                     <div class="form-row">
                                         <div class="form-group">
                                             <label for="Landmark" class="form-label">Landmark</label>
-                                            <input type="text" name= "landmark" id="Landmark" class="form-control" placeholder="Landmark(optional)...">
+                                            <input type="text" name="landmark" id="Landmark" class="form-control" placeholder="Landmark(optional)...">
                                         </div>
                                     </div>
                                 </div>
@@ -1113,7 +1113,7 @@ require '../db.php'; // Database connection
                                     <div class="form-row">
                                         <div class="form-group">
                                             <label for="county" class="form-label">County</label>
-                                            <input type="text" name= "county" id="county" class="form-control" placeholder="County">
+                                            <input type="text" name="county" id="county" class="form-control" placeholder="County">
                                         </div>
                                     </div>
                                 </div>
@@ -1134,8 +1134,8 @@ require '../db.php'; // Database connection
                                     <div class="col-md-4">
                                         <div class="form-row">
                                             <div class="form-group">
-                                                <label for="region" class="form-label">Region</label>                                                
-                                                <select  type="text" name= "region" id="region" class="form-select">
+                                                <label for="region" class="form-label">Region</label>
+                                                <select type="text" name="region" id="region" class="form-select">
                                                     <option>Select Region</option>
                                                     <option>Ongata-Rongai</option>
                                                     <option>Nairobi</option>
@@ -1149,15 +1149,15 @@ require '../db.php'; // Database connection
                                             <div class="form-row">
                                                 <div class="form-group">
                                                     <label for="pobox" class="form-label">P.O. Box</label>
-                                                    <input type="text" name= "po_box" id="pobox" class="form-control" placeholder="P.O. Box">
+                                                    <input type="text" name="po_box" id="pobox" class="form-control" placeholder="P.O. Box">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-row">
                                                 <div class="form-group">
-                                                    <label for="country" class="form-label">Country</label>                                                    
-                                                    <select type="text" name= "country" id="country" class="form-select">
+                                                    <label for="country" class="form-label">Country</label>
+                                                    <select type="text" name="country" id="country" class="form-select">
                                                         <option>Select Country</option>
                                                         <option>Kenya</option>
                                                         <option>Uganda</option>
@@ -1234,7 +1234,7 @@ require '../db.php'; // Database connection
                                     <div class="form-group">
                                         <div class="col-md-6">
                                             <label for="year_built" class="form-label">Year Built</label>
-                                            <input type="text" name= "year_built" id="year_built" class="form-control" placeholder="Enter Year Built">
+                                            <input type="text" name="year_built" id="year_built" class="form-control" placeholder="Enter Year Built">
                                         </div>
                                     </div>
                                 </div>
@@ -1242,7 +1242,7 @@ require '../db.php'; // Database connection
                                     <div class="form-group">
                                         <div class="col-md-6">
                                             <label for="video_url" class="form-label">Video URL</label>
-                                            <input type="url" name= "video_url" id="video_url" class="form-control" placeholder="Enter Video URL">
+                                            <input type="url" name="video_url" id="video_url" class="form-control" placeholder="Enter Video URL">
                                         </div>
                                     </div>
                                 </div>
@@ -1461,7 +1461,7 @@ require '../db.php'; // Database connection
 
         // Initialize Dropzone for Property Media
         Dropzone.options.propertyImageUpload = {
-            url: "upload.php",
+            url: "uploads.php",
             paramName: "image",
             maxFilesize: 5, // 5MB limit
             acceptedFiles: "image/*",
@@ -1479,7 +1479,7 @@ require '../db.php'; // Database connection
 
         // Initialize Dropzone for Floor Plans
         Dropzone.options.floorPlansUpload = {
-            url: "upload.php",
+            url: "uploads.php",
             paramName: "image",
             maxFilesize: 5, // 5MB limit
             acceptedFiles: "image/*",
@@ -1497,7 +1497,7 @@ require '../db.php'; // Database connection
 
         // Initialize Dropzone for Video Upload
         Dropzone.options.videoUpload = {
-            url: "upload.php",
+            url: "uploads.php",
             paramName: "video",
             maxFilesize: 50, // 50MB limit for videos
             acceptedFiles: "video/*",
